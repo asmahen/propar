@@ -44,6 +44,7 @@ class Users implements UserInterface
      */
     private $isVerified = false;
 
+    /**
      * @ORM\OneToMany(targetEntity=Operations::class, mappedBy="Users")
      */
     private $operations;
@@ -144,8 +145,9 @@ class Users implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+    }
 
-    /**
+    /**b
      * @return Collection<int, Operations>
      */
     public function getOperations(): Collection
