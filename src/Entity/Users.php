@@ -6,10 +6,12 @@ use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class Users implements UserInterface
 {
@@ -37,6 +39,11 @@ class Users implements UserInterface
     private $password;
 
     /**
+
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
      * @ORM\OneToMany(targetEntity=Operations::class, mappedBy="Users")
      */
     private $operations;
@@ -45,6 +52,7 @@ class Users implements UserInterface
     {
         $this->operations = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -127,6 +135,16 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
     /**
      * @return Collection<int, Operations>
      */
@@ -153,6 +171,7 @@ class Users implements UserInterface
                 $operation->setUsers(null);
             }
         }
+
 
         return $this;
     }
