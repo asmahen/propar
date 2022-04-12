@@ -22,6 +22,23 @@ class Operations
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Clients::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Categories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="operations")
+     */
+    private $Users;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +52,42 @@ class Operations
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getClient(): ?Clients
+    {
+        return $this->Client;
+    }
+
+    public function setClient(?Clients $Client): self
+    {
+        $this->Client = $Client;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->Categories;
+    }
+
+    public function setCategories(?Categories $Categories): self
+    {
+        $this->Categories = $Categories;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->Users;
+    }
+
+    public function setUsers(?Users $Users): self
+    {
+        $this->Users = $Users;
 
         return $this;
     }

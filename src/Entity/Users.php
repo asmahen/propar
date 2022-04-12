@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,9 +39,20 @@ class Users implements UserInterface
     private $password;
 
     /**
+
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+     * @ORM\OneToMany(targetEntity=Operations::class, mappedBy="Users")
+     */
+    private $operations;
+
+    public function __construct()
+    {
+        $this->operations = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -122,6 +135,7 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
+
     public function isVerified(): bool
     {
         return $this->isVerified;
@@ -130,6 +144,34 @@ class Users implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+    /**
+     * @return Collection<int, Operations>
+     */
+    public function getOperations(): Collection
+    {
+        return $this->operations;
+    }
+
+    public function addOperation(Operations $operation): self
+    {
+        if (!$this->operations->contains($operation)) {
+            $this->operations[] = $operation;
+            $operation->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOperation(Operations $operation): self
+    {
+        if ($this->operations->removeElement($operation)) {
+            // set the owning side to null (unless already changed)
+            if ($operation->getUsers() === $this) {
+                $operation->setUsers(null);
+            }
+        }
+
 
         return $this;
     }
