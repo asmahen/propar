@@ -41,6 +41,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
 
+
             return $this->redirectToRoute('app_home');
         }
 
@@ -48,5 +49,6 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
 
 }
