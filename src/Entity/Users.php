@@ -38,11 +38,7 @@ class Users implements UserInterface
      */
     private $password;
 
-    /**
 
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Operations::class, mappedBy="Users")
@@ -136,16 +132,6 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
-
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-    }
 
     /**b
      * @return Collection<int, Operations>
