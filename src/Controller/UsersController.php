@@ -3,14 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\RegistrationFormType;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Security\EmailVerifier;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
+ * @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
  * @Route("/users")
  */
 class UsersController extends AbstractController
@@ -26,22 +36,35 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_users_new", methods={"GET", "POST"})
+     * @Route("/register", name="app_register")
+     *
      */
-    public function new(Request $request, UsersRepository $usersRepository): Response
+
+    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
         $user = new Users();
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $usersRepository->add($user);
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+
+
+            return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('users/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
+        return $this->render('users/register.html.twig', [
+            'registrationForm' => $form->createView(),
         ]);
     }
 
@@ -56,22 +79,26 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_users_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="app_users_edit")
      */
-    public function edit(Request $request, Users $user, UsersRepository $usersRepository): Response
-    {
-        $form = $this->createForm(UsersType::class, $user);
+    public function edit ($id, UsersRepository $userRepository, Request $request, EntityManagerInterface $em) {
+        $user = $userRepository->find($id);
+
+        $form = $this->createForm(UsersType::class,$user);
+
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $usersRepository->add($user);
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em->flush();
         }
+
+            $formView = $form->CreateView();
 
         return $this->render('users/edit.html.twig', [
             'user' => $user,
-            'form' => $form->createView(),
+            'formView' => $formView
         ]);
+
     }
 
     /**

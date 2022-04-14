@@ -3,15 +3,16 @@
 {% block title %}Users index{% endblock %}
 
 {% block body %}
-    <h1>Users index</h1>
+    <h1>Listes des collaborateurs</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,12 +20,13 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.nom }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>
-                    <a href="{{ path('app_users_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_users_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">Afficher</a>
+                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_users_new') }}">Create new</a>
+    <a href="{{ path('app_register') }}" class="btn btn-danger">Ajouter un nouveau collaborateur</a>
 {% endblock %}
