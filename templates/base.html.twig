@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			<link
+			rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+		{#{{ encore_entry_link_tags('app') }}#}
+		{% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Propar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+		{% block javascripts %}
+			{#{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{path('app_home')}}">Propar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Chiffre d'affaires</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Liste d'utilisateurs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opérations</a>
-                    </li>
-                </ul>
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav me-auto">
+                    {% if app.user%}
+						{% if is_granted('ROLE_EXPERT') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_chiffre_affaires')}}">Chiffre d'affaires</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_liste_utilisateurs')}}">Liste d'utilisateurs</a>
+							</li>
+						{% endif %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_operation')}}">Mes opérations</a>
+						</li>
+                    {% endif %}
+					</ul>
 
-                <form class="d-flex">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Se connecter</button>
-                </form>
+					<ul class="navbar-nav">
+						{% if app.user %}
+							<li class="nav-item">
+								<a href="{{ path('app_logout') }}" class="btn btn-danger">
+									Déconnection</a>
+							</li>
+						{% else %}
+							<li class="nav-item">
+								<a href="{{ path('app_login') }}" class="btn btn-success">
+									Se connecter</a>
+							</li>
+						{% endif %}
+					</ul>
 
 
-            </div>
-        </div>
-    </nav>
-        {% block body %}
-
-        {% endblock %}
-    </body>
+				</div>
+			</div>
+		</nav>
+		{% block body %}{% endblock %}
+	</body>
 </html>
