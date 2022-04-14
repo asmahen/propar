@@ -32,9 +32,10 @@
 
 
 
-    <a href="{{ path('app_users_index') }}" class="btn btn-danger">Revenir à la liste des collaborateurs</a>
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning">Revenir à la liste des collaborateurs</a>
     <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>
 
 
     {{ include('users/_delete_form.html.twig') }}
+
 {% endblock %}
