@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+
+   /**
+     *  @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
+     */ 
 
 class RegistrationController extends AbstractController
 {
-
+    
     /**
      * @Route("/register", name="app_register")
      */
+    
     public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
         $user = new Users();
