@@ -1,37 +1,143 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}opération{% endblock %}
+{% block title %}opération
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
 
-<div class="example-wrapper" style="text-align: center;">
-    <h1>OPÉRATIONS </h1>
-</div>
-    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Secondary card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        .card{
+            display : grid;
+            grid-template-columns : 300px;
+            grid-template-rows: 170px 190px 40px;
+            grid-template-areas:"image" "text" "stats";
+
+            font-family: roboto;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0,9);
+            text-align: center;
+
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card-image{
+            grid-area: image;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-size: cover;
+            background-position: bottom
+        }
+
+        .card-text{
+            grid-area: text;
+            margin: 25px;
+
+        }
+
+        .card-text p{
+            color: grey;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .card-text h2{
+            margin-top: 0px;
+            font-size: 28px;
+        }
+
+        .card:hover{
+            transform: scale(1.2);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0,6);
+        }
+
+
+
+
+	</style>
+
+	<div class="example-wrapper" style="text-align: center;">
+		<h1>OPÉRATIONS</h1>
+        <br><br>
+	</div>
+
+
+
+	<div class="d-flex justify-content-around">
+
+    <div class="p-2">
+		<span class="badge bg-secondary">Grosse Opération</span><br>
+        <br>
+		<span class="badge bg-warning">Moyenne Opération</span><br>
+        <br>
+		<span class="badge bg-info">Petite Opération</span><br>
+        <br>
+	</div>
+
+		{# <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+			<div class="card-header">Titre opération</div>
+			<div class="card-body">
+				<p class="card-text">Description opération</p>
+				<p class="card-text">Coût opération</p>
+			</div>
+		</div>
+
+		<div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+			<div class="card-header">Titre opération</div>
+			<div class="card-body">
+				<p class="card-text">Description opération</p>
+                <p class="card-text">Coût opération</p>
+			</div>
+		</div>
+		<div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+			<div class="card-header">Titre opération</div>
+			<div class="card-body">
+				<p class="card-text">Description opération</p>
+				<p class="card-text">Coût opération</p>
+			</div>
+		</div> #}
+
+    <div class="card">
+        <div class="card-image" style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
+        <div class="card-text">
+            <h5>Nettoyage vitres en hauteur </h5>
+            <p>Intervient sur un bâtiment qui est difficile d'accès, en utilisant les moyens d'élévation appropriés</p>
         </div>
+            <div class="class-stats text-white bg-secondary " style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">10.000€</div>
     </div>
 
-    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Info card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+    <div class="card">
+        <div class="card-image" style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
+        <div class="card-text">
+            <h5>Désinfection des locaux</h5>
+            <p>Le nettoyage et désinfections de locaux contaminés</p>
+        </div> 
+        <div class="class-stats text-white bg-warning " style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">2500€</div>
     </div>
-    <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Warning card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+
+    <div class="card">
+        <div class="card-image" style="background-image: url('https://www.nettoyage-appartement.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
+        <div class="card-text">
+            <h5>Entretien de canapés en cuir et canapés tissu.</h5>
+            <p>Nettoyage de canapé, fauteuils, tapis, moquettes et matelas à domicile</p>
+        </div> 
+            <div class="class-stats text-white bg-info" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">1000€</div>
     </div>
-    </div>
+
+
+
+
+	</div> 
+
 {% endblock %}
