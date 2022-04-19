@@ -26,17 +26,22 @@ class AppFixtures extends Fixture
         $hash = $this->encoder->encodePassword($expert, "Password");
         $expert->setEmail("admin@gmail.com")
             ->setRoles(['ROLE_EXPERT'])
-            ->setPassword($hash);
+            ->setPassword($hash)
+            ->setNom('nomExpert')
+            ->setPrenom('prenomExpert');
+
         $manager->persist($expert);
 
 
         //création de l'apprenti
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $apprenti = new Users();
             $hash = $this->encoder->encodePassword($apprenti, "Password");
             $apprenti->setEmail("apprenti$i@gmail.com")
                 ->setRoles(['ROLE_APPRENTI'])
-                ->setPassword($hash);
+                ->setPassword($hash)
+            ->setNom("nomApprenti$i")
+                ->setPrenom("prenomApprenti$i");
             $manager->persist($apprenti);
         }
 
@@ -46,7 +51,9 @@ class AppFixtures extends Fixture
             $hash = $this->encoder->encodePassword($senior, "Password");
             $senior->setEmail("senior$i@gmail.com")
                 ->setRoles(['ROLE_SENIOR'])
-                ->setPassword($hash);
+                ->setPassword($hash)
+                ->setNom("nomSenior$i")
+                ->setPrenom("prenomSenior$i");
             $manager->persist($senior);
         }
 

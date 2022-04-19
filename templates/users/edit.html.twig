@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Users{% endblock %}
+{% block title %}Modification de {{ user.email }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Users</h1>
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+<h2>Modification de {{ user.nom }} {{ user.prenom }}</h2>
 
-    {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ form_start(formView) }}
+    {{ form_row(formView.nom) }}
+    {{ form_row(formView.prenom) }}
+    {{ form_row(formView.email) }}
+    {{ form_row(formView.roles) }}
+    <button type="submit" class="btn btn-success">Modifier</button>
+    {{ form_end(formView) }}
 
-    <a href="{{ path('app_users_index') }}">back to list</a>
 
-    {{ include('users/_delete_form.html.twig') }}
+
 {% endblock %}
