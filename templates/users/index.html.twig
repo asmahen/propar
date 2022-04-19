@@ -23,8 +23,16 @@
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.nom }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
 
+                <td>
+                    {% if user.roles == ["ROLE_EXPERT","ROLE_USER"] %}
+                    EXPERT</td>
+
+                    {% elseif user.roles == ["ROLE_SENIOR","ROLE_USER"]%}
+                        SENIOR
+                        {% elseif user.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
+                            APPRENTI
+                        {% endif%}
                 <td>
                     <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">Afficher</a>
                     <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>

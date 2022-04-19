@@ -177,7 +177,7 @@ class Users implements UserInterface
 
     public function __toString()
     {
-        return $this->email;
+        return $this->prenom.$this->nom;
     }
 
     public function getPrenom(): ?string
