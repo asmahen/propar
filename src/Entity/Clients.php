@@ -32,6 +32,11 @@ class Clients
      */
     private $nom;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $adresse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Clients
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
