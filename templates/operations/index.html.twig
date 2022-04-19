@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Opérations{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px / 1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+
+        .card {
+            display: grid;
+            margin: 3%;
+            grid-template-columns: 300px;
+            grid-template-rows: 170px 190px 40px;
+            grid-template-areas:"image" "text" "stats";
+
+            font-family: roboto;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0, 9);
+            text-align: center;
+
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card-image {
+            grid-area: image;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-size: cover;
+            background-position: bottom
+        }
+
+        .card-text {
+            grid-area: text;
+            margin: 25px;
+
+        }
+
+        .card-text p {
+            color: grey;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .card-text h2 {
+            margin-top: 0px;
+            font-size: 28px;
+        }
+
+        .card:hover {
+            transform: scale(1.2);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0, 6);
+        }
+
+
+    </style>
+
+    <div class="example-wrapper" style="text-align: center;">
+        <h1>OPÉRATIONS</h1>
+        <br><br>
+    </div>
+
+    <div class="p-2 stretch">
+        <span class="badge bg-secondary">Grosse Opération</span>
+
+        <span class="badge bg-warning">Moyenne Opération</span>
+
+        <span class="badge bg-info">Petite Opération</span>
+
+    </div>
+
+    <div class="d-flex flex-wrap space-evenly">
+
+
+
+        {% for operation in operations %}
+            <div class="card">
+                <div class="card-image"
+                     style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
+                <div class="card-text">
+                    <h5>Nettoyage vitres en hauteur </h5>
+                    <p>{{ operation.description }}</p>
+                </div>
+                <div class="class-stats text-white bg-secondary "
+                     style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                    {{ operation.categories.nom }}
+                </div>
+            </div>
+            <br><br>
+        {% endfor %}
+
+        {#  <div class="card">
+            <div class="card-image" style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
+            <div class="card-text">
+                <h5>Désinfection des locaux</h5>
+                <p>Le nettoyage et désinfections de locaux contaminés</p>
+            </div>
+            <div class="class-stats text-white bg-warning " style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">2500€</div>
+        </div>
+
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://www.nettoyage-appartement.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
+            <div class="card-text">
+                <h5>Entretien de canapés en cuir et canapés tissu.</h5>
+                <p>Nettoyage de canapé, fauteuils, tapis, moquettes et matelas à domicile</p>
+            </div>
+            <div class="class-stats text-white bg-info" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">1000€</div>
+        </div> #}
+
+
+    </div>
+
+{% endblock %}

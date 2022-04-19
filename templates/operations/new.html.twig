@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Operations{% endblock %}
+
+{% block body %}
+    <h1>Create new Operations</h1>
+
+    {{ include('operations/_form.html.twig') }}
+
+    <a href="{{ path('app_operations_index') }}">back to list</a>
+{% endblock %}
