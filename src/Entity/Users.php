@@ -174,6 +174,11 @@ class Users implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
+    public function __toString()
+    {
+        return $this->email;
+=======
     public function getPrenom(): ?string
     {
         return $this->prenom;
@@ -196,5 +201,6 @@ class Users implements UserInterface
         $this->nom = $nom;
 
         return $this;
+>>>>>>> eea28739f6700a4d0579120ea0a8feb51e6e07ef
     }
 }
