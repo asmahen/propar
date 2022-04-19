@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
             ->setPrenom("prenom$i")
             ->setPassword("$hash")
             ->setEmail("admin$i@gmail.com")
-            ->setRoles(['ROLE_ADMIN']);
+            ->setRoles(['ROLE_EXPERT']);
         $manager->persist($admin);
         }
 
@@ -111,7 +111,7 @@ class AppFixtures extends Fixture
             ->setPrenom("prenom2")
             ->setPassword("$hash")
             ->setEmail("adminOp@gmail.com")
-            ->setRoles(['ROLE_ADMIN']);
+            ->setRoles(['ROLE_EXPERT']);
         $manager->persist($admin);
 
         $senior= new Users();
