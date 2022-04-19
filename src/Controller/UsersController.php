@@ -90,6 +90,8 @@ class UsersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $em->flush();
+
+            return $this->redirectToRoute('app_users_index');
         }
 
             $formView = $form->CreateView();
