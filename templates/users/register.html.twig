@@ -18,5 +18,7 @@
     }) }}
     {{ form_row(registrationForm.roles) }}
     <button type="submit" class="btn btn-success">Créer un collaborateur</button>
+
     {{ form_end(registrationForm) }}
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
 {% endblock %}
