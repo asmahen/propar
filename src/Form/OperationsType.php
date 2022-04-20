@@ -16,7 +16,6 @@ class OperationsType extends AbstractType
             ->add('description')
             ->add('Client')
             ->add('Categories')
-            ->add('Users')
         ;
     }
 
