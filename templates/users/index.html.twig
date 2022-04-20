@@ -5,7 +5,11 @@
 {% block body %}
     <h1>Listes des collaborateurs</h1>
 
-    <table class="table">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"> </script>
+
+    <table id="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -47,4 +51,10 @@
     </table>
 
     <a href="{{ path('app_register') }}" class="btn btn-danger">Ajouter un nouveau collaborateur</a>
+
+    <script type="text/javascript">
+        $("#table").dataTable({
+        });
+    </script>
+
 {% endblock %}
