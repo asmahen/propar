@@ -3,8 +3,12 @@
       {{ form_row(form.description) }}
       {{ form_row(form.Client) }}
       {{ form_row(form.Categories) }}
-      {{ form_row(form.Users) }}
-    <button class="btn btn-success">{{ button_label|default('Créer une opération') }}</button>
+<label for="exampleInputText" class="form-label">Affecter opération</label>
+<select class="form-select" aria-label="Default select example">
+    <option value="1"></option>
+    <option value="2">{{ app.user }}</option>
+</select>
+    <button class="btn btn-success mt-3">{{ button_label|default('Créer une opération') }}</button>
 
 {{ form_end(form) }}
 <a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste des opérations</a>

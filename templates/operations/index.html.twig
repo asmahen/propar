@@ -82,43 +82,53 @@
 
     <div class="d-flex flex-wrap space-evenly">
 
-
-
         {% for operation in operations %}
+            {% if operation.categories.nom == "Petite" %}
             <div class="card">
                 <div class="card-image"
-                     style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
+                     style="background-image: url('https://www.nettoyagecanape.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
                 <div class="card-text">
-                    <h5>{{ operation.titre }} </h5>
+                    <h5>{{ operation.titre }}</h5>
                     <p>{{ operation.description }}</p>
                 </div>
-                <div class="class-stats text-white bg-secondary "
+                <div class="class-stats text-white bg-info "
                      style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
-                    {{ operation.categories.nom }}
+                    {{ operation.categories.prix }} €
                 </div>
             </div>
             <br><br>
+
+            {% elseif operation.categories.nom == "Moyenne" %}
+                <div class="card">
+                    <div class="card-image"
+                         style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
+                    <div class="card-text">
+                        <h5>{{ operation.titre }}</h5>
+                        <p>{{ operation.description }}</p>
+                    </div>
+                    <div class="class-stats text-white bg-warning "
+                         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                        {{ operation.categories.prix }} €
+                    </div>
+                </div>
+                <br><br>
+
+            {% else %}
+                <div class="card">
+                    <div class="card-image"
+                         style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
+                    <div class="card-text">
+                        <h5>{{ operation.titre }}</h5>
+                        <p>{{ operation.description }}</p>
+                    </div>
+                    <div class="class-stats text-white bg-secondary "
+                         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                        {{ operation.categories.prix }} €
+                    </div>
+                </div>
+                <br><br>
+            {% endif %}
         {% endfor %}
-
-        {#  <div class="card">
-            <div class="card-image" style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
-            <div class="card-text">
-                <h5>Désinfection des locaux</h5>
-                <p>Le nettoyage et désinfections de locaux contaminés</p>
-            </div>
-            <div class="class-stats text-white bg-warning " style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">2500€</div>
-        </div>
-
-        <div class="card">
-            <div class="card-image" style="background-image: url('https://www.nettoyage-appartement.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
-            <div class="card-text">
-                <h5>Entretien de canapés en cuir et canapés tissu.</h5>
-                <p>Nettoyage de canapé, fauteuils, tapis, moquettes et matelas à domicile</p>
-            </div>
-            <div class="class-stats text-white bg-info" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">1000€</div>
-        </div> #}
-
-
     </div>
 
 {% endblock %}
