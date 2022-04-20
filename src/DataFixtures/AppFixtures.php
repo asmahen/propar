@@ -138,7 +138,8 @@ class AppFixtures extends Fixture
         $operation->setDescription("desciption de l'operation $i")
             ->setCategories($petiteCategorie)
             ->setClient($client1)
-            ->setUsers($admin);
+            ->setUsers($admin)
+            ->setTitre("titre $i ");
         $manager->persist($operation);
 
         }
@@ -148,7 +149,8 @@ class AppFixtures extends Fixture
             $operation->setDescription("desciption de l'operation $i")
                 ->setCategories($moyenneCategorie)
                 ->setClient($client2)
-                ->setUsers($apprenti);
+                ->setUsers($apprenti)
+                ->setTitre("titre $i ");
             $manager->persist($operation);
 
         }
@@ -157,7 +159,8 @@ class AppFixtures extends Fixture
             $operation->setDescription("desciption de l'operation $i")
                 ->setCategories($grandeCategorie)
                 ->setClient($client2)
-                ->setUsers($apprenti);
+                ->setUsers($apprenti)
+                ->setTitre("titre $i ");
             $manager->persist($operation);
 
         }
