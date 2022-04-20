@@ -12,6 +12,7 @@ class OperationsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('Titre')
             ->add('description')
             ->add('Client')
             ->add('Categories')

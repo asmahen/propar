@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_row(form.Titre) }}
+      {{ form_row(form.description) }}
+      {{ form_row(form.Client) }}
+      {{ form_row(form.Categories) }}
+      {{ form_row(form.Users) }}
+    <button class="btn btn-success">{{ button_label|default('Créer une opération') }}</button>
+
 {{ form_end(form) }}
+<a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste des opérations</a>
