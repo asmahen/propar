@@ -22,6 +22,8 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginAuthenticator
+            form_login:
+                login_path: app_operations_index
             logout:
                 path: app_logout
                 # where to redirect after logout
