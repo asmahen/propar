@@ -154,16 +154,13 @@ class AppFixtures extends Fixture
         }
         for ($i=1; $i <= 3; $i++) {
             $operation = new Operations();
-            $operation->setDescription("desciption de l'operation $1")
+            $operation->setDescription("desciption de l'operation $i")
                 ->setCategories($grandeCategorie)
                 ->setClient($client2)
                 ->setUsers($apprenti);
             $manager->persist($operation);
 
         }
-
-
-
 
         $manager->flush();
     }
