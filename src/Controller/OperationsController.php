@@ -17,12 +17,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class OperationsController extends AbstractController
 {
+
     /**
      * @Route("/", name="app_operations_index", methods={"GET"})
      */
     public function index(OperationsRepository $operationsRepository): Response
     {
         return $this->render('operations/index.html.twig', [
+            'operations' => $operationsRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/mesoperations", name="app_operations_mesOperations")
+     */
+    public function mesOperations(OperationsRepository $operationsRepository)
+    {
+        return $this->render('operations/mesOperations.html.twig', [
             'operations' => $operationsRepository->findAll(),
         ]);
     }
@@ -87,4 +98,6 @@ class OperationsController extends AbstractController
 
         return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
