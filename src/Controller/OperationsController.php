@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Operations;
+use App\Entity\Users;
 use App\Form\OperationsType;
 use App\Repository\OperationsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,21 +43,69 @@ class OperationsController extends AbstractController
     /**
      * @Route("/new", name="app_operations_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, OperationsRepository $operationsRepository): Response
+    public function new(Request $request, OperationsRepository $operationsRepository, EntityManagerInterface $em): Response
     {
         $operation = new Operations();
+        $user = $this->getUser();
+
+        $op = $operationsRepository->findNbOperation($user);
+
+        $compte = count($op);
+
+        if ($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1){
         $form = $this->createForm(OperationsType::class, $operation);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $operationsRepository->add($operation);
+            $operation->setUsers($this->getUser());
+            $em->persist($operation);
+            $em->flush();
             return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('operations/new.html.twig', [
             'operation' => $operation,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
+    } elseif ($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3) {
+            $form = $this->createForm(OperationsType::class, $operation);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $operationsRepository->add($operation);
+                $operation->setUsers($this->getUser());
+                $em->persist($operation);
+                $em->flush();
+                return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->render('operations/new.html.twig', [
+                'operation' => $operation,
+                'form' => $form->createView()
+            ]);
+        } elseif ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5){
+            $form = $this->createForm(OperationsType::class, $operation);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $operationsRepository->add($operation);
+                $operation->setUsers($this->getUser());
+                $em->persist($operation);
+                $em->flush();
+                return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->render('operations/new.html.twig', [
+                'operation' => $operation,
+                'form' => $form->createView()
+            ]);
+        } else
+        {
+            return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);}
     }
 
     /**

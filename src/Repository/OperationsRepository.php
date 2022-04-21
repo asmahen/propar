@@ -48,19 +48,17 @@ class OperationsRepository extends ServiceEntityRepository
     // /**
     //  * @return Operations[] Returns an array of Operations objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findNbOperation($value)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
+            ->andWhere('o.Users = :val')
             ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Operations

@@ -22,6 +22,7 @@
                                 <a class="dropdown-item" href="{{ path('app_register') }}">Ajouter collaborateur</a>
                             </div>
                         </li>
+                    {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                                href="{{ path('app_operations_index') }}" role="button" aria-haspopup="true"
@@ -38,7 +39,7 @@
                                     opération</a>
                             </div>
                         </li>
-                    {% endif %}
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_operations_mesOperations') }}">Mes opérations</a>
