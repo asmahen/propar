@@ -1,20 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ChiffreAffairesController!{% endblock %}
+{% block title %} Chiffre Affaires {% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/hugok/Desktop/propar/src/Controller/ChiffreAffairesController.php'|file_link(0) }}">src/Controller/ChiffreAffairesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/hugok/Desktop/propar/templates/chiffre_affaires/index.html.twig'|file_link(0) }}">templates/chiffre_affaires/index.html.twig</a></code></li>
-    </ul>
+<div class="example-wrapper" style="text-align: center;">
+    <h1> Chiffre d'affaires  </h1>
 </div>
+    <div>
+    <canvas id="myChart" width="600" height="100" ></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const labels = [
+            'Lundi',
+            'Mardi',
+            'Mercredi',
+            'Jeudi',
+            'Vendredi',
+            'Samedi',
+            'Dimanche',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                data: [1000, 2500, 10000],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+    </script>
+    <script>
+            const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+            );
+    </script>
+
+
 {% endblock %}
