@@ -3,35 +3,40 @@
 {% block title %}opération{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper" style="text-align: center;">
+<div style="margin-left: 30px; margin-right: 30px;">
+    <div class="example-wrapper" style="text-align: center; margin-top:30px">
     <h1>OPÉRATIONS </h1>
-</div>
-    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Secondary card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
 
-    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Info card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h4 class="card-title">Warning card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    </div>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <table id="table">
+        <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Titre</th>
+            <th>Clients</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for operation in operations %}
+            <tr>
+
+                <td>{{ operation.users.nom }}</td>
+                <td>{{ operation.users.prenom }}</td>
+                <td>{{ operation.titre }}</td>
+                <td>{{ operation.client.prenom }}</td>
+                <td>{{ operation.categories.nom }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        $("#table").dataTable({});
+    </script>
 {% endblock %}
