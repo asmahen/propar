@@ -12,17 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
     /**
-     * @Route("/", name="app_home")
-     */
-    public function home(): Response
-    {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
-    /**
-     * @Route("/home", name="app_index", methods= {"GET"})
+     * @Route("/", name="app_home", methods= {"GET"})
      */
 
     public function index(OperationsRepository $operationsRepository, UsersRepository $usersRepository,ClientsRepository $clientsRepository, CategoriesRepository $categoriesRepository): Response

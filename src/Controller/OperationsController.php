@@ -49,10 +49,12 @@ class OperationsController extends AbstractController
         $user = $this->getUser();
 
         $op = $operationsRepository->findNbOperation($user);
-
         $compte = count($op);
 
-        if ($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1){
+        if (($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1)
+            OR($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3)
+            OR ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5)){
+
         $form = $this->createForm(OperationsType::class, $operation);
 
         $form->handleRequest($request);
@@ -62,51 +64,19 @@ class OperationsController extends AbstractController
             $operation->setUsers($this->getUser());
             $em->persist($operation);
             $em->flush();
-            return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_operations_index');
         }
 
         return $this->render('operations/new.html.twig', [
             'operation' => $operation,
             'form' => $form->createView()
         ]);
-    } elseif ($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3) {
-            $form = $this->createForm(OperationsType::class, $operation);
-
-            $form->handleRequest($request);
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                $operationsRepository->add($operation);
-                $operation->setUsers($this->getUser());
-                $em->persist($operation);
-                $em->flush();
-                return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
-            }
-
-            return $this->render('operations/new.html.twig', [
-                'operation' => $operation,
-                'form' => $form->createView()
-            ]);
-        } elseif ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5){
-            $form = $this->createForm(OperationsType::class, $operation);
-
-            $form->handleRequest($request);
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                $operationsRepository->add($operation);
-                $operation->setUsers($this->getUser());
-                $em->persist($operation);
-                $em->flush();
-                return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
-            }
-
-            return $this->render('operations/new.html.twig', [
-                'operation' => $operation,
-                'form' => $form->createView()
-            ]);
-        } else
+    }  else
         {
-            return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);}
-    }
+            return $this->redirectToRoute('app_operations_index');
+        }
+        }
+
 
     /**
      * @Route("/{id}", name="app_operations_show", methods={"GET"})
