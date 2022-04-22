@@ -16,6 +16,7 @@
         <tr>
             <th>Prénom</th>
             <th>Nom</th>
+            <th>Rôle</th>
             <th>Titre</th>
             <th>Clients</th>
             <th>Type</th>
@@ -27,6 +28,14 @@
 
                 <td>{{ operation.users.nom }}</td>
                 <td>{{ operation.users.prenom }}</td>
+                <td>   {% if operation.users.roles == ["ROLE_EXPERT","ROLE_USER"] %}
+                    EXPERT</td>
+
+                {% elseif operation.users.roles == ["ROLE_SENIOR","ROLE_USER"]%}
+                SENIOR
+                {% elseif operation.users.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
+                APPRENTI
+                {% endif%}</td>
                 <td>{{ operation.titre }}</td>
                 <td>{{ operation.client.prenom }}</td>
                 <td>{{ operation.categories.nom }}</td>
