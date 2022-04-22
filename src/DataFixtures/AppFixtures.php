@@ -139,7 +139,9 @@ class AppFixtures extends Fixture
             ->setCategories($petiteCategorie)
             ->setClient($client1)
             ->setUsers($admin)
-            ->setTitre("titre $i ");
+            ->setTitre("titre $i ")
+        ->setStatus(false);
+
         $manager->persist($operation);
 
         }
@@ -150,7 +152,8 @@ class AppFixtures extends Fixture
                 ->setCategories($moyenneCategorie)
                 ->setClient($client2)
                 ->setUsers($apprenti)
-                ->setTitre("titre $i ");
+                ->setTitre("titre $i ")
+            ->setStatus(false);
             $manager->persist($operation);
 
         }
@@ -160,7 +163,8 @@ class AppFixtures extends Fixture
                 ->setCategories($grandeCategorie)
                 ->setClient($client2)
                 ->setUsers($apprenti)
-                ->setTitre("titre $i ");
+                ->setTitre("titre $i ")
+                ->setStatus(false);;
             $manager->persist($operation);
 
         }

@@ -47,7 +47,7 @@ class OperationsController extends AbstractController
     {
         $operation = new Operations();
         $user = $this->getUser();
-
+        $operation->setStatus(false);
         $op = $operationsRepository->findNbOperation($user);
         $compte = count($op);
 
@@ -119,6 +119,5 @@ class OperationsController extends AbstractController
 
         return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
     }
-
 
 }
