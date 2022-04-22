@@ -109,6 +109,19 @@ class OperationsController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/terminer", name="app_operations_terminer", methods={"GET", "POST"})
+     */
+    public function terminer(Request $request, Operations $operation, EntityManagerInterface $em): Response
+    {
+       $operation->setStatus(true);
+       $em->persist($operation);
+
+       $em->flush();
+
+       return $this->redirectToRoute('app_operations_index');
+    }
+
+    /**
      * @Route("/{id}", name="app_operations_delete", methods={"POST"})
      */
     public function delete(Request $request, Operations $operation, OperationsRepository $operationsRepository): Response
@@ -119,5 +132,6 @@ class OperationsController extends AbstractController
 
         return $this->redirectToRoute('app_operations_index', [], Response::HTTP_SEE_OTHER);
     }
+
 
 }
