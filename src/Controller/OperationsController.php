@@ -73,6 +73,7 @@ class OperationsController extends AbstractController
         ]);
     }  else
         {
+            $this->addFlash("warning", "Vous ne pouvez plus prendre d'opérations");
             return $this->redirectToRoute('app_operations_index');
         }
         }
