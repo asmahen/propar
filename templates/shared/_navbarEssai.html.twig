@@ -1,44 +1,106 @@
-<nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="{{ path('app_home') }}">PROPAR</a>
-    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars text-white"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item active">
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="sidebar ">
 
-                <a class="nav-link" href="{{ path('app_chiffre_affaires') }};"><i class="fas fa-tachometer-alt"></i>Chiffres d'affaires</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
-            </li>
-        </ul>
-
+    <div class="logo-details">
+        <a href="{{ path('app_home') }}">
+        <i class='bx bx-droplet'></i>
+        </a>
+        <span class="logo_name">Propar</span>
     </div>
-    <ul class="navbar-nav ">
+
+    <ul class="nav-links">
         {% if app.user %}
-            <li class="nav-item ">
-                <a href="{{ path('app_logout') }}" class="btn btn-danger">
-                    Déconnection</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-                <a href="{{ path('app_login') }}" class="btn btn-success">
-                    Se connecter</a>
-            </li>
+        <li>
+            <div class="iocn-link">
+                <a href="{{ path('app_operations_index') }}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link_name">Gestion opérations</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="{{ path('app_operations_index') }}">Gestion opérations</a></li>
+                <li><a href="{{ path('app_operations_index') }}">Liste opérations</a></li>
+                <li><a href="{{ path('app_operations_new') }}">Créer opération</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ path('app_operations_mesOperations') }}">
+                <i class='bx bxs-widget' ></i>
+                <span class="link_name">Mes opérations</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="{{ path('app_operations_mesOperations') }}">Mes opérations</a></li>
+            </ul>
+        </li>
+        {% if is_granted('ROLE_EXPERT') %}
+        <li>
+            <div class="iocn-link">
+                <a href="{{ path('app_users_index') }}">
+                    <i class='bx bx-user-circle' ></i>
+                    <span class="link_name"> Gestion collaborateur</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Gestion collaborateur</a></li>
+                <li><a href="{{ path('app_users_index') }}">Liste collaborateurs</a></li>
+                <li><a href="{{ path('app_register') }}">Créer collaborateur</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ path('app_chiffre_affaires') }}">
+                <i class='bx bx-line-chart' ></i>
+                <span class="link_name">Chiffre d'affaires</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">Chiffre d'affaires</a></li>
+            </ul>
+        </li>
+
         {% endif %}
+        <li>
+
+            <div class="profile-details">
+                <div class="profile-content">
+                    <!--<img src="image/profile.jpg" alt="profileImg">-->
+                </div>
+                <div class="name-job">
+                    <div class="profile_name">{{ app.user.prenom }} {{ app.user.nom }}</div>
+                    <div class="job">Connecté</div>
+                </div>
+                <a href="{{ path('app_logout') }}">
+                    <i class='bx bx-log-out'></i>
+                    <span class="link_name"></span>
+                </a>
+            </div>
+        </li>
+             {% else %}
+                 <li>
+                     <a href="{{ path('app_login') }}">
+                         <i class='bx bx-log-in'></i>
+                         <span class="link_name">Connexion</span>
+                     </a>
+                     <ul class="sub-menu blank">
+                         <li><a class="link_name" href="{{ path('app_login') }}">Connexion</a></li>
+                     </ul>
+                 </li>
+        {% endif %}
+
     </ul>
-</nav>
+</div>
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx bx-menu' ></i>
+    </div>
