@@ -1,0 +1,244 @@
+:root{
+    --bg-color: hsl(100 100% 100%);
+    --typewriterSpeed: 3s;
+}
+
+body {
+
+    background: var(--bg-color);
+}
+
+#chiffre_affaire {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chiffre_affaire::before,
+#chiffre_affaire::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+ #chiffre_affaire::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(18) 1s forwards;
+}
+#chiffre_affaire::after{
+    width: 0.125em;
+    background: black;
+    animation:
+            typewriter var(--typewriterSpeed) steps(18) 1s forwards,
+            blink 750ms steps(18) infinite;
+}
+
+/*  PAGE HOME   */
+
+#home {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#home::before,
+#home::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#home::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(10) 1s forwards;
+}
+#home::after{
+    width: 0.125em;
+    background: black;
+    animation:
+            typewriter var(--typewriterSpeed) steps(10) 1s forwards,
+            blink 750ms steps(10) infinite;
+}
+/*  PAGE OPERATION accueil */
+
+#operation {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#operation::before,
+#operation::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#operation::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(10) 1s forwards;
+}
+#operation::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(10) 1s forwards,
+    blink 750ms steps(10) infinite;
+}
+
+/*  PAGE OPERATION new */
+
+#new {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#new::before,
+#new::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#new::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(21) 1s forwards;
+}
+#new::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(21) 1s forwards,
+    blink 750ms steps(21) infinite;
+}
+
+/*  PAGE OPERATION mes OP */
+
+#myOperation {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#myOperation::before,
+#myOperation::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#myOperation::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(14) 1s forwards;
+}
+#myOperation::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(14) 1s forwards,
+    blink 750ms steps(14) infinite;
+}
+
+/*  PAGE AJOUTER COLLABORATEUR */
+
+#newColla {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#newColla::before,
+#newColla::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#newColla::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(24) 1s forwards;
+}
+#newColla::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(24) 1s forwards,
+    blink 750ms steps(24) infinite;
+}
+
+/*  PAGE COLLABORATEUR  */
+
+#colla {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    position: relative;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#colla::before,
+#colla::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#colla::before {
+    background: var(--bg-color);
+    animation :
+            typewriter var(--typewriterSpeed) steps(25) 1s forwards;
+}
+#colla::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(25) 1s forwards,
+    blink 750ms steps(25) infinite;
+}
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+
+}
+
+@keyframes blink{
+    to {
+        background: transparent;
+    }
+}
