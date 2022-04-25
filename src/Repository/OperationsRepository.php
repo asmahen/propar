@@ -52,7 +52,7 @@ class OperationsRepository extends ServiceEntityRepository
     public function findNbOperation($value)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.Users = :val')
+            ->andWhere('o.Users = :val and o.status = false')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult()

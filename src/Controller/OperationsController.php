@@ -51,9 +51,10 @@ class OperationsController extends AbstractController
         $op = $operationsRepository->findNbOperation($user);
         $compte = count($op);
 
-        if (($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1)
-            OR($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3)
-            OR ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5)){
+        if (($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1 )
+            OR($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3 )
+            OR ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5 )
+        ){
 
         $form = $this->createForm(OperationsType::class, $operation);
 
@@ -114,8 +115,8 @@ class OperationsController extends AbstractController
     public function terminer(Request $request, Operations $operation, EntityManagerInterface $em): Response
     {
        $operation->setStatus(true);
-       $em->persist($operation);
 
+       $em->persist($operation);
        $em->flush();
 
        return $this->redirectToRoute('app_operations_index');
