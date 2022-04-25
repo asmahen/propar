@@ -20,7 +20,7 @@
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-4">
                             <div class="card" style="border-radius: 15px;">
-                                <div class="card-body p-5">
+                                <div class="card-body p-5 text-dark">
 
                                     <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter !</h1>
                                     <label for="inputEmail">Adresse Mail</label>
@@ -34,6 +34,8 @@
                                     <input type="hidden" name="_csrf_token"
                                            value="{{ csrf_token('authenticate') }}"
                                     >
+
+                                    <br>
 
                                     {#
                                     Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.

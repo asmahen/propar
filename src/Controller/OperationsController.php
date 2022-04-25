@@ -65,7 +65,7 @@ class OperationsController extends AbstractController
             $operation->setUsers($this->getUser());
             $em->persist($operation);
             $em->flush();
-            return $this->redirectToRoute('app_operations_index');
+            return $this->redirectToRoute('app_operations_mesOperations');
         }
 
         return $this->render('operations/new.html.twig', [

@@ -63,34 +63,38 @@
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0, 6);
         }
 
+        .terminer {
+            background-color: #AAAAAA;
+        }
+
 
     </style>
 
     <div class="example-wrapper" style="text-align: center;">
-        <h1>OPÉRATIONS</h1>
+        <h1>MES OPÉRATIONS</h1>
         <br><br>
     </div>
 
-    <div class="p-2 stretch">
-        <span class="badge bg-secondary">Grosse Opération</span>
-
-        <span class="badge bg-warning">Moyenne Opération</span>
-
-        <span class="badge bg-info">Petite Opération</span>
-
+    <div class="d-flex justify-content-center space-between ">
+        <div><span class="badge bg-secondary mx-3">Grosse Opération</span></div>
+        <div><span class="badge bg-warning mx-3">Moyenne Opération</span></div>
+        <div><span class="badge bg-info mx-3">Petite Opération</span></div>
     </div>
 
-    <div class="d-flex flex-wrap space-evenly">
+    <div class="d-flex flex-wrap space-between justify-content-center">
 
         {% for operation in operations|filter( operation => operation.users == app.user)  %}
 
-            {% if operation.categories.nom == "Petite" %}
+            {% if operation.categories.nom == "Petite" and operation.status == false %}
                 <div class="card">
                     <div class="card-image"
                          style="background-image: url('https://www.nettoyagecanape.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <p>{{ operation.description }}</p>
+                         <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-info "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -99,13 +103,16 @@
                 </div>
                 <br><br>
 
-            {% elseif operation.categories.nom == "Moyenne" %}
+            {% elseif operation.categories.nom == "Moyenne" and operation.status == false %}
                 <div class="card">
                     <div class="card-image"
                          style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <p>{{ operation.description }}</p>
+                         <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-warning "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -114,13 +121,16 @@
                 </div>
                 <br><br>
 
-            {% else %}
+            {% elseif operation.categories.nom == "Petite" and operation.status == false %}
                 <div class="card">
                     <div class="card-image"
                          style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <p>{{ operation.description }}</p>
+                         <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-secondary "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -129,7 +139,75 @@
                 </div>
                 <br><br>
             {% endif %}
+
+            {% include "shared/_modalOperations.html.twig" %}
+
         {% endfor %}
+    </div>
+
+    <h1 class="text-center"> Opérations terminées</h1>
+    <div class="terminer d-flex flex-wrap space-between justify-content-center">
+
+        {% for operation in operations %}
+            {% if operation.categories.nom == "Petite" and operation.status == true %}
+                <div class="card">
+                    <div class="card-image"
+                         style="background-image: url('https://www.nettoyagecanape.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
+                    <div class="card-text">
+                        <h5>{{ operation.titre }}</h5>
+                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
+                    </div>
+                    <div class="class-stats text-white bg-info "
+                         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                        {{ operation.categories.prix }} €
+                    </div>
+                </div>
+                <br><br>
+
+            {% elseif operation.categories.nom == "Moyenne" and operation.status == true %}
+                <div class="card">
+                    <div class="card-image"
+                         style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
+                    <div class="card-text">
+                        <h5>{{ operation.titre }}</h5>
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
+                    </div>
+                    <div class="class-stats text-white bg-warning "
+                         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                        {{ operation.categories.prix }} €
+                    </div>
+                </div>
+                <br><br>
+
+            {% elseif operation.categories.nom == "Grande" and operation.status == true %}
+                <div class="card">
+                    <div class="card-image"
+                         style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
+                    <div class="card-text">
+                        <h5>{{ operation.titre }}</h5>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
+                    </div>
+                    <div class="class-stats text-white bg-secondary "
+                         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+                        {{ operation.categories.prix }} €
+                    </div>
+                </div>
+                <br><br>
+            {% endif %}
+
+            {% include "shared/_modalOperations.html.twig" %}
+
+        {% endfor %}
+
     </div>
 
 {% endblock %}
