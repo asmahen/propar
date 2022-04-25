@@ -3,6 +3,7 @@
 {% block title %}Opérations{% endblock %}
 
 {% block body %}
+
     <style>
         .example-wrapper {
             margin: 1em auto;
@@ -97,11 +98,11 @@
                          style="background-image: url('https://www.nettoyagecanape.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <form method="post" action="{{ path('app_operations_terminer', {'id': operation.id}) }}"
-                              onsubmit="return confirm('Etes-vous sûre de vouloir terminer l\'opération?')">
-                            <button type="submit" class="btn btn-info">Terminer opération</button>
-                        </form>
-                        <a href="#" class="btn btn-outline-info">Plus d'informations</a>
+
+                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-info "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -116,11 +117,10 @@
                          style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <form method="post" action="{{ path('app_operations_terminer', {'id': operation.id}) }}"
-                              onsubmit="return confirm('Etes-vous sûre de vouloir terminer l\'opération?')">
-                            <button type="submit" class="btn btn-info">Terminer opération</button>
-                        </form>
-                        <a href="#" class="btn btn-outline-warning">Plus d'informations</a>
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-warning "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -135,11 +135,10 @@
                          style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <form method="post" action="{{ path('app_operations_terminer', {'id': operation.id}) }}"
-                              onsubmit="return confirm('Etes-vous sûre de vouloir terminer l\'opération?')">
-                            <button type="submit" class="btn btn-info">Terminer opération</button>
-                        </form>
-                        <a href="#" class="btn btn-outline-secondary">Plus d'informations</a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-secondary "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -149,28 +148,11 @@
                 <br><br>
             {% endif %}
 
-            <div class="modal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">{{ operation.titre }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>{{ operation.description }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Modifier</button>
-                            <button type="button" class="btn btn-primary">Terminer</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include "shared/_modalOperations.html.twig" %}
+
         {% endfor %}
     </div>
+
 
     <h1 class="text-center"> Opérations terminées</h1>
     <div class="terminer d-flex flex-wrap space-between justify-content-center">
@@ -182,7 +164,10 @@
                          style="background-image: url('https://www.nettoyagecanape.fr/images/nettoyage/entreprise-nettoyage-paris.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <a href="#" class="btn btn-outline-info">Plus d'informations</a>
+                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-info "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -197,7 +182,10 @@
                          style="background-image: url('https://www.entreprisenettoyage.net/public/upload/img/desinfection-locaux.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <a href="#" class="btn btn-outline-warning">Plus d'informations</a>
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-warning "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -212,7 +200,10 @@
                          style="background-image: url('https://objectifpropreteparis.com/wp-content/uploads/2012/07/nettoyage-de-vitres-2.jpg')"></div>
                     <div class="card-text">
                         <h5>{{ operation.titre }}</h5>
-                        <a href="#" class="btn btn-outline-secondary">Plus d'informations</a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ loop.index }}">
+                            Plus d'informations
+                        </button>
                     </div>
                     <div class="class-stats text-white bg-secondary "
                          style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
@@ -220,30 +211,12 @@
                     </div>
                 </div>
                 <br><br>
-
-                <div class="modal">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{ operation.titre }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>{{ operation.description }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Modifier</button>
-                                <button type="button" class="btn btn-primary">Terminer</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             {% endif %}
-        {% endfor %}
-    </div>
 
+            {% include "shared/_modalOperations.html.twig" %}
+
+        {% endfor %}
+
+    </div>
 
 {% endblock %}
