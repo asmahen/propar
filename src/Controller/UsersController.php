@@ -60,7 +60,7 @@ class UsersController extends AbstractController
 
 
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_users_index');
         }
 
         return $this->render('users/register.html.twig', [

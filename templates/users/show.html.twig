@@ -25,7 +25,14 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td> {% if user.roles == ["ROLE_EXPERT","ROLE_USER"] %}
+                    EXPERT</td>
+
+                {% elseif user.roles == ["ROLE_SENIOR","ROLE_USER"]%}
+                SENIOR
+                {% elseif user.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
+                APPRENTI
+                {% endif%}</td>
             </tr>
         </tbody>
     </table>
