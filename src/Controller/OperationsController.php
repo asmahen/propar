@@ -81,16 +81,6 @@ class OperationsController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="app_operations_show", methods={"GET"})
-     */
-    public function show(Operations $operation): Response
-    {
-        return $this->render('operations/show.html.twig', [
-            'operation' => $operation,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="app_operations_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Operations $operation, OperationsRepository $operationsRepository): Response
