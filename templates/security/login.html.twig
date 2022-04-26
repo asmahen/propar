@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <style>
+        .wallpaper{
+            background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');}
+    </style>
+{% endblock %}
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
@@ -22,7 +27,7 @@
                             <div class="card" style="border-radius: 15px;">
                                 <div class="card-body p-5 text-dark">
 
-                                    <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter !</h1>
+                                    <h1 class="h3 mb-3 font-weight-normal">Connexion </h1>
                                     <label for="inputEmail">Adresse Mail</label>
                                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                            class="form-control"
