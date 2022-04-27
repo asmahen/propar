@@ -20,7 +20,7 @@ class ChiffreAffairesController extends AbstractController
     */
     public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository) : Response
     {
-
+        //permet de calculer le chiffre d'affaire suivant les catégories des opérations
         $petite = $operationsRepository->findPetiteOperation();
         $sommePetite = 0;
         foreach ($petite as $value) {
@@ -36,11 +36,12 @@ class ChiffreAffairesController extends AbstractController
         foreach ($grande as $value) {
             $sommeGrande= $sommeGrande + array_sum($grande[0]);
         }
-
+        //calcul le chiffre d'affaire total
         $total = $sommeGrande + $sommeMoyenne +$sommePetite;
+        //calcul le nombtre total d'opérations en cours
         $count = count($petite)+count($moyenne)+count($grande);
 
-
+        //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire
         $chart = $chartBuilder->createChart(Chart::TYPE_PIE);
         $chart->setData([
             'labels' => ['Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations'],
