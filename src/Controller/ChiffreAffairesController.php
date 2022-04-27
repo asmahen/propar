@@ -37,6 +37,8 @@ class ChiffreAffairesController extends AbstractController
             $sommeGrande= $sommeGrande + array_sum($grande[0]);
         }
 
+        $total = $sommeGrande + $sommeMoyenne +$sommePetite;
+
 
         $chart = $chartBuilder->createChart(Chart::TYPE_PIE);
         $chart->setData([
@@ -61,6 +63,7 @@ class ChiffreAffairesController extends AbstractController
 
         return $this->render('chiffre_affaires/index.html.twig', [
             'chart' => $chart,
+            'total' => $total,
         ]);
     }
 }
