@@ -7,13 +7,24 @@
 
 <div class="example-wrapper" style="text-align: center; margin-top:30px">
     <h1 id = "chiffre_affaire"> Chiffre d'affaires  </h1>
+</div>
+    <div class="d-flex flex-row bd-highlight mb-3 mt-3 justify-content-around" >
 <div style="
 width: 400px;
 ">
-    <h2>Chiffre d'affaire par catégories</h2>
+    <h2 style="
+text-align: center;">Chiffre d'affaire par catégories</h2>
     {{ render_chart(chart) }}
-    <p> Chiffre d'affaire total : {{ total }} euros</p>
+    <p
+    style="text-align: center;"> Chiffre d'affaire total : {{ total }} euros</p>
 </div>
+    <div style="
+width: 400px;
+">
+        <h2 style="
+text-align: center;">Nombre d'opérations terminées : {{ nbOpTermine }}</h2>
+
+    </div>
 </div>
 
     {% block javascripts %}
