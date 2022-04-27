@@ -31,7 +31,6 @@ class ChiffreAffairesController extends AbstractController
         foreach ($moyenne as $value) {
             $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
         }
-
         $grande = $operationsRepository->findGrandeOperation();
         $sommeGrande = 0;
         foreach ($grande as $value) {
@@ -45,7 +44,7 @@ class ChiffreAffairesController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Points',
-                    'backgroundColor' => ['#f1c40f','#e67e22', '#16a085'],
+                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a'],
                     'borderColor' => 'black',
                     'data' => [$sommePetite, $sommeMoyenne, $sommeGrande],
                     'hoverOffset' => 4,
