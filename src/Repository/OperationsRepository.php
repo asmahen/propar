@@ -51,6 +51,7 @@ class OperationsRepository extends ServiceEntityRepository
     //  * @return Operations[] Returns an array of Operations objects
     //  */
 
+    //fonction qui retourne un tableau du nombre d'operations en cours et non terminées pour l'utilisteur connecté
     public function findNbOperation($value)
     {
         return $this->createQueryBuilder('o')
@@ -60,6 +61,8 @@ class OperationsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    //fonction qui retourne un tableau du prix des operations terminées petite catégorie
     public function findPetiteOperation()
     {
         return $this->createQueryBuilder('o')
@@ -70,6 +73,7 @@ class OperationsRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+    //fonction qui retourne un tableau du prix des operations terminées moyenne catégorie
     public function findMoyenneOperation()
     {
         return $this->createQueryBuilder('o')
@@ -80,6 +84,8 @@ class OperationsRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    //fonction qui retourne un tableau du prix des operations terminées grande catégorie
     public function findGrandeOperation()
     {
         return $this->createQueryBuilder('o')

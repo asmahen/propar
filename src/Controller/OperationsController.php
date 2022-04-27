@@ -51,6 +51,7 @@ class OperationsController extends AbstractController
         $op = $operationsRepository->findNbOperation($user);
         $compte = count($op);
 
+        //condition qui permet de savoir si le nombre max d'opérations est atteint
         if (($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1 )
             OR($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] and $compte < 3 )
             OR ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] and $compte < 5 )
