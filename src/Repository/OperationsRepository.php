@@ -7,6 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Categories;
+use App\Repository\CategoriesRepository;
 
 /**
  * @method Operations|null find($id, $lockMode = null, $lockVersion = null)
@@ -57,6 +59,36 @@ class OperationsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+    public function findPetiteOperation()
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->andWhere(" o.status = true and a.nom = 'Petite' ")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findMoyenneOperation()
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->andWhere(" o.status = true and a.nom = 'Moyenne' ")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findGrandeOperation()
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->Where(" o.status = true and a.nom = 'Grande' ")
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 
