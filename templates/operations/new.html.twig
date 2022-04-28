@@ -1,30 +1,62 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <style>
-        .home-section{
-            background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');}
-    </style>
+{% block title %}ajouter une opération
 {% endblock %}
-{% block title %}ajouter une opération{% endblock %}
-
 {% block body %}
-
-<section class="vh-100 bg-image">
+<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5 text-dark">
-                            <h1 id="new">Ajouter une opération</h1>
-
-                            {{ include('operations/_form.html.twig') }}
-
+                            <h1>Ajouter une opération</h1>
+                            {{ form_start(form) }}
+                            {{ form_row(form.Titre) }}
+                            {{ form_row(form.description) }}
+                            {{ form_row(form.Client) }}
+                            <label for="text" class="form-label mt-4">Adresse</label>
+                            <input onkeyup="affiche()" type="text" name="adresse" class="form-control" placeholder="Adresse du client" id="adresse">
+                            <div class="form-group" id="api"></div>
+                            {{ form_row(form.Categories) }}
+                            <button class="btn btn-success mt-3">{{ button_label|default('Créer une opération') }}</button>
+                            {{ form_end(form) }}
+                            <a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste des opérations</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+    {% block javascripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ asset('api.js') }}"></script>
+        <script>
+            function myFunction() {
+                let text = document.getElementById("adresse");
+                let copie = document.getElementById("adrs");
+                text.value = copie.value;
+            }
+            function affiche() {
+                if (document.getElementById("adresse").value == "") {
+                    document.getElementById("api").style.display = "none";
+                } else {
+                    document.getElementById("api").style.display = "block";
+                }
+            }
+        </script>
     {% endblock %}
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
