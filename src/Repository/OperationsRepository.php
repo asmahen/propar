@@ -51,7 +51,7 @@ class OperationsRepository extends ServiceEntityRepository
     //  * @return Operations[] Returns an array of Operations objects
     //  */
 
-    //fonction qui retourne un tableau du nombre d'operations en cours et non terminées pour l'utilisteur connecté
+    //fonction qui retourne un tableau du nombre d'operations en cours et non terminées pour l'utilisateur connecté
     public function findNbOperation($value)
     {
         return $this->createQueryBuilder('o')
