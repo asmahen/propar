@@ -49,6 +49,16 @@ class Operations
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $finishAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +132,30 @@ class Operations
     public function setStatus(?bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getFinishAt(): ?\DateTimeInterface
+    {
+        return $this->finishAt;
+    }
+
+    public function setFinishAt(?\DateTimeInterface $finishAt): self
+    {
+        $this->finishAt = $finishAt;
 
         return $this;
     }
