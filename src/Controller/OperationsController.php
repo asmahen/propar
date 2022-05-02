@@ -33,7 +33,7 @@ class OperationsController extends AbstractController
     /**
      * @Route("/mesoperations", name="app_operations_mesOperations")
      */
-    public function mesOperations(OperationsRepository $operationsRepository)
+    public function mesOperations (OperationsRepository $operationsRepository)
     {
         return $this->render('operations/mesOperations.html.twig', [
             'operations' => $operationsRepository->findAll(),
@@ -50,6 +50,7 @@ class OperationsController extends AbstractController
         $operation->setStatus(false);
         $op = $operationsRepository->findNbOperation($user);
         $compte = count($op);
+        $countMessage = $compte+1;
 
         //condition qui permet de savoir si le nombre max d'opérations est atteint
         if (($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] and $compte < 1 )
@@ -66,6 +67,16 @@ class OperationsController extends AbstractController
             $operation->setUsers($this->getUser());
             $em->persist($operation);
             $em->flush();
+
+            if ($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] ) {
+                $this->addFlash('info', "Vous avez pris $countMessage sur 1 opération");
+            }
+            if ($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] ) {
+                $this->addFlash('info', "Vous avez pris $countMessage sur 3 opérations");
+            }
+            if ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] ) {
+                $this->addFlash('info', "Vous avez pris $countMessage sur 5 opérations");
+            }
             return $this->redirectToRoute('app_operations_mesOperations');
         }
 
@@ -75,7 +86,9 @@ class OperationsController extends AbstractController
         ]);
     }  else
         {
-            $this->addFlash("warning", "Vous ne pouvez plus prendre d'opérations");
+
+            $this->addFlash('error', "Vous ne pouvez plus prendre d'opérations");
+
             return $this->redirectToRoute('app_operations_index');
         }
         }
