@@ -2,6 +2,7 @@ import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
 // Create an instance of Notyf
+// et permet de créer différent type de message annotation et de les paramétrer
 const notyf = new Notyf({
     duration: 5000,
     position: {
@@ -27,6 +28,7 @@ const notyf = new Notyf({
     ]
 });
 
+//permet de récupérer dans un tableau les infos et le type de messages et le message
 let messages = document.querySelectorAll('#notyf-message');
 
 messages.forEach(message => {

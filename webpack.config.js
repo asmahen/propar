@@ -20,8 +20,11 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
+    //entrée pour le style classique et chart.js
     .addEntry('app', './assets/app.js')
+    //entrée pour le style de la navbar
     .addEntry('navBar', './assets/navBar.js')
+    //entrée pour les notifications
     .addEntry('notyf', './assets/notyf.js')
 
 
