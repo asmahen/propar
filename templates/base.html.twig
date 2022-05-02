@@ -10,31 +10,42 @@
 
     <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
 
-    <link rel="stylesheet" href="{{ asset('navbarStyle.css') }}">
-
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('navBar') }}
+        {{ encore_entry_link_tags('notyf') }}
+     {% endblock %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-   
 
-    {% block stylesheets %}    {% endblock %}
+
+
 
 </head>
 <body>
 
 {% include "shared/_navbarEssai.html.twig" %}
-
+{% include "shared/_notyf.html.twig" %}
 
 {% block body %}
 
 {% endblock %}
-    {% include "shared/_navbarEssaiEnd.html.twig" %}
-{% include "shared/_scriptBootstrap.html.twig" %}
 
-{# <script src="{{ asset('navbarScript.js') }}" #}
-{% block javascripts %}{% endblock %}
+    {% include "shared/_navbarEssaiEnd.html.twig" %}
+    {% include "shared/_scriptBootstrap.html.twig" %}
+
+
+{% block javascripts %}
+
+{{ encore_entry_script_tags('app') }}
+{{ encore_entry_script_tags('notyf') }}
+
+{% endblock %}
+
+
 
 </body>
 
