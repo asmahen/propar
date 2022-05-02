@@ -12,12 +12,17 @@ const notyf = new Notyf({
         {
             type: 'info',
             background: '#00bfff',
-            icon: false
+            icon: true
         },
         {
             type: 'warning',
             background: '#ffd700',
-            icon: false
+            icon: true
+        },
+        {
+            type: 'finish',
+            background: '#AAAAAA',
+            icon: true
         },
     ]
 });
@@ -44,6 +49,12 @@ messages.forEach(message => {
         notyf.open({
             type: 'warning',
             message: '<b>Warning</b> - ' + message.innerHTML
+        });
+    }
+    if (message.className === 'finish') {
+        notyf.open({
+            type: 'finish',
+            message: '<b>Terminer</b> - ' + message.innerHTML,
         });
     }
 });

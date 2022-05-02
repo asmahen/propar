@@ -67,15 +67,15 @@ class OperationsController extends AbstractController
             $operation->setUsers($this->getUser());
             $em->persist($operation);
             $em->flush();
-
+            // conditions qui affiche le nombre
             if ($user->getRoles() == ['ROLE_APPRENTI','ROLE_USER'] ) {
-                $this->addFlash('info', "Vous avez pris $countMessage sur 1 opération");
+                $this->addFlash('info', "Vous avez pris $countMessage opération sur 1");
             }
             if ($user->getRoles() == ['ROLE_SENIOR','ROLE_USER'] ) {
-                $this->addFlash('info', "Vous avez pris $countMessage sur 3 opérations");
+                $this->addFlash('info', "Vous avez pris $countMessage opérations sur 3");
             }
             if ($user->getRoles() == ['ROLE_EXPERT','ROLE_USER'] ) {
-                $this->addFlash('info', "Vous avez pris $countMessage sur 5 opérations");
+                $this->addFlash('info', "Vous avez pris $countMessage opérations sur 5");
             }
             return $this->redirectToRoute('app_operations_mesOperations');
         }
@@ -123,6 +123,7 @@ class OperationsController extends AbstractController
        $em->persist($operation);
        $em->flush();
 
+       $this->addFlash('finish', "Opération terminée");
        return $this->redirectToRoute('app_operations_index');
     }
 
