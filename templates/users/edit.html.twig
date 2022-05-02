@@ -13,9 +13,9 @@
     {{ form_row(formView.prenom) }}
     {{ form_row(formView.email) }}
     {{ form_row(formView.roles) }}
-    <button type="submit" class="btn btn-success">Modifier</button>
+    <button type="submit" class="btn btn-success mt-3">Modifier</button>
     {{ form_end(formView) }}
-
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
 
 
 {% endblock %}
