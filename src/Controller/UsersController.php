@@ -59,7 +59,7 @@ class UsersController extends AbstractController
             $entityManager->flush();
 
 
-
+            $this->addFlash('success','Le collaborateur a été créé');
             return $this->redirectToRoute('app_users_index');
         }
 
@@ -90,7 +90,7 @@ class UsersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $em->flush();
-
+            $this->addFlash('info','Le collaborateur a été modifié');
             return $this->redirectToRoute('app_users_index');
         }
 
@@ -111,7 +111,7 @@ class UsersController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $usersRepository->remove($user);
         }
-
+        $this->addFlash('error','Le collaborateur a été supprimé');
         return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
     }
 }
