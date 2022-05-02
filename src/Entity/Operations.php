@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OperationsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OperationsRepository::class)
@@ -19,6 +20,8 @@ class Operations
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Champs obligatoire")
+     * @Assert\Length(min=10, minMessage="Minimum 10 caractères")
      */
     private $description;
 
@@ -41,6 +44,8 @@ class Operations
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs obligatoire")
+     * @Assert\Length(min=5, minMessage="Minimum 5 caractères")
      */
     private $titre;
 
@@ -48,6 +53,7 @@ class Operations
      * @ORM\Column(type="boolean")
      */
     private $status;
+
 
     public function getId(): ?int
     {
