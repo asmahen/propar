@@ -47,7 +47,8 @@ class OperationsController extends AbstractController
     {
         $operation = new Operations();
         $user = $this->getUser();
-        $operation->setStatus(false);
+        $operation->setStatus(false)
+        ->setCreatedAt(new \DateTime('now'));
         $op = $operationsRepository->findNbOperation($user);
         $compte = count($op);
 
@@ -105,7 +106,8 @@ class OperationsController extends AbstractController
      */
     public function terminer(Request $request, Operations $operation, EntityManagerInterface $em): Response
     {
-       $operation->setStatus(true);
+       $operation->setStatus(true)
+       ->setFinishAt(new \DateTime('now'));
 
        $em->persist($operation);
        $em->flush();
