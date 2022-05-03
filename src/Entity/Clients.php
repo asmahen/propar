@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ClientsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ClientsRepository::class)
  */
@@ -24,11 +24,13 @@ class Clients
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Champs obligatoire")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Champs obligatoire")
      */
     private $nom;
 

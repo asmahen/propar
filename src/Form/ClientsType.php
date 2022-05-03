@@ -15,7 +15,7 @@ class ClientsType extends AbstractType
             ->add('nomSociete')
             ->add('prenom')
             ->add('nom')
-            ->add('adresse')
+
         ;
     }
 
