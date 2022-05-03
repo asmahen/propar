@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Clients;
 use App\Form\ClientsType;
 use App\Repository\ClientsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * * @isGranted("ROLE_USER")
+ * @isGranted("ROLE_USER")
  * @Route("/clients")
  */
 class ClientsController extends AbstractController
@@ -34,9 +35,18 @@ class ClientsController extends AbstractController
     {
         $client = new Clients();
         $form = $this->createForm(ClientsType::class, $client);
+
         $form->handleRequest($request);
+        /* 1°- Pour ajouter des infos en bdd sans passer par les champs créé automatiquement par symfony lors du make:form
+        déclarer la variable adresse et faire appel à la variable symfony request qui est un objet qui stock l'ensemble des infos de notre formulaire ds ce cas là
+        dans l'objet request je vais chercher un clé qui s'appelle request et dans cette clé je vais récupérer la clé 'adresse'*/
+        $adresse = $request->request->get("adresse");
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /* 2°- j'appelle setAdresse du nouveau client instancié auparavant et lui affecte $adresse qui stock l'adresse précédement récupérée*/
+            $client->setAdresse($adresse);
             $clientsRepository->add($client);
             return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -81,7 +91,7 @@ class ClientsController extends AbstractController
      */
     public function delete(Request $request, Clients $client, ClientsRepository $clientsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $client->getId(), $request->request->get('_token'))) {
             $clientsRepository->remove($client);
         }
 

@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
+ * @isGranted("ROLE_USER")
  * @Route("/operations")
  */
 class OperationsController extends AbstractController
