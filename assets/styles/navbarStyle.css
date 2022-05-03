@@ -5,11 +5,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
-
-.wallpaper{
 
 }
+
 .sidebar{
     position: fixed;
     top: 0;
@@ -214,7 +212,8 @@
 }
 .home-section{
     position: relative;
-    background-color: white;
+
+    background-size: cover;
     height: 100vh;
     left: 260px;
     width: calc(100% - 260px);
@@ -223,6 +222,7 @@
 
 }
 .home-section i{
+
     position:fixed;
 }
 .sidebar.close ~ .home-section{
@@ -230,6 +230,7 @@
     width: calc(100% - 78px);
 }
 .home-section .home-content{
+    width: max-content;
     height: 60px;
     display: flex;
     align-items: center;
@@ -259,6 +260,7 @@
         width: 0;
     }
     .home-section{
+
         left: 78px;
         width: calc(100% - 78px);
         z-index: 100;
