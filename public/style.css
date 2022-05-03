@@ -1,6 +1,6 @@
 :root{
-    --bg-color: hsl(100 100% 100%);
-    --typewriterSpeed: 3s;
+    --bg-color: hsl(49 37% 94%);
+    --typewriterSpeed: 2s;
 }
 
 body {
@@ -165,38 +165,6 @@ body {
     background: black;
     animation: typewriter var(--typewriterSpeed) steps(14) 1s forwards,
     blink 750ms steps(14) infinite;
-}
-
-/*  PAGE AJOUTER COLLABORATEUR */
-
-#newColla {
-    font-family: 'Source Code Pro', monospace;
-    text-align: center;
-    position: relative;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#newColla::before,
-#newColla::after{
-    content: " ";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-#newColla::before {
-    background: var(--bg-color);
-    animation :
-            typewriter var(--typewriterSpeed) steps(24) 1s forwards;
-}
-#newColla::after {
-    width: 0.125em;
-    background: black;
-    animation: typewriter var(--typewriterSpeed) steps(24) 1s forwards,
-    blink 750ms steps(24) infinite;
 }
 
 /*  PAGE COLLABORATEUR  */

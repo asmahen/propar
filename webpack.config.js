@@ -26,6 +26,8 @@ Encore
     .addEntry('navBar', './assets/navBar.js')
     //entrée pour les notifications
     .addEntry('notyf', './assets/notyf.js')
+    //entrée pour le style des cards
+    .addEntry('card', './assets/cards.js')
 
 
 
