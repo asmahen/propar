@@ -144,7 +144,8 @@ class AppFixtures extends Fixture
             ->setClient($client1)
             ->setUsers($admin)
             ->setTitre($faker->words(2, true))
-        ->setStatus(false);
+            ->setStatus(false)
+            ->setCreatedAt($faker->dateTimeBetween('-1 years'));
 
         $manager->persist($operation);
 
@@ -157,7 +158,8 @@ class AppFixtures extends Fixture
                 ->setClient($client2)
                 ->setUsers($apprenti)
                 ->setTitre($faker->words(2, true))
-            ->setStatus(false);
+                ->setStatus(false)
+                ->setCreatedAt($faker->dateTimeBetween('-1 years'));
             $manager->persist($operation);
         }
         for ($k=1; $k <= 3; $k++) {
@@ -167,7 +169,8 @@ class AppFixtures extends Fixture
                 ->setClient($client2)
                 ->setUsers($apprenti)
                 ->setTitre($faker->words(2, true))
-                ->setStatus(false);;
+                ->setStatus(false)
+                ->setCreatedAt($faker->dateTimeBetween('-1 years'));
             $manager->persist($operation);
 
         }
