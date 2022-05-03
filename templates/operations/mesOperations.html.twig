@@ -2,73 +2,11 @@
 
 {% block title %}Opérations{% endblock %}
 
+{% block stylesheets %}
+{{ encore_entry_link_tags('card') }}
+{% endblock %}
+
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px / 1.5 sans-serif;
-        }
-
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-
-        .card {
-            display: grid;
-            margin: 3%;
-            grid-template-columns: 300px;
-            grid-template-rows: 170px 190px 40px;
-            grid-template-areas:"image" "text" "stats";
-
-            font-family: roboto;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
-            text-align: center;
-
-            transition: 0.5s ease;
-            cursor: pointer;
-        }
-
-        .card-image {
-            grid-area: image;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            background-size: cover;
-            background-position: bottom
-        }
-
-        .card-text {
-            grid-area: text;
-            margin: 25px;
-
-        }
-
-        .card-text p {
-            color: grey;
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        .card-text h2 {
-            margin-top: 0px;
-            font-size: 28px;
-        }
-
-        .card:hover {
-            transform: scale(1.2);
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
-        }
-
-        .terminer {
-            background-color: #AAAAAA;
-        }
-
-
-    </style>
 
     <div class="example-wrapper" style="text-align: center;">
         <h1 id="myOperation">MES OPÉRATIONS</h1>
