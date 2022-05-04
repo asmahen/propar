@@ -48,7 +48,7 @@ class ClientsController extends AbstractController
             /* 2°- j'appelle setAdresse du nouveau client instancié auparavant et lui affecte $adresse qui stock l'adresse précédement récupérée*/
             $client->setAdresse($adresse);
             $clientsRepository->add($client);
-            return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_operations_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('clients/new.html.twig', [
