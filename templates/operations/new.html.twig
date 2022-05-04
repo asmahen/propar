@@ -21,7 +21,8 @@
                             {{ form_row(form.Titre) }}
                             {{ form_row(form.description) }}
                             {{ form_row(form.Client) }}
-                            {{ form_row(form.Categories) }}
+                            <a href="{{ path('app_clients_new') }}" class="btn btn-success mt-3">Ajouter un client</a>
+                            {{ form_row(form.Categories) }}</br>
                             <button class="btn btn-success mt-3">{{ button_label|default('Créer une opération') }}</button>
                             <a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste
                                 des opérations</a>
