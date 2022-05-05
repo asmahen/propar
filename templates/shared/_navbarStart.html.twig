@@ -14,7 +14,7 @@
 
     <div class="logo-details">
         <a href="{{ path('app_home') }}">
-        <i class='bx bx-droplet'></i>
+            <i class='bx bx-droplet'></i>
         </a>
         <span class="logo_name">Propar</span>
     </div>
@@ -27,7 +27,7 @@
                     <i class='bx bx-customize'></i>
                     <span class="link_name">Gestion opérations</span>
                 </a>
-                <i class='bx bxs-chevron-down arrow' ></i>
+                <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="{{ path('app_operations_index') }}">Gestion opérations</a></li>
@@ -37,7 +37,7 @@
         </li>
         <li>
             <a href="{{ path('app_operations_mesOperations') }}">
-                <i class='bx bxs-widget' ></i>
+                <i class='bx bxs-widget'></i>
                 <span class="link_name">Mes opérations</span>
             </a>
             <ul class="sub-menu blank">
@@ -45,62 +45,77 @@
             </ul>
         </li>
         {% if is_granted('ROLE_EXPERT') %}
-        <li>
-            <div class="iocn-link">
-                <a href="{{ path('app_users_index') }}">
-                    <i class='bx bx-user-circle' ></i>
-                    <span class="link_name"> Gestion collaborateur</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow' ></i>
-            </div>
-            <ul class="sub-menu">
-                <li><a class="link_name" href="#">Gestion collaborateur</a></li>
-                <li><a href="{{ path('app_users_index') }}">Liste collaborateurs</a></li>
-                <li><a href="{{ path('app_register') }}">Créer collaborateur</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{ path('app_chiffre_affaires') }}">
-                <i class='bx bx-line-chart' ></i>
-                <span class="link_name">Chiffre d'affaires</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">Chiffre d'affaires</a></li>
-            </ul>
-        </li>
-
-        {% endif %}
-        <li>
-
-            <div class="profile-details">
-                <div class="profile-content">
-                    <!--<img src="image/profile.jpg" alt="profileImg">-->
+            <li>
+                <div class="iocn-link">
+                    <a href="{{ path('app_users_index') }}">
+                        <i class='bx bx-user-circle'></i>
+                        <span class="link_name"> Gestion collaborateurs</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
-                <div class="name-job">
-                    <div class="profile_name">{{ app.user.prenom }} {{ app.user.nom }}</div>
-                    <div class="job">Connecté</div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Gestion collaborateurs</a></li>
+                    <li><a href="{{ path('app_users_index') }}">Liste collaborateurs</a></li>
+                    <li><a href="{{ path('app_register') }}">Créer collaborateur</a></li>
+                </ul>
+            </li>
+            {% if is_granted('ROLE_EXPERT') %}
+                <li>
+                    <div class="iocn-link">
+                        <a href="{{ path('app_clients_index') }}">
+                            <i class='bx bxs-group ' ></i>
+                            <span class="link_name"> Gestion clients</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Gestion clients</a></li>
+                        <li><a href="{{ path('app_clients_index') }}">Liste clients</a></li>
+                        <li><a href="{{ path('app_clients_new') }}">Créer client</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+                <li>
+                    <a href="{{ path('app_chiffre_affaires') }}">
+                        <i class='bx bx-line-chart'></i>
+                        <span class="link_name">Chiffre d'affaires</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">Chiffre d'affaires</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+            <li>
+
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <!--<img src="image/profile.jpg" alt="profileImg">-->
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">{{ app.user.prenom }} {{ app.user.nom }}</div>
+                        <div class="job">Connecté</div>
+                    </div>
+                    <a href="{{ path('app_logout') }}">
+                        <i class='bx bx-log-out'></i>
+                        <span class="link_name"></span>
+                    </a>
                 </div>
-                <a href="{{ path('app_logout') }}">
-                    <i class='bx bx-log-out'></i>
-                    <span class="link_name"></span>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('app_login') }}">
+                    <i class='bx bx-log-in'></i>
+                    <span class="link_name">Connexion</span>
                 </a>
-            </div>
-        </li>
-             {% else %}
-                 <li>
-                     <a href="{{ path('app_login') }}">
-                         <i class='bx bx-log-in'></i>
-                         <span class="link_name">Connexion</span>
-                     </a>
-                     <ul class="sub-menu blank">
-                         <li><a class="link_name" href="{{ path('app_login') }}">Connexion</a></li>
-                     </ul>
-                 </li>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="{{ path('app_login') }}">Connexion</a></li>
+                </ul>
+            </li>
         {% endif %}
 
     </ul>
 </div>
 <section class="home-section">
     <div class="home-content">
-        <i class='bx bx-menu' ></i>
+        <i class='bx bx-menu'></i>
     </div>

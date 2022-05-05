@@ -60,7 +60,7 @@ class ClientsController extends AbstractController
 
         return $this->render('clients/new.html.twig', [
             'client' => $client,
-            'form' => $form->createView(),
+            'form2' => $form->createView(),
         ]);
     }
 
@@ -91,7 +91,7 @@ class ClientsController extends AbstractController
 
         return $this->render('clients/edit.html.twig', [
             'client' => $client,
-            'form' => $form->createView(),
+            'form2' => $form->createView(),
         ]);
     }
 

@@ -3,39 +3,59 @@
 {% block title %}Clients index{% endblock %}
 
 {% block body %}
-    <h1>Clients index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomSociete</th>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for client in clients %}
-            <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.nomSociete }}</td>
-                <td>{{ client.prenom }}</td>
-                <td>{{ client.nom }}</td>
-                <td>{{ client.adresse }}</td>
-                <td>
-                    <a href="{{ path('app_clients_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div style="margin-left: 30px; margin-right: 30px;">
 
-    <a href="{{ path('app_clients_new') }}">Create new</a>
-{% endblock %}
+    <div class="example-wrapper" style="text-align: center; margin-top:30px">
+
+        <h1 id="colla">Liste des clients</h1><br>
+
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"> </script>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>NomSociete</th>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nomSociete }}</td>
+                        <td>{{ client.prenom }}</td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.adresse }}</td>
+                        <td>
+                            <a href="{{ path('app_clients_show', {'id': client.id}) }}" class="btn btn-success">Afficher</a>
+                            <a href="{{ path('app_clients_edit', {'id': client.id}) }}" class="btn btn-info">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">aucun résultat</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <a href="{{ path('app_clients_new') }}" class="btn btn-danger">Ajouter un nouveau client</a>
+    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
+    <script type="text/javascript">
+        $("#table").dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            }
+        });
+    </script>
+
+        {% endblock %}

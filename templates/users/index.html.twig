@@ -6,63 +6,66 @@
 
 <div style="margin-left: 30px; margin-right: 30px;">
 
-<div class="example-wrapper" style="text-align: center; margin-top:30px">
-    <h1 id="colla">Listes des collaborateurs</h1>
+    <div class="example-wrapper" style="text-align: center; margin-top:30px">
+
+        <h1 id="colla">Liste des collaborateurs</h1><br>
 
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"> </script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <table id="table">
-        <thead>
+        <table id="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Prenom</th>
                 <th>Nom</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.email }}</td>
+            </thead>
 
-                <td>
-                    {% if user.roles == ["ROLE_EXPERT","ROLE_USER"] %}
-                    EXPERT</td>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.email }}</td>
 
-                    {% elseif user.roles == ["ROLE_SENIOR","ROLE_USER"]%}
+                    <td>
+                        {% if user.roles == ["ROLE_EXPERT","ROLE_USER"] %}
+                        EXPERT
+                    </td>
+
+                    {% elseif user.roles == ["ROLE_SENIOR","ROLE_USER"] %}
                         SENIOR
-                        {% elseif user.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
-                            APPRENTI
-                        {% endif%}
-                <td>
-                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">Afficher</a>
-                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    {% elseif user.roles == ["ROLE_APPRENTI","ROLE_USER"] %}
+                        APPRENTI
+                    {% endif %}
+                    <td>
+                        <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">Afficher</a>
+                        <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">aucun résultat</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_register') }}" class="btn btn-danger">Ajouter un nouveau collaborateur</a>
-    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
-    <script type="text/javascript">
-        $("#table").dataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-            }
-        });
-    </script>
+        <a href="{{ path('app_register') }}" class="btn btn-danger">Ajouter un nouveau collaborateur</a>
+        <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
+        <script type="text/javascript">
+            $("#table").dataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            });
+        </script>
 
-{% endblock %}
+        {% endblock %}
