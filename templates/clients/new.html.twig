@@ -3,8 +3,7 @@
 {% block title %}New Clients{% endblock %}
 
 {% block body %}
-    <section class="vh-100 bg-image"
-             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -15,10 +14,10 @@
                         </br>
 
 
-                        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-                        {{ form_row(form.nomSociete) }}
-                        {{ form_row(form.prenom) }}
-                        {{ form_row(form.nom) }}
+                        {{ form_start(form2, {'attr':{'novalidate':'novalidate'}}) }}
+                        {{ form_row(form2.nomSociete) }}
+                        {{ form_row(form2.prenom) }}
+                        {{ form_row(form2.nom) }}
 
                         <label for="text" class="form-label mt-4 required">Adresse</label>
                         <input onkeyup="affiche()" type="text" name="adresse" class="form-control" required="required"
@@ -27,7 +26,7 @@
 
                         <button class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
 
-                        {{ form_end(form) }}
+                        {{ form_end(form2) }}
 
                         <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">Revenir à la liste des opérations</a>
 
