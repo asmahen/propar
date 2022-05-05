@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{% trans %}Register {% endtrans %}{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
@@ -13,7 +13,7 @@
                 <div class="col-12 col-md-9 col-lg-7 col-xl-7">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5 text-dark">
-    <h1>Ajouter un collaborateur</h1>
+    <h1>{% trans %}Ajouter un collaborateur{% endtrans %}</h1>
 
     {{ form_start(registrationForm) }}
     {{ form_row(registrationForm.nom) }}
@@ -24,10 +24,10 @@
     }) }}
     {{ form_row(registrationForm.roles) }}
     <br>
-    <button type="submit" class="btn btn-success">Créer un collaborateur</button>
+    <button type="submit" class="btn btn-success">{% trans %}Créer un collaborateur{% endtrans %}</button>
 
     {{ form_end(registrationForm) }}
-    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">{% trans %}Revenir à la liste des collaborateurs{% endtrans %}</a>
 
                         </div>
                     </div>

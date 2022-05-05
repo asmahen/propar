@@ -25,23 +25,23 @@
             <div class="iocn-link">
                 <a href="{{ path('app_operations_index') }}">
                     <i class='bx bx-customize'></i>
-                    <span class="link_name">Gestion opérations</span>
+                    <span class="link_name">{% trans %}Gestion opérations{% endtrans %}</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow' ></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="{{ path('app_operations_index') }}">Gestion opérations</a></li>
-                <li><a href="{{ path('app_operations_index') }}">Liste opérations</a></li>
-                <li><a href="{{ path('app_operations_new') }}">Créer opération</a></li>
+                <li><a class="link_name" href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a></li>
+                <li><a href="{{ path('app_operations_index') }}">{% trans %}Liste opérations{% endtrans %}</a></li>
+                <li><a href="{{ path('app_operations_new') }}">{% trans %}Créer opération{% endtrans %}</a></li>
             </ul>
         </li>
         <li>
             <a href="{{ path('app_operations_mesOperations') }}">
                 <i class='bx bxs-widget' ></i>
-                <span class="link_name">Mes opérations</span>
+                <span class="link_name">{% trans %}Mes opérations{% endtrans %}</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="{{ path('app_operations_mesOperations') }}">Mes opérations</a></li>
+                <li><a class="link_name" href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a></li>
             </ul>
         </li>
         {% if is_granted('ROLE_EXPERT') %}
@@ -49,23 +49,23 @@
             <div class="iocn-link">
                 <a href="{{ path('app_users_index') }}">
                     <i class='bx bx-user-circle' ></i>
-                    <span class="link_name"> Gestion collaborateur</span>
+                    <span class="link_name">{% trans %} Gestion collaborateur{% endtrans %}</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow' ></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">Gestion collaborateur</a></li>
-                <li><a href="{{ path('app_users_index') }}">Liste collaborateurs</a></li>
-                <li><a href="{{ path('app_register') }}">Créer collaborateur</a></li>
+                <li><a class="link_name" href="#">{% trans %}Gestion collaborateur{% endtrans %}</a></li>
+                <li><a href="{{ path('app_users_index') }}">{% trans %}Liste collaborateurs{% endtrans %}</a></li>
+                <li><a href="{{ path('app_register') }}">{% trans %}Créer collaborateur{% endtrans %}</a></li>
             </ul>
         </li>
         <li>
             <a href="{{ path('app_chiffre_affaires') }}">
                 <i class='bx bx-line-chart' ></i>
-                <span class="link_name">Chiffre d'affaires</span>
+                <span class="link_name">{% trans %}Chiffre d'affaires{% endtrans %}</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">Chiffre d'affaires</a></li>
+                <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">{% trans %}Chiffre d'affaires{% endtrans %}</a></li>
             </ul>
         </li>
 
@@ -78,7 +78,7 @@
                 </div>
                 <div class="name-job">
                     <div class="profile_name">{{ app.user.prenom }} {{ app.user.nom }}</div>
-                    <div class="job">Connecté</div>
+                    <div class="job">{% trans %}Connecté{% endtrans %}</div>
                 </div>
                 <a href="{{ path('app_logout') }}">
                     <i class='bx bx-log-out'></i>
@@ -97,8 +97,8 @@
                      </ul>
                  </li>
         {% endif %}
-
     </ul>
+
 </div>
 <section class="home-section">
     <div class="home-content">

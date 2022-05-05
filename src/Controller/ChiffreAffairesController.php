@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\CssSelector\XPath\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface as TranslationTranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
@@ -18,7 +20,7 @@ class ChiffreAffairesController extends AbstractController
     /**
     * @Route("/chiffreAffaires", name="app_chiffre_affaires")
     */
-    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository) : Response
+    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator) : Response
     {
         //permet de calculer le chiffre d'affaire suivant les catégories des opérations
         $petite = $operationsRepository->findPetiteOperation();
@@ -41,10 +43,15 @@ class ChiffreAffairesController extends AbstractController
         //calcul le nombtre total d'opérations en cours
         $count = count($petite)+count($moyenne)+count($grande);
 
+        // J'instancie ces variables pour pouvoir proposer une traduction anglaise (pour 'Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations')
+        $message = $translator->trans('Petites Opérations');
+        $message2 = $translator->trans('Moyennes Opérationss');
+        $message3 = $translator->trans('Grandes Opérations');
+
         //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire
         $chart = $chartBuilder->createChart(Chart::TYPE_PIE);
         $chart->setData([
-            'labels' => ['Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations'],
+            'labels' => [$message, $message2, $message3],
             'datasets' => [
                 [
                     'label' => 'Points',
