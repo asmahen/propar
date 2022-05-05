@@ -4,7 +4,7 @@
 
     </style>
 {% endblock %}
-{% block title %}Log in!{% endblock %}
+{% block title %}{% trans %}Se connecter!{% endtrans %}{% endblock %}
 
 {% block body %}
     <form method="post">
@@ -14,7 +14,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                {% trans %}Vous êtes connecté en tant que {% endtrans %}{{ app.user.username }}, <a href="{{ path('app_logout') }}">{% trans %}Se déconnecter{% endtrans %}</a>
             </div>
         {% endif %}
         <section class="bg-image">
@@ -25,12 +25,12 @@
                             <div class="card" style="border-radius: 15px;">
                                 <div class="card-body p-5 text-dark">
 
-                                    <h1 class="h3 mb-3 font-weight-normal">Connexion </h1>
-                                    <label for="inputEmail">Adresse Mail</label>
+                                    <h1 class="h3 mb-3 font-weight-normal">{% trans %}Connexion {% endtrans %}</h1>
+                                    <label for="inputEmail">{% trans %}Adresse Mail{% endtrans %}</label>
                                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                            class="form-control"
                                            autocomplete="email" required autofocus>
-                                    <label for="inputPassword">Mot de passe</label>
+                                    <label for="inputPassword">{% trans %}Mot de passe{% endtrans %}</label>
                                     <input type="password" name="password" id="inputPassword" class="form-control"
                                            autocomplete="current-password" required>
 

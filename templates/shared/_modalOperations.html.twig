@@ -13,14 +13,14 @@
                 </div>
                 <div class="modal-footer">
                     {# <button type="button" class="btn btn-primary">Modifier</button> #}
-                    <a href="{{ path('app_operations_edit',  { 'id': operation.id }) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('app_operations_edit',  { 'id': operation.id }) }}" class="btn btn-primary">{% trans %}Modifier{% endtrans %}</a>
                     <form method="post" action="{{ path('app_operations_terminer', {'id': operation.id}) }}"
                           onsubmit="return confirm('Etes-vous sûre de vouloir terminer l\'opération?')">
                         <button type="submit" class="btn btn-info">Terminer opération</button>
                     </form>
 
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans %}Fermer{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <p>{{ operation.description }}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans %}Fermer{% endtrans %}</button>
                 </div>
             </div>
         </div>

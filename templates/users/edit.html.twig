@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification de {{ user.email }}{% endblock %}
+{% block title %}{% trans %}Modification de {% endtrans %} {{ user.email }}{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-<h2>Modification de {{ user.nom }} {{ user.prenom }}</h2>
+<h2>{% trans %}Modification de {% endtrans %}{{ user.nom }} {{ user.prenom }}</h2>
 
     {{ form_start(formView) }}
     {{ form_row(formView.nom) }}
     {{ form_row(formView.prenom) }}
     {{ form_row(formView.email) }}
     {{ form_row(formView.roles) }}
-    <button type="submit" class="btn btn-success mt-3">Modifier</button>
+    <button type="submit" class="btn btn-success mt-3">{% trans %}Modifier{% endtrans %}</button>
     {{ form_end(formView) }}
-    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">{% trans %}Revenir à la liste des collaborateurs{% endtrans %}</a>
 
 
 {% endblock %}

@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Clients index{% endblock %}
+{% block title %}{% trans %} Clients index {% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Clients index</h1>
+    <h1>{% trans %} Clients index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomSociete</th>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>actions</th>
+                <th>{% trans %} Id {% endtrans %}</th>
+                <th>{% trans %} Nom Société {% endtrans %}</th>
+                <th>{% trans %} Prenom {% endtrans %}</th>
+                <th>{% trans %} Nom {% endtrans %}</th>
+                <th>{% trans %} Adresse {% endtrans %}</th>
+                <th>{% trans %} actions {% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -25,17 +25,17 @@
                 <td>{{ client.nom }}</td>
                 <td>{{ client.adresse }}</td>
                 <td>
-                    <a href="{{ path('app_clients_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">edit</a>
+                    <a href="{{ path('app_clients_show', {'id': client.id}) }}">{% trans %}Voir {% endtrans %}</a>
+                    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">{% trans %}Modifier {% endtrans %}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">{% trans %}Aucune info trouvé {% endtrans %}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_clients_new') }}">Create new</a>
+    <a href="{{ path('app_clients_new') }}">{% trans %}Créer un nouveau client {% endtrans %}</a>
 {% endblock %}

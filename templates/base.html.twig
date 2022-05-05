@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        {% block title %}Welcome!{% endblock %}
+        {% block title %}{% trans %}Bienvenue!{% endtrans %}{% endblock %}
     </title>
 
     <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
@@ -31,6 +31,8 @@
 {% include "shared/_notyf.html.twig" %}
 
 {% block body %}
+
+
 
 {% endblock %}
 

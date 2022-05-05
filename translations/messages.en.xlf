@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="4gYYS6M" resname="Chiffre Affaires">
+        <source>Chiffre Affaires</source>
+        <target>Revenues</target>
+      </trans-unit>
+      <trans-unit id="ObmLN36" resname="Chiffre d'affaires">
+        <source>Chiffre d'affaires</source>
+        <target>Revenues</target>
+      </trans-unit>
+      <trans-unit id="DTaLdwB" resname="Bienvenue!">
+        <source>Bienvenue!</source>
+        <target>Welcome!</target>
+      </trans-unit>
+      <trans-unit id="ovwAVrp" resname="Chiffre d'affaire par catégories">
+        <source>Chiffre d'affaire par catégories</source>
+        <target>Revenues by categories</target>
+      </trans-unit>
+      <trans-unit id="K1vQb5l" resname="Chiffre d'affaire total :">
+        <source>Chiffre d'affaire total :</source>
+        <target>Total revenue :</target>
+      </trans-unit>
+      <trans-unit id="1HbhPnI" resname="Nombre d'opérations terminées :">
+        <source>Nombre d'opérations terminées :</source>
+        <target>Number of operations completed :</target>
+      </trans-unit>
+      <trans-unit id="mfh0XTR" resname="Nouveau clients">
+        <source>Nouveau clients</source>
+        <target>New client</target>
+      </trans-unit>
+      <trans-unit id="al4_hjQ" resname="Ajouter un client">
+        <source>Ajouter un client</source>
+        <target>Add a client</target>
+      </trans-unit>
+      <trans-unit id="eeXPIN4" resname="Adresse">
+        <source>Adresse</source>
+        <target>Adress</target>
+      </trans-unit>
+      <trans-unit id="jLxOqa4" resname="Revenir à la liste des opérations">
+        <source>Revenir à la liste des opérations</source>
+        <target>Return to the list of operations</target>
+      </trans-unit>
+      <trans-unit id="IGXy.m0" resname="Nom de société">
+        <source>Nom de société</source>
+        <target>Name of the society</target>
+      </trans-unit>
+      <trans-unit id="t8_nMCO" resname="Prenom">
+        <source>Prenom</source>
+        <target>Surname</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="QLeNDdM" resname="Retour à la liste">
+        <source>Retour à la liste</source>
+        <target>Back to the list</target>
+      </trans-unit>
+      <trans-unit id="QuN2BLY" resname="Modifier">
+        <source>Modifier</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="qiXvzFc" resname="Modifier les Opérations">
+        <source>Modifier les Opérations</source>
+        <target>Edit the operations</target>
+      </trans-unit>
+      <trans-unit id="_k8.Udi" resname="Opérations">
+        <source>Opérations</source>
+        <target>Operations</target>
+      </trans-unit>
+      <trans-unit id="Xe5Wh24" resname="OPÉRATIONS">
+        <source>OPÉRATIONS</source>
+        <target>OPERATIONS</target>
+      </trans-unit>
+      <trans-unit id="4xSUjiz" resname="Grosse Opération">
+        <source>Grosse Opération</source>
+        <target>Big Operation</target>
+      </trans-unit>
+      <trans-unit id="0nhD1Cw" resname="Moyenne Opération">
+        <source>Moyenne Opération</source>
+        <target>Medium Operation</target>
+      </trans-unit>
+      <trans-unit id="g68SOVF" resname="Petite Opération">
+        <source>Petite Opération</source>
+        <target>Small Operation</target>
+      </trans-unit>
+      <trans-unit id="uyvmOfI" resname="Plus d'informations">
+        <source>Plus d'informations</source>
+        <target>More informations</target>
+      </trans-unit>
+      <trans-unit id="E0s62LX" resname="Opérations terminées">
+        <source>Opérations terminées</source>
+        <target>Operations completed</target>
+      </trans-unit>
+      <trans-unit id="aUzv2uO" resname="MES OPÉRATIONS">
+        <source>MES OPÉRATIONS</source>
+        <target>My operations</target>
+      </trans-unit>
+      <trans-unit id="RENRSho" resname="Ajouter une opération">
+        <source>Ajouter une opération</source>
+        <target>Add an operation</target>
+      </trans-unit>
+      <trans-unit id="XLypZWD" resname="Revenir à la liste&#10;                                des opérations">
+        <source>Revenir à la liste
+                                des opérations</source>
+        <target>Back to the list
+                                of operations</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="cR5fLhm" resname="Fermer">
+        <source>Fermer</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="1u35LKW" resname="Gestion opérations">
+        <source>Gestion opérations</source>
+        <target>Operations management</target>
+      </trans-unit>
+      <trans-unit id="4FFPaWu" resname="Liste opérations">
+        <source>Liste opérations</source>
+        <target>List of operations</target>
+      </trans-unit>
+      <trans-unit id="4jC_fY6" resname="Créer opération">
+        <source>Créer opération</source>
+        <target>Create an operation</target>
+      </trans-unit>
+      <trans-unit id="ra8xNAj" resname="Mes opérations">
+        <source>Mes opérations</source>
+        <target>My operations</target>
+      </trans-unit>
+      <trans-unit id="MGwWJs_" resname="Gestion collaborateur">
+        <source>Gestion collaborateur</source>
+        <target>Employee management</target>
+      </trans-unit>
+      <trans-unit id="T01NIEa" resname="Liste collaborateurs">
+        <source>Liste collaborateurs</source>
+        <target>List of employees</target>
+      </trans-unit>
+      <trans-unit id="puZyr8G" resname="Créer collaborateur">
+        <source>Créer collaborateur</source>
+        <target>Create an employee</target>
+      </trans-unit>
+      <trans-unit id="6SsPmQh" resname="Connecté">
+        <source>Connecté</source>
+        <target>Connected</target>
+      </trans-unit>
+      <trans-unit id="H.tI4ez" resname="Modification de">
+        <source>Modification de</source>
+        <target>Modification of</target>
+      </trans-unit>
+      <trans-unit id="e.lRR9O" resname="Revenir à la liste des collaborateurs">
+        <source>Revenir à la liste des collaborateurs</source>
+        <target>Back to the list of employees</target>
+      </trans-unit>
+      <trans-unit id="TXvkPpH" resname="Liste des collaborateurs">
+        <source>Liste des collaborateurs</source>
+        <target>List of employees</target>
+      </trans-unit>
+      <trans-unit id="w7x21EX" resname="Listes des collaborateurs">
+        <source>Listes des collaborateurs</source>
+        <target>List of employees</target>
+      </trans-unit>
+      <trans-unit id="4yW.j5A" resname="Prénom">
+        <source>Prénom</source>
+        <target>Surname</target>
+      </trans-unit>
+      <trans-unit id="Q.mGVvc" resname="APPRENTI">
+        <source>APPRENTI</source>
+        <target>APPRENTICE</target>
+      </trans-unit>
+      <trans-unit id="5a2_gei" resname="Afficher">
+        <source>Afficher</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="mqUVS8b" resname="Aucune info n'a été trouvé">
+        <source>Aucune info n'a été trouvé</source>
+        <target>No info has been found</target>
+      </trans-unit>
+      <trans-unit id="W7qLviI" resname="Ajouter un nouveau collaborateur">
+        <source>Ajouter un nouveau collaborateur</source>
+        <target>Add a new employee</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="NWHdDOw" resname="Créer un collaborateur">
+        <source>Créer un collaborateur</source>
+        <target>Create an employee</target>
+      </trans-unit>
+      <trans-unit id="ch5bKau" resname="Utilisateur">
+        <source>Utilisateur</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="XnPyAt1" resname="Collaborateurs">
+        <source>Collaborateurs</source>
+        <target>Employees</target>
+      </trans-unit>
+      <trans-unit id="htIikZK" resname="Supprimer le collaborateur">
+        <source>Supprimer le collaborateur</source>
+        <target>Delete an employee</target>
+      </trans-unit>
+      <trans-unit id="Ymw1HW7" resname="Petites Opérations">
+        <source>Petites Opérations</source>
+        <target>Small operations</target>
+      </trans-unit>
+      <trans-unit id="LN11E_c" resname="Moyennes Opérationss">
+        <source>Moyennes Opérationss</source>
+        <target>Average operations</target>
+      </trans-unit>
+      <trans-unit id="xzCTueL" resname="Grandes Opérations">
+        <source>Grandes Opérations</source>
+        <target>Big operations</target>
+      </trans-unit>
+      <trans-unit id="18n5Ltm" resname="Opération">
+        <source>Opération</source>
+        <target>Operation</target>
+      </trans-unit>
+      <trans-unit id="ofyWfFW" resname="Rôle">
+        <source>Rôle</source>
+        <target>Role</target>
+      </trans-unit>
+      <trans-unit id="eOeSABC" resname="Titre">
+        <source>Titre</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="ZaclZUL" resname="Clients">
+        <source>Clients</source>
+        <target>Customers</target>
+      </trans-unit>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="EgaWvlO" resname="Se connecter!">
+        <source>Se connecter!</source>
+        <target>Login!</target>
+      </trans-unit>
+      <trans-unit id="sBFnVlo" resname="Vous êtes connecté en tant que">
+        <source>Vous êtes connecté en tant que</source>
+        <target>You are connected as</target>
+      </trans-unit>
+      <trans-unit id="sYru0ag" resname="Se déconnecter">
+        <source>Se déconnecter</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="YdaVBBA" resname="Connexion">
+        <source>Connexion</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="jq.u9_." resname="Adresse Mail">
+        <source>Adresse Mail</source>
+        <target>Email adress</target>
+      </trans-unit>
+      <trans-unit id=".5yLjAZ" resname="Mot de passe">
+        <source>Mot de passe</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="L4tSBgb" resname="&quot;Rechercher&quot;">
+        <source>"Rechercher"</source>
+        <target>Search"</target>
+      </trans-unit>
+      <trans-unit id="vsHEaP5" resname="&quot;Afficher _MENU_ lignes&quot;">
+        <source>"Afficher _MENU_ lignes"</source>
+        <target>"Show _MENU_ lines"</target>
+      </trans-unit>
+      <trans-unit id="5LNfQNz" resname="&quot;Lignes _START_ à _END_ sur _TOTAL_&quot;">
+        <source>"Lignes _START_ à _END_ sur _TOTAL_"</source>
+        <target>__"Lines _START_ to _END_ on _TOTAL_"</target>
+      </trans-unit>
+      <trans-unit id="If.Xpku" resname="&quot;Suivant&quot;">
+        <source>"Suivant"</source>
+        <target>"Next"</target>
+      </trans-unit>
+      <trans-unit id="3yNgkUX" resname="&quot;Précédent&quot;">
+        <source>"Précédent"</source>
+        <target>"Previous"</target>
+      </trans-unit>
+      <trans-unit id="UJZhdBG" resname="&quot;Aucune ligne affichée&quot;">
+        <source>"Aucune ligne affichée"</source>
+        <target>"No lines shown"</target>
+      </trans-unit>
+      <trans-unit id="BIlfQt0" resname="&quot;Aucun résultat trouvé&quot;">
+        <source>"Aucun résultat trouvé"</source>
+        <target>"No result found"</target>
+      </trans-unit>
+      <trans-unit id="o8skIhH" resname="&quot;(Filtrer un maximum de_MAX_)&quot;">
+        <source>"(Filtrer un maximum de_MAX_)"</source>
+        <target>"(Filter a maximum of_MAX_)"</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

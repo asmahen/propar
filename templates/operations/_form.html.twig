@@ -7,4 +7,4 @@
     <button class="btn btn-success mt-3">{{ button_label|default('Créer une opération') }}</button>
 
 {{ form_end(form) }}
-<a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste des opérations</a>
+<a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">{% trans %}Revenir à la liste des opérations{% endtrans %}</a>

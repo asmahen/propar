@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}opération{% endblock %}
+{% block title %}{% trans %}Opération{% endtrans %}{% endblock %}
 
 {% block body %}
 
 
 <div style="margin-left: 30px; margin-right: 30px; margin-bottom: 30px">
     <div class="example-wrapper" style="text-align: center; margin-top:30px; margin-bottom: 30px;">
-    <h1 id="home">OPÉRATIONS </h1>
+    <h1 id="home">{% trans %}OPÉRATIONS {% endtrans %}</h1>
 
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -16,12 +16,12 @@
     <table id="table">
         <thead>
         <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Rôle</th>
-            <th>Titre</th>
-            <th>Clients</th>
-            <th>Type</th>
+            <th>{% trans %}Prénom{% endtrans %}</th>
+            <th>{% trans %}Nom{% endtrans %}</th>
+            <th>{% trans %}Rôle{% endtrans %}</th>
+            <th>{% trans %}Titre{% endtrans %}</th>
+            <th>{% trans %}Clients{% endtrans %}</th>
+            <th>{% trans %}Type{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
                 {% elseif operation.users.roles == ["ROLE_SENIOR","ROLE_USER"]%}
                 SENIOR
                 {% elseif operation.users.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
-                APPRENTI
+                {% trans %}APPRENTI{% endtrans %}
                 {% endif%}</td>
                 <td>{{ operation.titre }}</td>
                 <td>{{ operation.client.prenom }}</td>
@@ -51,8 +51,7 @@
     <script type="text/javascript">
         $("#table").dataTable({
             "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-            }
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
         });
     </script>
 {% endblock %}

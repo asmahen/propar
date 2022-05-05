@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Users index{% endblock %}
+{% block title %}{% trans %}Liste des collaborateurs{% endtrans %}{% endblock %}
 
 {% block body %}
 
 <div style="margin-left: 30px; margin-right: 30px;">
 
 <div class="example-wrapper" style="text-align: center; margin-top:30px">
-    <h1 id="colla">Listes des collaborateurs</h1>
+    <h1 id="colla">{% trans %}Listes des collaborateurs{% endtrans %}</h1>
 
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Prenom</th>
-                <th>Nom</th>
+                <th>{% trans %}Prénom{% endtrans %}</th>
+                <th>{% trans %}Nom{% endtrans %}</th>
                 <th>Email</th>
                 <th>Roles</th>
                 <th>actions</th>
@@ -40,27 +40,47 @@
                     {% elseif user.roles == ["ROLE_SENIOR","ROLE_USER"]%}
                         SENIOR
                         {% elseif user.roles == ["ROLE_APPRENTI","ROLE_USER"]%}
-                            APPRENTI
+                            {% trans %}APPRENTI{% endtrans %}
                         {% endif%}
                 <td>
-                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">Afficher</a>
-                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">Modifier</a>
+                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-success">{% trans %}Afficher{% endtrans %}</a>
+                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info">{% trans %}Modifier{% endtrans %}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">{% trans %}Aucune info n'a été trouvé{% endtrans %}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_register') }}" class="btn btn-danger">Ajouter un nouveau collaborateur</a>
-    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">Revenir à la liste des collaborateurs</a>
-    <script type="text/javascript">
+    <a href="{{ path('app_register') }}" class="btn btn-danger">{% trans %}Ajouter un nouveau collaborateur{% endtrans %}</a>
+    <a href="{{ path('app_users_index') }}" class="btn btn-warning mt-3">{% trans %}Revenir à la liste des collaborateurs{% endtrans %}</a>
+    
+    {# Création de la datatable #}
+{# // <script type="text/javascript">
+//         $("#table").dataTable({
+//             "language": {
+//                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
+//             }
+//         );
+//     </script> #}
+
+<script type="text/javascript">
+// Je crée une fonction qui permet d'adapter la datatable à la langue actuel du site : anglais ou français
+        function getLanguage() {
+    var $local = {
+      fr: 'French',
+      en: 'English'
+    };
+  }
         $("#table").dataTable({
             "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                if ($lang === "fr") {
+                    return "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"};
+                elseif ($lang === "en") {
+                    return "url": "//cdn.datatables.net/plug-ins/be7019ee387/i18n/English.json" }
             }
         });
     </script>
