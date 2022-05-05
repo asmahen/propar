@@ -224,6 +224,46 @@ class AppFixtures extends Fixture
 
         }
 
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($grandeCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(false)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($moyenneCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(false)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($petiteCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(false)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+
 
 
 

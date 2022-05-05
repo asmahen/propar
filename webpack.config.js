@@ -28,6 +28,8 @@ Encore
     .addEntry('notyf', './assets/notyf.js')
     //entrée pour le style des cards
     .addEntry('card', './assets/cards.js')
+    //entrée pour le style chiffre d'affaires
+    .addEntry('CA', './assets/ca.js')
 
 
 

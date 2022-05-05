@@ -23,17 +23,29 @@ class ChiffreAffairesController extends AbstractController
     public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator) : Response
     {
         //permet de calculer le chiffre d'affaire suivant les catégories des opérations
-        $petite = $operationsRepository->findPetiteOperation();
+        $annee = "2021";
+
+        $petiteEC = $operationsRepository->findPetiteOperationEC($annee);
+        $countPetiteEC = count($petiteEC);
+        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee);
+        $countMoyenneEC = count($moyenneEC);
+        $grandeEC = $operationsRepository->findGrandeOperationEC($annee);
+        $countGrandeEC = count($grandeEC);
+        $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
+
+
+
+        $petite = $operationsRepository->findPetiteOperation($annee);
         $sommePetite = 0;
         foreach ($petite as $value) {
         $sommePetite= $sommePetite + array_sum($petite[0]);
         }
-        $moyenne = $operationsRepository->findMoyenneOperation();
+        $moyenne = $operationsRepository->findMoyenneOperation($annee);
         $sommeMoyenne = 0;
         foreach ($moyenne as $value) {
             $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
         }
-        $grande = $operationsRepository->findGrandeOperation();
+        $grande = $operationsRepository->findGrandeOperation($annee);
         $sommeGrande = 0;
         foreach ($grande as $value) {
             $sommeGrande= $sommeGrande + array_sum($grande[0]);
@@ -55,11 +67,11 @@ class ChiffreAffairesController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Points',
-                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a', '#ffa500'],
+                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a'],
                     'borderColor' => 'black',
                     'data' => [$sommePetite, $sommeMoyenne, $sommeGrande],
                     'hoverOffset' => 4,
-                    'borderWidth' => 2,
+                    'borderWidth' => 1,
 
                 ],
             ],
@@ -86,18 +98,18 @@ class ChiffreAffairesController extends AbstractController
         $decembre = "12";
 
         //requete sql qui retourne un tableau des somme des opérations par mois à l'année choisie
-        $tabJanvier = $operationsRepository->findPrix($janvier, "2021");
-        $tabFevrier = $operationsRepository->findPrix($fevrier, "2021");
-        $tabMars = $operationsRepository->findPrix($mars, "2021");
-        $tabAvril = $operationsRepository->findPrix($avril, "2021");
-        $tabMai = $operationsRepository->findPrix($mai, "2021");
-        $tabJuin = $operationsRepository->findPrix($juin, "2021");
-        $tabJuillet = $operationsRepository->findPrix($juillet, "2021");
-        $tabAout = $operationsRepository->findPrix($aout, "2021");
-        $tabSeptembre = $operationsRepository->findPrix($septembre, "2021");
-        $tabOctobre = $operationsRepository->findPrix($octobre, "2021");
-        $tabNovembre = $operationsRepository->findPrix($novembre, "2021");
-        $tabDecembre = $operationsRepository->findPrix($decembre, "2021");
+        $tabJanvier = $operationsRepository->findPrix($janvier, $annee);
+        $tabFevrier = $operationsRepository->findPrix($fevrier, $annee);
+        $tabMars = $operationsRepository->findPrix($mars, $annee);
+        $tabAvril = $operationsRepository->findPrix($avril, $annee);
+        $tabMai = $operationsRepository->findPrix($mai, $annee);
+        $tabJuin = $operationsRepository->findPrix($juin, $annee);
+        $tabJuillet = $operationsRepository->findPrix($juillet, $annee);
+        $tabAout = $operationsRepository->findPrix($aout, $annee);
+        $tabSeptembre = $operationsRepository->findPrix($septembre, $annee);
+        $tabOctobre = $operationsRepository->findPrix($octobre, $annee);
+        $tabNovembre = $operationsRepository->findPrix($novembre, $annee);
+        $tabDecembre = $operationsRepository->findPrix($decembre, $annee);
 
         //recupération des valeurs des tableaux précedents
         $sommeJanvier = $tabJanvier[0][1];
@@ -117,6 +129,10 @@ class ChiffreAffairesController extends AbstractController
         $CATrim2 = $sommeAvril + $sommeMai + $sommeJuin;
         $CaTrim3 = $sommeJuillet + $sommeAout + $sommeSeptembre;
         $CATrim4 = $sommeOctobre + $sommeNovembre + $sommeDecembre;
+
+        $CASemestre1 = $CATrim1 + $CATrim2;
+        $CASemestre2 = $CaTrim3 + $CATrim4;
+
         $trimestre1 = "Trimestre 1 : $CATrim1 €";
         $trimestre2 = "Trimestre 2 : $CATrim2 €";
         $trimestre3 = "Trimestre 3 : $CaTrim3 €";
@@ -128,22 +144,32 @@ class ChiffreAffairesController extends AbstractController
             'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octrobre', 'Novembre', 'Decembre'],
             'datasets' => [
                 [
-                    'backgroundColor' => ['#6cc3d5','#6cc3d5','#6cc3d5','#ffce67','#ffce67','#ffce67', '#f3969a','#f3969a','#f3969a', '#ff700','#ff700','#ff700'],
-                    'borderColor' => 'black',
+                    'backgroundColor' => '#6cc3d5',
                     'data' => [$sommeJanvier, $sommeFevrier, $sommeMars, $sommeAvril, $sommeMai, $sommeJuin, $sommeJuillet, $sommeAout, $sommeSeptembre, $sommeOctobre, $sommeNovembre, $sommeDecembre],
                     'hoverOffset' => 4,
-                    'borderWidth' => 2,
 
                 ],
             ],
         ]);
 
         $chart2->setOptions([
-            'animation.animateScale'=>true,
+            'barThickness' => 25,
+            'scales' => [
+                'padding' => 0,
+                'x' => [
+                    'grid' => [
+                        'display' => false,
+                    ]
+                ],
+                'y' => [
+                    'beginAtZero' => true,
+                ],
+            ],
             'plugins' => [
                 'legend' => [
                     'display' => false,
                 ],
+
                 'subtitle' => [
                     'display' => true,
                     'text' => "$trimestre1 | $trimestre2 | $trimestre3 | $trimestre4",
@@ -156,18 +182,6 @@ class ChiffreAffairesController extends AbstractController
                         'top' => 30,
                     ]
                 ],
-                'title' => [
-                    'display' => true,
-                    'text' => "Chiffre d'affaires des opérations terminées par mois ",
-                    'padding' => [
-                        'top' => 10,
-                        'bottom' => 30,
-                    ],
-                    'font' => [
-                        'size' => 20,
-                        ],
-
-                ]
             ]
 
         ]);
@@ -177,6 +191,14 @@ class ChiffreAffairesController extends AbstractController
             'chart2' => $chart2,
             'total' => $total,
             'nbOpTermine' => $count,
+            'annee' => $annee,
+            'semestre1' => $CASemestre1,
+            'semestre2' => $CASemestre2,
+            'petiteEC' => $countPetiteEC,
+            'moyenneEC' => $countMoyenneEC,
+            'grandeEC' => $countGrandeEC,
+            'totalEC' => $totalOpEC,
+
         ]);
     }
 }

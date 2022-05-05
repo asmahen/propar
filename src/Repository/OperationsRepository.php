@@ -63,35 +63,38 @@ class OperationsRepository extends ServiceEntityRepository
     }
 
     //fonction qui retourne un tableau du prix des operations terminées petite catégorie
-    public function findPetiteOperation()
+    public function findPetiteOperation($annee)
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
+            ->setParameter('annee', $annee)
             ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
-            ->andWhere(" o.status = true and a.nom = 'Petite' ")
+            ->andWhere(" o.status = true and a.nom = 'Petite' and YEAR(o.finishAt) = :annee")
             ->getQuery()
             ->getResult()
             ;
     }
     //fonction qui retourne un tableau du prix des operations terminées moyenne catégorie
-    public function findMoyenneOperation()
+    public function findMoyenneOperation($annee)
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
+            ->setParameter('annee', $annee)
             ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
-            ->andWhere(" o.status = true and a.nom = 'Moyenne' ")
+            ->andWhere(" o.status = true and a.nom = 'Moyenne' and YEAR(o.finishAt) = :annee")
             ->getQuery()
             ->getResult()
             ;
     }
 
     //fonction qui retourne un tableau du prix des operations terminées grande catégorie
-    public function findGrandeOperation()
+    public function findGrandeOperation($annee)
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
+            ->setParameter('annee', $annee)
             ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
-            ->Where(" o.status = true and a.nom = 'Grande' ")
+            ->Where(" o.status = true and a.nom = 'Grande' and YEAR(o.finishAt) = :annee ")
             ->getQuery()
             ->getResult()
             ;
@@ -105,6 +108,42 @@ class OperationsRepository extends ServiceEntityRepository
             ->setParameter('annee', $annee)
             ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
             ->Where(" o.status = true and YEAR(o.finishAt) = :annee and MONTH(o.finishAt) = :mois")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findPetiteOperationEC($annee)
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->setParameter('annee', $annee)
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->andWhere(" o.status = false and a.nom = 'Petite' and YEAR(o.finishAt) = :annee")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findMoyenneOperationEC($annee)
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->setParameter('annee', $annee)
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->andWhere(" o.status = false and a.nom = 'Moyenne' and YEAR(o.finishAt) = :annee")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findGrandeOperationEC($annee)
+    {
+        return $this->createQueryBuilder('o')
+            ->select('a.prix')
+            ->setParameter('annee', $annee)
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->andWhere(" o.status = false and a.nom = 'Grande' and YEAR(o.finishAt) = :annee")
             ->getQuery()
             ->getResult()
             ;
