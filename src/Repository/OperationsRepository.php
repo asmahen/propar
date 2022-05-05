@@ -97,6 +97,19 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findPrix($mois, $annee)
+    {
+        return $this->createQueryBuilder('o')
+            ->select("SUM(a.prix)")
+            ->setParameter('mois', $mois)
+            ->setParameter('annee', $annee)
+            ->innerJoin(Categories::class, 'a', 'WITH', 'a.id = o.Categories')
+            ->Where(" o.status = true and YEAR(o.finishAt) = :annee and MONTH(o.finishAt) = :mois")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Operations
