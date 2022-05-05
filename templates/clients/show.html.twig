@@ -3,7 +3,7 @@
 {% block title %}Clients{% endblock %}
 
 {% block body %}
-    <h1>Clients</h1>
+    <h1>Profil {{ client.nomSociete }}</h1>
 
     <table class="table">
         <tbody>
@@ -16,7 +16,7 @@
                 <td>{{ client.nomSociete }}</td>
             </tr>
             <tr>
-                <th>{% trans %}Prenom{% endtrans %}</th>
+                <th>{% trans %}Prénom{% endtrans %}</th>
                 <td>{{ client.prenom }}</td>
             </tr>
             <tr>
@@ -30,9 +30,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_clients_index') }}">{% trans %}Retour à la liste{% endtrans %}</a>
-
-    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">{% trans %}Modifier{% endtrans %}</a>
-
     {{ include('clients/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_clients_edit', {'id': client.id}) }}" class="btn btn-success mt-3">{% trans %}Modifier{% endtrans %}</a>
+
+    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">{% trans %}Retour à la liste{% endtrans %}</a>
+
+
 {% endblock %}
