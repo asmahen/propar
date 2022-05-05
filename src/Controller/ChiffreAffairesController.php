@@ -55,7 +55,7 @@ class ChiffreAffairesController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Points',
-                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a'],
+                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a', '#ffa500'],
                     'borderColor' => 'black',
                     'data' => [$sommePetite, $sommeMoyenne, $sommeGrande],
                     'hoverOffset' => 4,
@@ -86,18 +86,18 @@ class ChiffreAffairesController extends AbstractController
         $decembre = "12";
 
         //requete sql qui retourne un tableau des somme des opérations par mois à l'année choisie
-        $tabJanvier = $operationsRepository->findPrix($janvier, "2022");
-        $tabFevrier = $operationsRepository->findPrix($fevrier, "2022");
-        $tabMars = $operationsRepository->findPrix($mars, "2022");
-        $tabAvril = $operationsRepository->findPrix($avril, "2022");
-        $tabMai = $operationsRepository->findPrix($mai, "2022");
-        $tabJuin = $operationsRepository->findPrix($juin, "2022");
-        $tabJuillet = $operationsRepository->findPrix($juillet, "2022");
-        $tabAout = $operationsRepository->findPrix($aout, "2022");
-        $tabSeptembre = $operationsRepository->findPrix($septembre, "2022");
-        $tabOctobre = $operationsRepository->findPrix($octobre, "2022");
-        $tabNovembre = $operationsRepository->findPrix($novembre, "2022");
-        $tabDecembre = $operationsRepository->findPrix($decembre, "2022");
+        $tabJanvier = $operationsRepository->findPrix($janvier, "2021");
+        $tabFevrier = $operationsRepository->findPrix($fevrier, "2021");
+        $tabMars = $operationsRepository->findPrix($mars, "2021");
+        $tabAvril = $operationsRepository->findPrix($avril, "2021");
+        $tabMai = $operationsRepository->findPrix($mai, "2021");
+        $tabJuin = $operationsRepository->findPrix($juin, "2021");
+        $tabJuillet = $operationsRepository->findPrix($juillet, "2021");
+        $tabAout = $operationsRepository->findPrix($aout, "2021");
+        $tabSeptembre = $operationsRepository->findPrix($septembre, "2021");
+        $tabOctobre = $operationsRepository->findPrix($octobre, "2021");
+        $tabNovembre = $operationsRepository->findPrix($novembre, "2021");
+        $tabDecembre = $operationsRepository->findPrix($decembre, "2021");
 
         //recupération des valeurs des tableaux précedents
         $sommeJanvier = $tabJanvier[0][1];

@@ -175,6 +175,59 @@ class AppFixtures extends Fixture
 
         }
 
+        $superAdmin= new Users();
+        $hash = $this->encoder->encodePassword($senior, "Password");
+        $superAdmin->setNom('Do')
+            ->setPrenom('John')
+            ->setPassword("$hash")
+            ->setEmail('admin@gmail.com')
+            ->setRoles(['ROLE_EXPERT']);
+        $manager->persist($superAdmin);
+
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($grandeCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(true)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($moyenneCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(true)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+        for ($k=1; $k <= 30; $k++) {
+            $operation = new Operations();
+            $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+                ->setCategories($petiteCategorie)
+                ->setClient($client2)
+                ->setUsers($superAdmin)
+                ->setTitre($faker->words(2, true))
+                ->setStatus(true)
+                ->setCreatedAt($faker->dateTimeBetween('-2 years'))
+                ->setFinishAt($faker->dateTimeBetween('-2 years'));
+            $manager->persist($operation);
+
+        }
+
+
+
+
+
         $manager->flush();
     }
 }
