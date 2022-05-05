@@ -22,19 +22,21 @@ class ChiffreAffairesController extends AbstractController
     */
     public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator) : Response
     {
-        //permet de calculer le chiffre d'affaire suivant les catégories des opérations
+        //année que l'on souhaite afficher (pas terminé)
         $annee = "2021";
 
+        //calcul du nombres d'opérations en cours par catégories
         $petiteEC = $operationsRepository->findPetiteOperationEC($annee);
         $countPetiteEC = count($petiteEC);
         $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee);
         $countMoyenneEC = count($moyenneEC);
         $grandeEC = $operationsRepository->findGrandeOperationEC($annee);
         $countGrandeEC = count($grandeEC);
+        //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
 
-
+        //calcul du nombre et de la somme des opérations terminées par catégories
         $petite = $operationsRepository->findPetiteOperation($annee);
         $sommePetite = 0;
         foreach ($petite as $value) {
@@ -52,6 +54,7 @@ class ChiffreAffairesController extends AbstractController
         }
         //calcul le chiffre d'affaire total
         $total = $sommeGrande + $sommeMoyenne +$sommePetite;
+
         //calcul le nombtre total d'opérations en cours
         $count = count($petite)+count($moyenne)+count($grande);
 
@@ -60,7 +63,7 @@ class ChiffreAffairesController extends AbstractController
         $message2 = $translator->trans('Moyennes Opérationss');
         $message3 = $translator->trans('Grandes Opérations');
 
-        //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire
+        //création de l'objet chart.js pour afficher le graphique en tarte des opérations terminées par catégories
         $chart = $chartBuilder->createChart(Chart::TYPE_PIE);
         $chart->setData([
             'labels' => [$message, $message2, $message3],
@@ -97,7 +100,7 @@ class ChiffreAffairesController extends AbstractController
         $novembre = "11";
         $decembre = "12";
 
-        //requete sql qui retourne un tableau des somme des opérations par mois à l'année choisie
+        //requete sql qui retourne un tableau des sommes des opérations par mois à l'année choisie
         $tabJanvier = $operationsRepository->findPrix($janvier, $annee);
         $tabFevrier = $operationsRepository->findPrix($fevrier, $annee);
         $tabMars = $operationsRepository->findPrix($mars, $annee);
@@ -125,20 +128,23 @@ class ChiffreAffairesController extends AbstractController
         $sommeNovembre = $tabNovembre[0][1];
         $sommeDecembre = $tabDecembre[0][1];
 
+        //somme des opérations terminées par trimestre
         $CATrim1 = $sommeJanvier + $sommeFevrier + $sommeMars;
         $CATrim2 = $sommeAvril + $sommeMai + $sommeJuin;
         $CaTrim3 = $sommeJuillet + $sommeAout + $sommeSeptembre;
         $CATrim4 = $sommeOctobre + $sommeNovembre + $sommeDecembre;
 
+        //somme des opérations terminées par semestre
         $CASemestre1 = $CATrim1 + $CATrim2;
         $CASemestre2 = $CaTrim3 + $CATrim4;
 
+        //affichage des trimestres pour le graphiques générales
         $trimestre1 = "Trimestre 1 : $CATrim1 €";
         $trimestre2 = "Trimestre 2 : $CATrim2 €";
         $trimestre3 = "Trimestre 3 : $CaTrim3 €";
         $trimestre4 = "Trimestre 4 : $CATrim4 €";
 
-        //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire
+        //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire de l'année
         $chart2 = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart2->setData([
             'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octrobre', 'Novembre', 'Decembre'],
