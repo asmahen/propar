@@ -19,13 +19,15 @@ text-align: center;"> {% trans %} Chiffre d'affaire par catégories {% endtrans 
     style="text-align: center;"> {% trans %} Chiffre d'affaire total : {% endtrans %} {{ total }} euros  </p>
 </div>
     <div style="
-width: 400px;
+width: 800px;
 ">
         <h2 style="
 text-align: center;"> {% trans %} Nombre d'opérations terminées : {% endtrans %} {{ nbOpTermine }}  </h2>
-
+        {{ render_chart(chart2) }}
     </div>
+
 </div>
+
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
