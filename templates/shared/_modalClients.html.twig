@@ -1,0 +1,36 @@
+<div class="modal fade" id="modalClient" tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                {{ include('clients/_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('api.js') }}"></script>
+    <script>
+        function myFunction() {
+            let text = document.getElementById("adresse");
+            let copie = document.getElementById("adrs");
+            text.value = copie.value;
+        }
+
+        function affiche() {
+            if (document.getElementById("adresse").value == "") {
+                document.getElementById("api").style.display = "none";
+            } else {
+                document.getElementById("api").style.display = "block";
+            }
+        }
+    </script>
+{% endblock %}

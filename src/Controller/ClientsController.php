@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Clients;
+use App\Entity\Operations;
 use App\Form\ClientsType;
+use App\Form\OperationsType;
 use App\Repository\ClientsRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\OperationsRepository;
+use Doctrine\ORM\EntityManagerInterface as em;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,18 +41,21 @@ class ClientsController extends AbstractController
         $form = $this->createForm(ClientsType::class, $client);
 
         $form->handleRequest($request);
-        /* 1°- Pour ajouter des infos en bdd sans passer par les champs créé automatiquement par symfony lors du make:form
-        déclarer la variable adresse et faire appel à la variable symfony request qui est un objet qui stock l'ensemble des infos de notre formulaire ds ce cas là
-        dans l'objet request je vais chercher un clé qui s'appelle request et dans cette clé je vais récupérer la clé 'adresse'*/
+
+        /* 1°- Pour ajouter des infos en bdd sans passer par les champs créés automatiquement par symfony lors du make:form
+        déclarer la variable adresse et faire appel à la variable symfony request qui est un objet qui stock l'ensemble des infos de notre formulaire ds ce cas-là
+        dans l'objet request je vais chercher une clé qui s'appelle request et dans cette clé je vais récupérer la clé 'adresse'*/
         $adresse = $request->request->get("adresse");
 
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /* 2°- j'appelle setAdresse du nouveau client instancié auparavant et lui affecte $adresse qui stock l'adresse précédement récupérée*/
+            /* 2°- j'appelle setAdresse du nouveau client instancié auparavant et lui affecte $adresse qui stock l'adresse précédemment récupérée*/
+
             $client->setAdresse($adresse);
+
             $clientsRepository->add($client);
-            return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_operations_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('clients/new.html.twig', [
@@ -56,6 +63,8 @@ class ClientsController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
 
     /**
      * @Route("/{id}", name="app_clients_show", methods={"GET"})
@@ -97,4 +106,6 @@ class ClientsController extends AbstractController
 
         return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

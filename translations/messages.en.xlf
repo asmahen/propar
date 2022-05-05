@@ -31,11 +31,11 @@
       </trans-unit>
       <trans-unit id="mfh0XTR" resname="Nouveau clients">
         <source>Nouveau clients</source>
-        <target>New client</target>
+        <target>New customer</target>
       </trans-unit>
       <trans-unit id="al4_hjQ" resname="Ajouter un client">
         <source>Ajouter un client</source>
-        <target>Add a client</target>
+        <target>Add a customer</target>
       </trans-unit>
       <trans-unit id="eeXPIN4" resname="Adresse">
         <source>Adresse</source>
@@ -298,6 +298,14 @@
       <trans-unit id="o8skIhH" resname="&quot;(Filtrer un maximum de_MAX_)&quot;">
         <source>"(Filtrer un maximum de_MAX_)"</source>
         <target>"(Filter a maximum of_MAX_)"</target>
+      </trans-unit>
+      <trans-unit id="9C9c165" resname="Terminer opération">
+        <source>Terminer opération</source>
+        <target>Finish operation</target>
+      </trans-unit>
+      <trans-unit id="QXqCxHb" resname="Ajouter un collaborateur">
+        <source>Ajouter un collaborateur</source>
+        <target>Add a new collaborator</target>
       </trans-unit>
     </body>
   </file>
