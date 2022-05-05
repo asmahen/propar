@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Clients{% endblock %}
+{% block title %}{% trans %} Modifier les clients{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Modification client {{ client.nomSociete }}</h1>
+
+    <h1>{% trans %}Modification client{% endtrans %} {{ client.nomSociete }} </h1>
+
 
     {{ include('clients/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">Retour à la liste</a>
+    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3"> {% trans %} Retour à la liste {% endtrans %}</a>
+
 
 {% endblock %}

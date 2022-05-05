@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Opérations{% endblock %}
+{% block title %}{% trans %}Opérations{% endtrans %}{% endblock %}
 
 {% block stylesheets %}
 {{ encore_entry_link_tags('card') }}
@@ -10,14 +10,14 @@
 
     
     <div class="example-wrapper" style="text-align: center;">
-        <h1 id="operation">OPÉRATIONS</h1>
+        <h1 id="operation">{% trans %}OPÉRATIONS{% endtrans %}</h1>
         <br><br>
     </div>
 
     <div class="d-flex justify-content-center space-between ">
-        <div><span class="badge bg-secondary mx-3">Grosse Opération</span></div>
-        <div><span class="badge bg-warning mx-3">Moyenne Opération</span></div>
-        <div><span class="badge bg-info mx-3">Petite Opération</span></div>
+        <div><span class="badge bg-secondary mx-3">{% trans %}Grosse Opération{% endtrans %}</span></div>
+        <div><span class="badge bg-warning mx-3">{% trans %}Moyenne Opération{% endtrans %}</span></div>
+        <div><span class="badge bg-info mx-3">{% trans %}Petite Opération{% endtrans %}</span></div>
 
     </div>
 
@@ -51,7 +51,7 @@
                         <h5>{{ operation.titre }}</h5>
                         <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ loop.index }}">
-                            Plus d'informations
+                            {% trans %}Plus d'informations{% endtrans %}
                         </button>
                     </div>
                     <div class="class-stats text-white bg-warning "
@@ -69,7 +69,7 @@
                         <h5>{{ operation.titre }}</h5>
                         <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ loop.index }}">
-                            Plus d'informations
+                            {% trans %}Plus d'informations{% endtrans %}
                         </button>
                     </div>
                     <div class="class-stats text-white bg-secondary "
@@ -86,7 +86,7 @@
     </div>
 
 
-    <h1 class="text-center"> Opérations terminées</h1>
+    <h1 class="text-center"> {% trans %}Opérations terminées{% endtrans %}</h1>
     <div class="terminer d-flex flex-wrap space-between justify-content-center">
 
         {% for operation in operations %}
@@ -98,7 +98,7 @@
                         <h5>{{ operation.titre }}</h5>
                         <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ loop.index }}">
-                            Plus d'informations
+                            {% trans %}Plus d'informations{% endtrans %}
                         </button>
                     </div>
                     <div class="class-stats text-white bg-info "
@@ -116,7 +116,7 @@
                         <h5>{{ operation.titre }}</h5>
                         <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ loop.index }}">
-                            Plus d'informations
+                            {% trans %}Plus d'informations{% endtrans %}
                         </button>
                     </div>
                     <div class="class-stats text-white bg-warning "
@@ -134,7 +134,7 @@
                         <h5>{{ operation.titre }}</h5>
                         <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ loop.index }}">
-                            Plus d'informations
+                            {% trans %}Plus d'informations{% endtrans %}
                         </button>
                     </div>
                     <div class="class-stats text-white bg-secondary "

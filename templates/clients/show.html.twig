@@ -12,26 +12,29 @@
                 <td>{{ client.id }}</td>
             </tr>
             <tr>
-                <th>Nom de Société</th>
+                <th>{% trans %}Nom de société{% endtrans %}</th>
                 <td>{{ client.nomSociete }}</td>
             </tr>
             <tr>
-                <th>Prénom</th>
+                <th>{% trans %}Prénom{% endtrans %}</th>
                 <td>{{ client.prenom }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{% trans %}Nom{% endtrans %}</th>
                 <td>{{ client.nom }}</td>
             </tr>
             <tr>
-                <th>Adresse</th>
+                <th>{% trans %}Adresse{% endtrans %}</th>
                 <td>{{ client.adresse }}</td>
             </tr>
         </tbody>
     </table>
-    {{ include('clients/_delete_form.html.twig') }}
-    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">Retour à la liste</a>
 
+    {{ include('clients/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_clients_edit', {'id': client.id}) }}" class="btn btn-success mt-3">{% trans %}Modifier{% endtrans %}</a>
+
+    <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">{% trans %}Retour à la liste{% endtrans %}</a>
 
 
 {% endblock %}

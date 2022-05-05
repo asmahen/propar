@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajouter une opération{% endblock %}
+{% block title %}{% trans %}Ajouter une opération{% endtrans %}{% endblock %}
 
 {% block body %}
 
@@ -13,8 +13,10 @@
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5 text-dark">
-                            <h1>Ajouter une opération</h1>
-                            <br>
+
+                            <h1>{% trans %}Ajouter une opération{% endtrans %}</h1>
+                            </br>
+
                             {# attribut qui permet de désactiver le contrôle coté html #}
                             {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
                             {{ form_row(form.Client) }}
@@ -24,7 +26,7 @@
 
                             <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal"
                                     data-bs-target="#modalClient">
-                               Ajouter un client
+                               {% trans %}Ajouter un client{% endtrans %}
                             </button>
 
 
@@ -33,8 +35,8 @@
                             {{ form_row(form.description) }}
                             {{ form_row(form.Categories) }}
                             <button class="btn btn-success mt-3">{{ button_label|default('Créer une opération') }}</button>
-                            <a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">Revenir à la liste
-                                des opérations</a>
+                            <a href="{{ path('app_operations_index') }}" class="btn btn-warning mt-3">{% trans %}Revenir à la liste
+                                des opérations{% endtrans %}</a>
                             {{ form_end(form) }}
                         </div>
                     </div>

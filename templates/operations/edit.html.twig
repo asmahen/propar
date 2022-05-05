@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Operations{% endblock %}
+{% block title %}{% trans %}Modifier les Opérations{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Edit Operations</h1>
+    <h1>{% trans %}Modifier les Opérations{% endtrans %}</h1>
 
     {{ include('operations/_form.html.twig', {'button_label': 'Update'}) }}
 
