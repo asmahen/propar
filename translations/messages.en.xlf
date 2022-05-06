@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="4gYYS6M" resname="Chiffre Affaires">
         <source>Chiffre Affaires</source>
-        <target>Revenues</target>
+        <target>Turn over</target>
       </trans-unit>
       <trans-unit id="ObmLN36" resname="Chiffre d'affaires">
         <source>Chiffre d'affaires</source>
-        <target>Revenues</target>
+        <target>Turn over</target>
       </trans-unit>
       <trans-unit id="DTaLdwB" resname="Bienvenue!">
         <source>Bienvenue!</source>
@@ -19,11 +19,11 @@
       </trans-unit>
       <trans-unit id="ovwAVrp" resname="Chiffre d'affaire par catégories">
         <source>Chiffre d'affaire par catégories</source>
-        <target>Revenues by categories</target>
+        <target>Turn over by categories</target>
       </trans-unit>
       <trans-unit id="K1vQb5l" resname="Chiffre d'affaire total :">
         <source>Chiffre d'affaire total :</source>
-        <target>Total revenue :</target>
+        <target>Total turn over :</target>
       </trans-unit>
       <trans-unit id="1HbhPnI" resname="Nombre d'opérations terminées :">
         <source>Nombre d'opérations terminées :</source>
@@ -245,7 +245,7 @@
       </trans-unit>
       <trans-unit id="EgaWvlO" resname="Se connecter!">
         <source>Se connecter!</source>
-        <target>Login!</target>
+        <target>Log in!</target>
       </trans-unit>
       <trans-unit id="sBFnVlo" resname="Vous êtes connecté en tant que">
         <source>Vous êtes connecté en tant que</source>
@@ -277,7 +277,7 @@
       </trans-unit>
       <trans-unit id="5LNfQNz" resname="&quot;Lignes _START_ à _END_ sur _TOTAL_&quot;">
         <source>"Lignes _START_ à _END_ sur _TOTAL_"</source>
-        <target>__"Lines _START_ to _END_ on _TOTAL_"</target>
+        <target>"Lines _START_ to _END_ on _TOTAL_"</target>
       </trans-unit>
       <trans-unit id="If.Xpku" resname="&quot;Suivant&quot;">
         <source>"Suivant"</source>
@@ -306,6 +306,170 @@
       <trans-unit id="QXqCxHb" resname="Ajouter un collaborateur">
         <source>Ajouter un collaborateur</source>
         <target>Add a new collaborator</target>
+      </trans-unit>
+      <trans-unit id="2tHEBql" resname="Chiffre d'affaires des opérations terminées par mois">
+        <source>Chiffre d'affaires des opérations terminées par mois</source>
+        <target>Turn over from completed operations per month</target>
+      </trans-unit>
+      <trans-unit id="rl6tKPT" resname="Modifier les clients">
+        <source>Modifier les clients</source>
+        <target>Edit customers</target>
+      </trans-unit>
+      <trans-unit id="2FPVj.f" resname="Modification client">
+        <source>Modification client</source>
+        <target>Customer modification</target>
+      </trans-unit>
+      <trans-unit id="oV.kPd7" resname="Clients index">
+        <source>Clients index</source>
+        <target>Customers index</target>
+      </trans-unit>
+      <trans-unit id="0ivqSr2" resname="Liste des clients">
+        <source>Liste des clients</source>
+        <target>List of customers</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="C7QIVQr" resname="Nom Société">
+        <source>Nom Société</source>
+        <target>Name of the society</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="Sh6EfsR" resname="Voir">
+        <source>Voir</source>
+        <target>View</target>
+      </trans-unit>
+      <trans-unit id="1XYIrM5" resname="Aucune info trouvé">
+        <source>Aucune info trouvé</source>
+        <target>No info found</target>
+      </trans-unit>
+      <trans-unit id="Fi4Sj_e" resname="Créer un client">
+        <source>Créer un client</source>
+        <target>Create a customer</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="ilPP_So" resname="Informations utiles">
+        <source>Informations utiles</source>
+        <target>Useful informations</target>
+      </trans-unit>
+      <trans-unit id="cb8qbCd" resname="Petites opérations">
+        <source>Petites opérations</source>
+        <target>Small operations</target>
+      </trans-unit>
+      <trans-unit id="X4q1RYX" resname="Moyennes Opérations">
+        <source>Moyennes Opérations</source>
+        <target>Average operations</target>
+      </trans-unit>
+      <trans-unit id="SdHId1c" resname="Nombre d'opérations terminées">
+        <source>Nombre d'opérations terminées</source>
+        <target>Number of operations completed</target>
+      </trans-unit>
+      <trans-unit id="ouh.VyX" resname="Semestre 1">
+        <source>Semestre 1</source>
+        <target>Semester 1</target>
+      </trans-unit>
+      <trans-unit id="Oa9JGXq" resname="Semestre 2">
+        <source>Semestre 2</source>
+        <target>Semester 2</target>
+      </trans-unit>
+      <trans-unit id="0_YcB4g" resname="Chiffres d'affaires annuel -">
+        <source>Chiffres d'affaires annuel -</source>
+        <target>Annual turnover -</target>
+      </trans-unit>
+      <trans-unit id="L95OrCA" resname="Nombre d'opérations en cours">
+        <source>Nombre d'opérations en cours</source>
+        <target>Number of current operations</target>
+      </trans-unit>
+      <trans-unit id="4qmW1WI" resname="Gestion clients">
+        <source>Gestion clients</source>
+        <target>Customer Management</target>
+      </trans-unit>
+      <trans-unit id="Xr81Vnw" resname="Liste clients">
+        <source>Liste clients</source>
+        <target>List of customer</target>
+      </trans-unit>
+      <trans-unit id="JXJs94s" resname="Créer client">
+        <source>Créer client</source>
+        <target>Create a customer</target>
+      </trans-unit>
+      <trans-unit id="iEmBVWx" resname="EXPERT">
+        <source>EXPERT</source>
+        <target>EXPERT</target>
+      </trans-unit>
+      <trans-unit id="ZCpa_td" resname="SENIOR">
+        <source>SENIOR</source>
+        <target>SENIOR</target>
+      </trans-unit>
+      <trans-unit id="Myaz844" resname="Trimestre 1">
+        <source>Trimestre 1</source>
+        <target>Trimester 1</target>
+      </trans-unit>
+      <trans-unit id="H0Ia6Bu" resname="Trimestre 2">
+        <source>Trimestre 2</source>
+        <target>Trimester 2</target>
+      </trans-unit>
+      <trans-unit id="tw_lnk6" resname="Trimestre 3">
+        <source>Trimestre 3</source>
+        <target>Trimester 3</target>
+      </trans-unit>
+      <trans-unit id="aJALrkZ" resname="Trimestre 4">
+        <source>Trimestre 4</source>
+        <target>Trimester 4</target>
+      </trans-unit>
+      <trans-unit id="5snQ2.h" resname="Janvier">
+        <source>Janvier</source>
+        <target>January</target>
+      </trans-unit>
+      <trans-unit id="RjsgLgb" resname="Février">
+        <source>Février</source>
+        <target>February</target>
+      </trans-unit>
+      <trans-unit id="oKbKCRx" resname="Mars">
+        <source>Mars</source>
+        <target>March</target>
+      </trans-unit>
+      <trans-unit id="ZgGkM4P" resname="Avril">
+        <source>Avril</source>
+        <target>April</target>
+      </trans-unit>
+      <trans-unit id="13tr0Ih" resname="Mai">
+        <source>Mai</source>
+        <target>May</target>
+      </trans-unit>
+      <trans-unit id="SghM8SA" resname="Juin">
+        <source>Juin</source>
+        <target>June</target>
+      </trans-unit>
+      <trans-unit id="bPsX5S8" resname="Juillet">
+        <source>Juillet</source>
+        <target>July</target>
+      </trans-unit>
+      <trans-unit id="fhhjI4q" resname="Août">
+        <source>Août</source>
+        <target>August</target>
+      </trans-unit>
+      <trans-unit id="rksIJ7J" resname="Septembre">
+        <source>Septembre</source>
+        <target>September</target>
+      </trans-unit>
+      <trans-unit id="jDJoU5F" resname="Octobre">
+        <source>Octobre</source>
+        <target>October</target>
+      </trans-unit>
+      <trans-unit id="p62vZ_a" resname="Novembre">
+        <source>Novembre</source>
+        <target>November</target>
+      </trans-unit>
+      <trans-unit id="ThI0lZz" resname="Décembre">
+        <source>Décembre</source>
+        <target>December</target>
       </trans-unit>
     </body>
   </file>
