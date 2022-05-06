@@ -1,4 +1,5 @@
 <div>
+    <h2> {% trans %} Informations utiles {% endtrans %} </h2>
     <div class="card">
         <div class="additional">
             <div class="user-card">
@@ -9,15 +10,15 @@
             <div class="more-info">
                 <div class="stats">
                     <div>
-                        <div class="title">Petites opérations</div>
+                        <div class="title">{% trans %}Petites opérations {% endtrans %}</div>
                         <div class="value">2</div>
                     </div>
                     <div>
-                        <div class="title">Moyennes Opérations</div>
+                        <div class="title">{% trans %}Moyennes Opérations {% endtrans %}</div>
                         <div class="value">27</div>
                     </div>
                     <div>
-                        <div class="title">Grandes Opérations</div>
+                        <div class="title">{% trans %}Grandes Opérations {% endtrans %}</div>
                         <div class="value">123</div>
                     </div>
                     <div>
@@ -41,11 +42,11 @@
             <div class="more-info">
                 <div class="stats semestre">
                     <div>
-                        <div class="title t1">Semestre 1</div>
+                        <div class="title t1">{% trans %}Semestre 1{% endtrans %}</div>
                         <div class="value">{{ semestre1 }} €</div>
                     </div>
                     <div>
-                        <div class="title t2">Semestre 2</div>
+                        <div class="title t2">{% trans %}Semestre 2{% endtrans %}</div>
                         <div class="value">{{  semestre2 }} €</div>
                     </div>
                     <div>
@@ -55,7 +56,7 @@
         </div>
         <div class="general">
             <div>
-                <h4> Chiffres d'affaires annuel - {{ annee }}</h4>
+                <h4> {% trans %}Chiffres d'affaires annuel -{% endtrans %} {{ annee }}</h4>
             </div>
         </div>
     </div>
@@ -69,15 +70,15 @@
             <div class="more-info">
                 <div class="stats">
                     <div>
-                        <div class="title ">Petites Opérations</div>
+                        <div class="title ">{% trans %}Petites Opérations{% endtrans %}</div>
                         <div class="value">{{ petiteEC }} </div>
                     </div>
                     <div>
-                        <div class="title ">Moyennes Opérations</div>
+                        <div class="title ">{% trans %}Moyennes Opérations{% endtrans %}</div>
                         <div class="value">{{  moyenneEC }} </div>
                     </div>
                     <div>
-                        <div class="title t2">Grandes Opérations</div>
+                        <div class="title t2">{% trans %}Grandes Opérations{% endtrans %}</div>
                         <div class="value">{{  grandeEC }} </div>
                     </div>
                     <div>
@@ -87,7 +88,7 @@
         </div>
         <div class="general">
             <div>
-                <h4> Nombre d'opérations en cours</h4>
+                <h4>{% trans %} Nombre d'opérations en cours {% endtrans %}</h4>
             </div>
         </div>
     </div>
