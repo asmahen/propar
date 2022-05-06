@@ -1,0 +1,94 @@
+<div>
+    <div class="card">
+        <div class="additional">
+            <div class="user-card">
+                <div class="points center">
+                    {{ nbOpTermine }}
+                </div>
+            </div>
+            <div class="more-info">
+                <div class="stats">
+                    <div>
+                        <div class="title">Petites opérations</div>
+                        <div class="value">2</div>
+                    </div>
+                    <div>
+                        <div class="title">Moyennes Opérations</div>
+                        <div class="value">27</div>
+                    </div>
+                    <div>
+                        <div class="title">Grandes Opérations</div>
+                        <div class="value">123</div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="general">
+            <div>
+            <h4> {% trans %} Nombre d'opérations terminées {% endtrans %}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card green">
+        <div class="additional">
+            <div class="user-card">
+                <div class="points center">
+                    {{ total }} €
+                </div>
+            </div>
+            <div class="more-info">
+                <div class="stats semestre">
+                    <div>
+                        <div class="title t1">Semestre 1</div>
+                        <div class="value">{{ semestre1 }} €</div>
+                    </div>
+                    <div>
+                        <div class="title t2">Semestre 2</div>
+                        <div class="value">{{  semestre2 }} €</div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="general">
+            <div>
+                <h4> Chiffres d'affaires annuel - {{ annee }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card orange">
+        <div class="additional">
+            <div class="user-card">
+                <div class="points center">
+                    {{ totalEC }}
+                </div>
+            </div>
+            <div class="more-info">
+                <div class="stats">
+                    <div>
+                        <div class="title ">Petites Opérations</div>
+                        <div class="value">{{ petiteEC }} </div>
+                    </div>
+                    <div>
+                        <div class="title ">Moyennes Opérations</div>
+                        <div class="value">{{  moyenneEC }} </div>
+                    </div>
+                    <div>
+                        <div class="title t2">Grandes Opérations</div>
+                        <div class="value">{{  grandeEC }} </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="general">
+            <div>
+                <h4> Nombre d'opérations en cours</h4>
+            </div>
+        </div>
+    </div>
+</div>

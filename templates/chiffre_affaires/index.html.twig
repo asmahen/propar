@@ -2,30 +2,32 @@
 
 {% block title %} {% trans %}Chiffre Affaires {% endtrans %} {% endblock %}
 
+ {% block stylesheets %}
+     <style href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+     {{ encore_entry_link_tags('CA') }}
 
+ {% endblock %}
 {% block body %}
 
 <div class="example-wrapper" style="text-align: center; margin-top:30px">
     <h1 id = "chiffre_affaire"> {% trans %} Chiffre d'affaires {% endtrans %} </h1>
 </div>
+    <div class="CAGlobal ">
+        <h2>Chiffre d'affaires des opérations terminées par mois</h2>
+        {{ render_chart(chart2) }}
+    </div>
+
     <div class="d-flex flex-row bd-highlight mb-3 mt-3 justify-content-around" >
-<div style="
-width: 400px;
-">
+<div class="NBGlobal">
     <h2 style="
 text-align: center;"> {% trans %} Chiffre d'affaire par catégories {% endtrans %} </h2>
     {{ render_chart(chart) }}
-    <p
-    style="text-align: center;"> {% trans %} Chiffre d'affaire total : {% endtrans %} {{ total }} euros  </p>
+    <br>
 </div>
-    <div style="
-width: 400px;
-">
-        <h2 style="
-text-align: center;"> {% trans %} Nombre d'opérations terminées : {% endtrans %} {{ nbOpTermine }}  </h2>
+        {% include "shared/_cardCA.html.twig" %}
 
-    </div>
 </div>
+
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
