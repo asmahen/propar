@@ -13,17 +13,17 @@
     <h1 id = "chiffre_affaire"> {% trans %} Chiffre d'affaires {% endtrans %} </h1>
 </div>
     <div class="CAGlobal ">
-        <h2>Chiffre d'affaires des opérations terminées par mois</h2>
+        <h2>{% trans %}Chiffre d'affaires des opérations terminées par mois {% endtrans %}</h2>
         {{ render_chart(chart2) }}
     </div>
 
     <div class="d-flex flex-row bd-highlight mb-3 mt-3 justify-content-around" >
 <div class="NBGlobal">
-    <h2 style="
-text-align: center;"> {% trans %} Chiffre d'affaire par catégories {% endtrans %} </h2>
+    <h2> {% trans %} Chiffre d'affaire par catégories {% endtrans %} </h2>
     {{ render_chart(chart) }}
     <br>
 </div>
+
         {% include "shared/_cardCA.html.twig" %}
 
 </div>

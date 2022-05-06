@@ -55,7 +55,7 @@ class ChiffreAffairesController extends AbstractController
         //calcul le chiffre d'affaire total
         $total = $sommeGrande + $sommeMoyenne +$sommePetite;
 
-        //calcul le nombtre total d'opérations en cours
+        //calcul le nombtre total d'opérations terminées
         $count = count($petite)+count($moyenne)+count($grande);
 
         // J'instancie ces variables pour pouvoir proposer une traduction anglaise (pour 'Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations')
