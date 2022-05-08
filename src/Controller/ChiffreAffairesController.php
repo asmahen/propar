@@ -55,6 +55,8 @@ class ChiffreAffairesController extends AbstractController
            $startAnnee = date('Y');
            $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
            $annee = '2022';
+       } else {
+           $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
        }
 
 
