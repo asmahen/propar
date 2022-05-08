@@ -17,70 +17,77 @@ use Symfony\UX\Chartjs\Model\Chart;
 use Symfony\Component\HttpFoundation\Request;
 
 
-    /**
-    * @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
-    */
+/**
+ * @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
+ */
 class ChiffreAffairesController extends AbstractController
 {
     /**
-    * @Route("/chiffreAffaires", name="app_chiffre_affaires",  methods={"GET", "POST"})
-    */
-    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator, Request $request) : Response
+     * @Route("/chiffreAffaires", name="app_chiffre_affaires",  methods={"GET", "POST"})
+     */
+    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator, Request $request): Response
     {
+        //année que l'on souhaite afficher
 
-        //année que l'on souhaite afficher (pas terminé)
+        $annee = $request->request->get('annee');
+        $tabAnnee = $operationsRepository->findAnnee();
+        $anneeMin = $tabAnnee[0]['year'];
 
-    $annee = $request->request->get('annee');
-
-
+        //condition si année non soumis et pas de valeur par défaut se met à l'année actuelle
         if ($annee == "") {
             $startAnnee = date('Y');
             $this->addFlash('info', "Année $startAnnee apparait par défaut");
+            $this->addFlash('info', "Données disponibles à partir de l'année $anneeMin");
             $annee = date('Y');
         }
 
+        //condition si année selectionnée est supérieures à l'année actuelle
+        if ($annee > date('Y')) {
+            $this->addFlash('error', "Année $annee : no futur - Ou est Sarah Connor");
+            $annee = date('Y');
+        }
 
         //calcul du nombres d'opérations en cours par catégories
-        $petiteEC = $operationsRepository->findPetiteOperationEC($annee );
+        $petiteEC = $operationsRepository->findPetiteOperationEC($annee);
         $countPetiteEC = count($petiteEC);
-        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee );
+        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee);
         $countMoyenneEC = count($moyenneEC);
-        $grandeEC = $operationsRepository->findGrandeOperationEC($annee );
+        $grandeEC = $operationsRepository->findGrandeOperationEC($annee);
         $countGrandeEC = count($grandeEC);
 
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
-       if ( $totalOpEC == null) {
-           $startAnnee = date('Y');
-           $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
-           $annee = '2022';
-       } else {
-           $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
-       }
+        if ($totalOpEC == null) {
+            $startAnnee = date('Y');
+            $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
+            $annee = '2022';
+        } else {
+            $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
+        }
 
 
         //calcul du nombre et de la somme des opérations terminées par catégories
-        $petite = $operationsRepository->findPetiteOperation($annee );
+        $petite = $operationsRepository->findPetiteOperation($annee);
         $sommePetite = 0;
         foreach ($petite as $value) {
-        $sommePetite= $sommePetite + array_sum($petite[0]);
+            $sommePetite = $sommePetite + array_sum($petite[0]);
         }
-        $moyenne = $operationsRepository->findMoyenneOperation($annee );
+        $moyenne = $operationsRepository->findMoyenneOperation($annee);
         $sommeMoyenne = 0;
         foreach ($moyenne as $value) {
-            $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
+            $sommeMoyenne = $sommeMoyenne + array_sum($moyenne[0]);
         }
         $grande = $operationsRepository->findGrandeOperation($annee);
         $sommeGrande = 0;
         foreach ($grande as $value) {
-            $sommeGrande= $sommeGrande + array_sum($grande[0]);
+            $sommeGrande = $sommeGrande + array_sum($grande[0]);
         }
         //calcul le chiffre d'affaire total
-        $total = $sommeGrande + $sommeMoyenne +$sommePetite;
+        $total = $sommeGrande + $sommeMoyenne + $sommePetite;
 
         //calcul le nombtre total d'opérations terminées
-        $count = count($petite)+count($moyenne)+count($grande);
+        $count = count($petite) + count($moyenne) + count($grande);
 
         // J'instancie ces variables pour pouvoir proposer une traduction anglaise (pour 'Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations')
         $message = $translator->trans('Petites Opérations');
@@ -94,7 +101,7 @@ class ChiffreAffairesController extends AbstractController
             'datasets' => [
                 [
                     'label' => 'Points',
-                    'backgroundColor' => ['#6cc3d5','#ffce67', '#f3969a'],
+                    'backgroundColor' => ['#6cc3d5', '#ffce67', '#f3969a'],
                     'borderColor' => 'black',
                     'data' => [$sommePetite, $sommeMoyenne, $sommeGrande],
                     'hoverOffset' => 4,
@@ -105,7 +112,7 @@ class ChiffreAffairesController extends AbstractController
         ]);
 
         $chart->setOptions([
-            'animation.animateScale'=>true,
+            'animation.animateScale' => true,
 
         ]);
 
@@ -116,7 +123,7 @@ class ChiffreAffairesController extends AbstractController
         $mois3 = "3";
         $mois4 = "4";
         $mois5 = "5";
-        $mois6 ="6";
+        $mois6 = "6";
         $mois7 = "7";
         $mois8 = "8";
         $mois9 = "9";
@@ -250,7 +257,7 @@ class ChiffreAffairesController extends AbstractController
             'moyenneEC' => $countMoyenneEC,
             'grandeEC' => $countGrandeEC,
             'totalEC' => $totalOpEC,
-             'tabAnnee'=>$annee,
+            'tabAnnee' => $annee,
 
 
         ]);
