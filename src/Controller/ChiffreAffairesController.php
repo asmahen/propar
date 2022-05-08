@@ -82,7 +82,7 @@ class ChiffreAffairesController extends AbstractController
 
         // J'instancie ces variables pour pouvoir proposer une traduction anglaise (pour 'Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations')
         $message = $translator->trans('Petites Opérations');
-        $message2 = $translator->trans('Moyennes Opérationss');
+        $message2 = $translator->trans('Moyennes Opérations');
         $message3 = $translator->trans('Grandes Opérations');
 
         //création de l'objet chart.js pour afficher le graphique en tarte des opérations terminées par catégories
@@ -109,32 +109,34 @@ class ChiffreAffairesController extends AbstractController
 
 
         //declaration des variables mois pour la requete sql
-        $janvier = "1";
-        $fevrier = "2";
-        $mars = "3";
-        $avril = "4";
-        $mai = "5";
-        $juin ="6";
-        $juillet = "7";
-        $aout = "8";
-        $septembre = "9";
-        $octobre = "10";
-        $novembre = "11";
-        $decembre = "12";
+        $mois1 = "1";
+        $mois2 = "2";
+        $mois3 = "3";
+        $mois4 = "4";
+        $mois5 = "5";
+        $mois6 ="6";
+        $mois7 = "7";
+        $mois8 = "8";
+        $mois9 = "9";
+        $mois10 = "10";
+        $mois11 = "11";
+        $mois12 = "12";
+
 
         //requete sql qui retourne un tableau des sommes des opérations par mois à l'année choisie
-        $tabJanvier = $operationsRepository->findPrix($janvier, $annee );
-        $tabFevrier = $operationsRepository->findPrix($fevrier, $annee);
-        $tabMars = $operationsRepository->findPrix($mars, $annee);
-        $tabAvril = $operationsRepository->findPrix($avril, $annee);
-        $tabMai = $operationsRepository->findPrix($mai, $annee);
-        $tabJuin = $operationsRepository->findPrix($juin, $annee);
-        $tabJuillet = $operationsRepository->findPrix($juillet, $annee);
-        $tabAout = $operationsRepository->findPrix($aout, $annee);
-        $tabSeptembre = $operationsRepository->findPrix($septembre, $annee);
-        $tabOctobre = $operationsRepository->findPrix($octobre, $annee);
-        $tabNovembre = $operationsRepository->findPrix($novembre, $annee);
-        $tabDecembre = $operationsRepository->findPrix($decembre, $annee);
+
+        $tabJanvier = $operationsRepository->findPrix($mois1, $annee);
+        $tabFevrier = $operationsRepository->findPrix($mois2, $annee);
+        $tabMars = $operationsRepository->findPrix($mois3, $annee);
+        $tabAvril = $operationsRepository->findPrix($mois4, $annee);
+        $tabMai = $operationsRepository->findPrix($mois5, $annee);
+        $tabJuin = $operationsRepository->findPrix($mois6, $annee);
+        $tabJuillet = $operationsRepository->findPrix($mois7, $annee);
+        $tabAout = $operationsRepository->findPrix($mois8, $annee);
+        $tabSeptembre = $operationsRepository->findPrix($mois9, $annee);
+        $tabOctobre = $operationsRepository->findPrix($mois10, $annee);
+        $tabNovembre = $operationsRepository->findPrix($mois11, $annee);
+        $tabDecembre = $operationsRepository->findPrix($mois12, $annee);
 
         //recupération des valeurs des tableaux précedents
         $sommeJanvier = $tabJanvier[0][1];
@@ -160,16 +162,36 @@ class ChiffreAffairesController extends AbstractController
         $CASemestre1 = $CATrim1 + $CATrim2;
         $CASemestre2 = $CaTrim3 + $CATrim4;
 
+        // J'instancie ces variables pour pouvoir proposer une traduction anglaise
+        $t1 = $translator->trans('Trimestre 1');
+        $t2 = $translator->trans('Trimestre 2');
+        $t3 = $translator->trans('Trimestre 3');
+        $t4 = $translator->trans('Trimestre 4');
+
         //affichage des trimestres pour le graphiques générales
-        $trimestre1 = "Trimestre 1 : $CATrim1 €";
-        $trimestre2 = "Trimestre 2 : $CATrim2 €";
-        $trimestre3 = "Trimestre 3 : $CaTrim3 €";
-        $trimestre4 = "Trimestre 4 : $CATrim4 €";
+        $trimestre1 = "$t1 : $CATrim1 €";
+        $trimestre2 = "$t2 : $CATrim2 €";
+        $trimestre3 = "$t3 : $CaTrim3 €";
+        $trimestre4 = "$t4 : $CATrim4 €";
+
+        // J'instancie ces variables pour pouvoir proposer une traduction anglaise
+        $mois1 = $translator->trans('Janvier');
+        $mois2 = $translator->trans('Février');
+        $mois3 = $translator->trans('Mars');
+        $mois4 = $translator->trans('Avril');
+        $mois5 = $translator->trans('Mai');
+        $mois6 = $translator->trans('Juin');
+        $mois7 = $translator->trans('Juillet');
+        $mois8 = $translator->trans('Août');
+        $mois9 = $translator->trans('Septembre');
+        $mois10 = $translator->trans('Octobre');
+        $mois11 = $translator->trans('Novembre');
+        $mois12 = $translator->trans('Décembre');
 
         //création de l'objet chart.js pour afficher le graphique dans chiffres_affaire de l'année
         $chart2 = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart2->setData([
-            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octrobre', 'Novembre', 'Decembre'],
+            'labels' => [$mois1, $mois2, $mois3, $mois4, $mois5, $mois6, $mois7, $mois8, $mois9, $mois10, $mois11, $mois12],
             'datasets' => [
                 [
                     'backgroundColor' => '#6cc3d5',

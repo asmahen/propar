@@ -1,3 +1,8 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_4_layout.html.twig']
+    strict_variables: '%kernel.debug%'
+    # On déclare ci-dessous le nom de la variable globale
+    globals:
+        # Je récupère la variable "app.locales" qui est situé dans le fichier service.yaml et je l'instancie à la variable "locales", elle pourra donc être utilisé dans tout les fichiers vue de type twig ici
+        locales: '%app.locales%'
