@@ -54,7 +54,7 @@ class OperationsRepository extends ServiceEntityRepository
     //  */
 
     //fonction qui retourne un tableau des années des opérations terminées
-    public function findAnnee() {
+    public function findAnneeMin() {
         return $this->createQueryBuilder('o')
         ->select('YEAR(o.finishAt) as year')
             ->andWhere(' o.status = true')

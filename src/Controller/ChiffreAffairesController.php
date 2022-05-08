@@ -31,14 +31,21 @@ class ChiffreAffairesController extends AbstractController
         //année que l'on souhaite afficher (pas terminé)
 
     $annee = $request->request->get('annee');
+        $tabAnneMin = $operationsRepository->findAnneeMin();
+        $anneeMin = $tabAnneMin[0]['year'];
 
-
+        //condition si il n'y a pas de valeur dans date donc pas de soumission du formulaire + infos de la premiere année ou des données sont disponibles"
         if ($annee == "") {
             $startAnnee = date('Y');
             $this->addFlash('info', "Année $startAnnee apparait par défaut");
+            $this->addFlash('error', "les premières données sont diponibles à partir de $anneeMin");
             $annee = date('Y');
         }
 
+        //condition si la valeur de l'année est suppérieure à l'année actuelle + message d'erreur
+        if ($annee > date('Y')) {
+            $this->addFlash('error', "Désolé je ne fais pas dans la divination!!!");
+        }
 
         //calcul du nombres d'opérations en cours par catégories
         $petiteEC = $operationsRepository->findPetiteOperationEC($annee );
@@ -51,6 +58,7 @@ class ChiffreAffairesController extends AbstractController
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
+        //condition si pas de donnèes dans l'année saisie ou si format incorrect
        if ( $totalOpEC == null) {
            $startAnnee = date('Y');
            $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
