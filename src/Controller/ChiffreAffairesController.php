@@ -29,6 +29,7 @@ class ChiffreAffairesController extends AbstractController
     {
         //année que l'on souhaite afficher
 
+
         $annee = $request->request->get('annee');
         $tabAnnee = $operationsRepository->findAnnee();
         $anneeMin = $tabAnnee[0]['year'];
@@ -45,6 +46,7 @@ class ChiffreAffairesController extends AbstractController
         if ($annee > date('Y')) {
             $this->addFlash('error', "Année $annee : no futur - Ou est Sarah Connor");
             $annee = date('Y');
+
         }
 
         //calcul du nombres d'opérations en cours par catégories
@@ -58,13 +60,16 @@ class ChiffreAffairesController extends AbstractController
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
-        if ($totalOpEC == null) {
-            $startAnnee = date('Y');
-            $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
-            $annee = '2022';
-        } else {
-            $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
-        }
+
+        //condition si pas de donnèes dans l'année saisie ou si format incorrect
+       if ( $totalOpEC == null) {
+           $startAnnee = date('Y');
+           $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
+           $annee = '2022';
+       } else {
+           $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
+       }
+
 
 
         //calcul du nombre et de la somme des opérations terminées par catégories
