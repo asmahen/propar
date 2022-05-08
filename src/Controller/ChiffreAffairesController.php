@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Form\OperationsType;
 use App\Repository\OperationsRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -11,6 +14,8 @@ use Symfony\Component\CssSelector\XPath\TranslatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface as TranslationTranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
+use Symfony\Component\HttpFoundation\Request;
+
 
     /**
     * @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
@@ -18,31 +23,48 @@ use Symfony\UX\Chartjs\Model\Chart;
 class ChiffreAffairesController extends AbstractController
 {
     /**
-    * @Route("/chiffreAffaires", name="app_chiffre_affaires")
+    * @Route("/chiffreAffaires", name="app_chiffre_affaires",  methods={"GET", "POST"})
     */
-    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator) : Response
+    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator, Request $request) : Response
     {
+
         //année que l'on souhaite afficher (pas terminé)
-        $annee = "2021";
+
+    $annee = $request->request->get('annee');
+
+
+        if ($annee == "") {
+            $startAnnee = date('Y');
+            $this->addFlash('info', "Année $startAnnee apparait par défaut");
+            $annee = date('Y');
+        }
+
 
         //calcul du nombres d'opérations en cours par catégories
-        $petiteEC = $operationsRepository->findPetiteOperationEC($annee);
+        $petiteEC = $operationsRepository->findPetiteOperationEC($annee );
         $countPetiteEC = count($petiteEC);
-        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee);
+        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee );
         $countMoyenneEC = count($moyenneEC);
-        $grandeEC = $operationsRepository->findGrandeOperationEC($annee);
+        $grandeEC = $operationsRepository->findGrandeOperationEC($annee );
         $countGrandeEC = count($grandeEC);
+
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
+       if ( $totalOpEC == null) {
+           $startAnnee = date('Y');
+           $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
+           $annee = '2022';
+       }
+
 
         //calcul du nombre et de la somme des opérations terminées par catégories
-        $petite = $operationsRepository->findPetiteOperation($annee);
+        $petite = $operationsRepository->findPetiteOperation($annee );
         $sommePetite = 0;
         foreach ($petite as $value) {
         $sommePetite= $sommePetite + array_sum($petite[0]);
         }
-        $moyenne = $operationsRepository->findMoyenneOperation($annee);
+        $moyenne = $operationsRepository->findMoyenneOperation($annee );
         $sommeMoyenne = 0;
         foreach ($moyenne as $value) {
             $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
@@ -102,6 +124,7 @@ class ChiffreAffairesController extends AbstractController
 
 
         //requete sql qui retourne un tableau des sommes des opérations par mois à l'année choisie
+
         $tabJanvier = $operationsRepository->findPrix($mois1, $annee);
         $tabFevrier = $operationsRepository->findPrix($mois2, $annee);
         $tabMars = $operationsRepository->findPrix($mois3, $annee);
@@ -225,6 +248,8 @@ class ChiffreAffairesController extends AbstractController
             'moyenneEC' => $countMoyenneEC,
             'grandeEC' => $countGrandeEC,
             'totalEC' => $totalOpEC,
+             'tabAnnee'=>$annee,
+
 
         ]);
     }

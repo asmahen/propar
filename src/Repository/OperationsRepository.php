@@ -18,6 +18,8 @@ use App\Repository\CategoriesRepository;
  */
 class OperationsRepository extends ServiceEntityRepository
 {
+
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Operations::class);
@@ -51,6 +53,17 @@ class OperationsRepository extends ServiceEntityRepository
     //  * @return Operations[] Returns an array of Operations objects
     //  */
 
+    //fonction qui retourne un tableau des années des opérations terminées
+    public function findAnnee() {
+        return $this->createQueryBuilder('o')
+        ->select('YEAR(o.finishAt) as year')
+            ->andWhere(' o.status = true')
+            ->addGroupBy('year')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     //fonction qui retourne un tableau du nombre d'operations en cours et non terminées pour l'utilisateur connecté
     public function findNbOperation($value)
     {
@@ -63,7 +76,7 @@ class OperationsRepository extends ServiceEntityRepository
     }
 
     //fonction qui retourne un tableau du prix des operations terminées petite catégorie
-    public function findPetiteOperation($annee)
+    public function findPetiteOperation($annee = '2022' )
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
@@ -75,7 +88,7 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
     //fonction qui retourne un tableau du prix des operations terminées moyenne catégorie
-    public function findMoyenneOperation($annee)
+    public function findMoyenneOperation($annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
@@ -88,7 +101,7 @@ class OperationsRepository extends ServiceEntityRepository
     }
 
     //fonction qui retourne un tableau du prix des operations terminées grande catégorie
-    public function findGrandeOperation($annee)
+    public function findGrandeOperation($annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
@@ -100,7 +113,7 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findPrix($mois, $annee)
+    public function findPrix($mois, $annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select("SUM(a.prix)")
@@ -113,7 +126,7 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findPetiteOperationEC($annee)
+    public function findPetiteOperationEC($annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
@@ -125,7 +138,7 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findMoyenneOperationEC($annee)
+    public function findMoyenneOperationEC($annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')
@@ -137,7 +150,7 @@ class OperationsRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findGrandeOperationEC($annee)
+    public function findGrandeOperationEC($annee = '2022')
     {
         return $this->createQueryBuilder('o')
             ->select('a.prix')

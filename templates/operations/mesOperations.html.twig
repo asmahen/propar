@@ -4,6 +4,8 @@
 
 {% block stylesheets %}
 {{ encore_entry_link_tags('card') }}
+    {{ encore_entry_link_tags('notyf') }}
+    {{ encore_entry_link_tags('app') }}
 {% endblock %}
 
 {% block body %}
@@ -146,5 +148,10 @@
         {% endfor %}
 
     </div>
+    {% block javascripts %}
 
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('notyf') }}
+
+    {% endblock %}
 {% endblock %}
