@@ -33,6 +33,12 @@ class ChiffreAffairesController extends AbstractController
     $annee = $request->request->get('annee');
 
 
+        if ($annee == "") {
+            $startAnnee = date('Y');
+            $this->addFlash('info', "Année $startAnnee apparait par défaut");
+            $annee = date('Y');
+        }
+
 
         //calcul du nombres d'opérations en cours par catégories
         $petiteEC = $operationsRepository->findPetiteOperationEC($annee );
@@ -41,12 +47,19 @@ class ChiffreAffairesController extends AbstractController
         $countMoyenneEC = count($moyenneEC);
         $grandeEC = $operationsRepository->findGrandeOperationEC($annee );
         $countGrandeEC = count($grandeEC);
+
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
 
+       if ( $totalOpEC == null) {
+           $startAnnee = date('Y');
+           $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
+           $annee = '2022';
+       }
+
 
         //calcul du nombre et de la somme des opérations terminées par catégories
-        $petite = $operationsRepository->findPetiteOperation($annee);
+        $petite = $operationsRepository->findPetiteOperation($annee );
         $sommePetite = 0;
         foreach ($petite as $value) {
         $sommePetite= $sommePetite + array_sum($petite[0]);
@@ -56,7 +69,7 @@ class ChiffreAffairesController extends AbstractController
         foreach ($moyenne as $value) {
             $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
         }
-        $grande = $operationsRepository->findGrandeOperation($annee );
+        $grande = $operationsRepository->findGrandeOperation($annee);
         $sommeGrande = 0;
         foreach ($grande as $value) {
             $sommeGrande= $sommeGrande + array_sum($grande[0]);
@@ -110,7 +123,7 @@ class ChiffreAffairesController extends AbstractController
         $decembre = "12";
 
         //requete sql qui retourne un tableau des sommes des opérations par mois à l'année choisie
-        $tabJanvier = $operationsRepository->findPrix($janvier, $annee);
+        $tabJanvier = $operationsRepository->findPrix($janvier, $annee );
         $tabFevrier = $operationsRepository->findPrix($fevrier, $annee);
         $tabMars = $operationsRepository->findPrix($mars, $annee);
         $tabAvril = $operationsRepository->findPrix($avril, $annee);
