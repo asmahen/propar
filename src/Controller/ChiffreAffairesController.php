@@ -31,7 +31,7 @@ class ChiffreAffairesController extends AbstractController
 
 
         $annee = $request->request->get('annee');
-        $tabAnnee = $operationsRepository->findAnnee();
+        $tabAnnee = $operationsRepository->findAnneeMin();
         $anneeMin = $tabAnnee[0]['year'];
 
         //condition si année non soumis et pas de valeur par défaut se met à l'année actuelle
