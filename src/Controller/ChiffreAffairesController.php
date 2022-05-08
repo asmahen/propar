@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Form\OperationsType;
 use App\Repository\OperationsRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -11,6 +14,8 @@ use Symfony\Component\CssSelector\XPath\TranslatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface as TranslationTranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
+use Symfony\Component\HttpFoundation\Request;
+
 
     /**
     * @isGranted("ROLE_EXPERT", message="Vous n'avez pas accès à cette session")
@@ -18,19 +23,23 @@ use Symfony\UX\Chartjs\Model\Chart;
 class ChiffreAffairesController extends AbstractController
 {
     /**
-    * @Route("/chiffreAffaires", name="app_chiffre_affaires")
+    * @Route("/chiffreAffaires", name="app_chiffre_affaires",  methods={"GET", "POST"})
     */
-    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator) : Response
+    public function index(ChartBuilderInterface $chartBuilder, OperationsRepository $operationsRepository, TranslationTranslatorInterface $translator, Request $request) : Response
     {
+
         //année que l'on souhaite afficher (pas terminé)
-        $annee = "2021";
+
+    $annee = $request->request->get('annee');
+
+
 
         //calcul du nombres d'opérations en cours par catégories
-        $petiteEC = $operationsRepository->findPetiteOperationEC($annee);
+        $petiteEC = $operationsRepository->findPetiteOperationEC($annee );
         $countPetiteEC = count($petiteEC);
-        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee);
+        $moyenneEC = $operationsRepository->findMoyenneOperationEC($annee );
         $countMoyenneEC = count($moyenneEC);
-        $grandeEC = $operationsRepository->findGrandeOperationEC($annee);
+        $grandeEC = $operationsRepository->findGrandeOperationEC($annee );
         $countGrandeEC = count($grandeEC);
         //total du nombres d'opérations en cours
         $totalOpEC = $countPetiteEC + $countMoyenneEC + $countGrandeEC;
@@ -42,12 +51,12 @@ class ChiffreAffairesController extends AbstractController
         foreach ($petite as $value) {
         $sommePetite= $sommePetite + array_sum($petite[0]);
         }
-        $moyenne = $operationsRepository->findMoyenneOperation($annee);
+        $moyenne = $operationsRepository->findMoyenneOperation($annee );
         $sommeMoyenne = 0;
         foreach ($moyenne as $value) {
             $sommeMoyenne= $sommeMoyenne + array_sum($moyenne[0]);
         }
-        $grande = $operationsRepository->findGrandeOperation($annee);
+        $grande = $operationsRepository->findGrandeOperation($annee );
         $sommeGrande = 0;
         foreach ($grande as $value) {
             $sommeGrande= $sommeGrande + array_sum($grande[0]);
@@ -204,6 +213,8 @@ class ChiffreAffairesController extends AbstractController
             'moyenneEC' => $countMoyenneEC,
             'grandeEC' => $countGrandeEC,
             'totalEC' => $totalOpEC,
+             'tabAnnee'=>$annee,
+
 
         ]);
     }

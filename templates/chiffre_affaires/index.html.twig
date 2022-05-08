@@ -9,6 +9,17 @@
  {% endblock %}
 {% block body %}
 
+    <div>
+        <form action="{{ path('app_chiffre_affaires')}}" method='post' ">
+        <label for="name">Chercher l'année</label>
+
+        <input type="text" id="name" name="annee" required
+                size="4">
+        <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+
+
 <div class="example-wrapper" style="text-align: center; margin-top:30px">
     <h1 id = "chiffre_affaire"> {% trans %} Chiffre d'affaires {% endtrans %} </h1>
 </div>
