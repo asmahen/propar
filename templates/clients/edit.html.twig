@@ -7,9 +7,39 @@
     <h1>{% trans %}Modification client{% endtrans %} {{ client.nomSociete }} </h1>
 
 
-    {{ include('clients/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    {{ form_start(form2) }}
+    {{ form_row(form2.nomSociete) }}
+    {{ form_row(form2.prenom) }}
+    {{ form_row(form2.nom) }}
+<div class="form-group">
+    {{ form_row(form2.adresse) }}
+        <div class="form-group" id="api"></div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    <button class="btn btn-primary">{{ button_label|default('Modifier') }}</button>
+    {{ form_end(form2) }}
 
     <a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3"> {% trans %} Retour à la liste {% endtrans %}</a>
+    {% block javascripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ asset('apiEdit.js') }}"></script>
+        <script>
+            function myFunction2() {
+                let text = document.getElementById("clients_adresse");
+                let copie = document.getElementById("adrs");
+                text.value = copie.value;
+            }
 
+            function affiche() {
+                if (document.getElementById("clients_adresse").value == "") {
+                    document.getElementById("api").style.display = "none";
+                } else {
+                    document.getElementById("api").style.display = "block";
+                }
+            }
+        </script>
+    {% endblock %}
 
 {% endblock %}
