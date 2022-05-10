@@ -6,7 +6,10 @@
     <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
     {{ encore_entry_link_tags('navBar') }}
     <!-- Boxiocns CDN Link -->
+
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -25,22 +28,27 @@
                         <i class='bx bx-customize'></i>
                         <span class="link_name">{% trans %}Gestion opérations{% endtrans %}</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a></li>
+                    <li><a class="link_name"
+                           href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a>
+                    </li>
                     <li><a href="{{ path('app_operations_index') }}">{% trans %}Liste opérations{% endtrans %}</a></li>
                     <li><a href="{{ path('app_operations_new') }}">{% trans %}Créer opération{% endtrans %}</a></li>
-                    <li><a href="{{ path('app_operations_détails') }}">{% trans %}Détails opérations{% endtrans %}</a></li>
+                    <li><a href="{{ path('app_operations_détails') }}">{% trans %}Détails opérations{% endtrans %}</a>
+                    </li>
                 </ul>
             </li>
             <li>
                 <a href="{{ path('app_operations_mesOperations') }}">
-                    <i class='bx bxs-widget' ></i>
+                    <i class='bx bxs-widget'></i>
                     <span class="link_name">{% trans %}Mes opérations{% endtrans %}</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a></li>
+                    <li><a class="link_name"
+                           href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a>
+                    </li>
 
                 </ul>
             </li>
@@ -48,14 +56,15 @@
                 <li>
                     <div class="iocn-link">
                         <a href="{{ path('app_users_index') }}">
-                            <i class='bx bx-user-circle' ></i>
+                            <i class='bx bx-user-circle'></i>
                             <span class="link_name">{% trans %} Gestion collaborateur{% endtrans %}</span>
                         </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
+                        <i class='bx bxs-chevron-down arrow'></i>
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">{% trans %}Gestion collaborateur{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_users_index') }}">{% trans %}Liste collaborateurs{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_users_index') }}">{% trans %}Liste collaborateurs{% endtrans %}</a>
+                        </li>
                         <li><a href="{{ path('app_register') }}">{% trans %}Créer collaborateur{% endtrans %}</a></li>
                     </ul>
                 </li>
@@ -75,14 +84,41 @@
                 </li>
                 <li>
                     <a href="{{ path('app_chiffre_affaires') }}">
-                        <i class='bx bx-line-chart' ></i>
+                        <i class='bx bx-line-chart'></i>
                         <span class="link_name">{% trans %}Chiffre d'affaires{% endtrans %}</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="{{ path('app_chiffre_affaires') }}">{% trans %}Chiffre d'affaires{% endtrans %}</a></li>
+                        <li><a class="link_name"
+                               href="{{ path('app_chiffre_affaires') }}">{% trans %}Chiffre d'affaires{% endtrans %}</a>
+                        </li>
                     </ul>
                 </li>
             {% endif %}
+
+            {# Je crée une boucle qui récupere la langue locale #}
+            <div class="langue">
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                        {# Je place ici une photo.  "~~" permet d'instancier dans les fichiers twig. J'instancie donc la langue locale grâce à '~locale~' pour l'image #}
+                        <a class="drapeau" href="{{ path('change_locale', {'locale': locale}) }}"><img
+                                    src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}"></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+<div class="api">
+                <section id="app">
+                    <h1>
+                        <span id="ville"></span>
+                    </h1>
+                    <i class="wi"></i>
+                    <h2>
+                        <span id="temperature"></span> C° <span id="conditions"></span>
+                    </h2>
+                </section>
+                <script src="meteo.js"></script>
+            </div>
+
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
@@ -113,7 +149,7 @@
 </div>
 <section class="home-section">
     <div class="home-content">
-        <i class='bx bx-menu' ></i>
+        <i class='bx bx-menu'></i>
     </div>
 
 
