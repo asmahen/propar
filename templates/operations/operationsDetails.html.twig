@@ -12,19 +12,19 @@
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-            <h2>Liste des opérations</h2>
+            <h2>{% trans %}Liste des opérations{% endtrans %}</h2>
             <table id="table">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>{% trans %}Titre{% endtrans %}</th>
                     <th>{% trans %}Description{% endtrans %}</th>
-                    <th>Société</th>
-                    <th>Contact</th>
-                    <th>Adresse</th>
-                    <th>Status</th>
-                    <th>Date création</th>
-                    <th>Date terminé</th>
+                    <th>{% trans %}Société{% endtrans %}</th>
+                    <th>{% trans %}Contact{% endtrans %}</th>
+                    <th>{% trans %}Adresse{% endtrans %}</th>
+                    <th>{% trans %}Status{% endtrans %}</th>
+                    <th>{% trans %}Date création{% endtrans %}</th>
+                    <th>{% trans %}Date terminé{% endtrans %}</th>
                 </tr>
                 </thead>
 
@@ -38,9 +38,9 @@
                         <td>{{ operation.client.prenom }} {{ operation.client.nom }}</td>
                         <td>{{ operation.client.adresse }} </td>
                         <td>{% if operation.status == true %}
-                            TERMINER
+                            {% trans %}TERMINÉS{% endtrans %}
                             {% elseif operation.status == false %}
-                                EN COURS
+                                {% trans %}EN COURS{% endtrans %}
                         </td>
                         {% endif %}
                                 <td>{{ operation.createdAt | date('d-m-y') }} </td>
@@ -58,18 +58,18 @@
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-            <h2>Opérations supprimées</h2>
+            <h2>{% trans %}Opérations supprimées{% endtrans %}</h2>
             <table id="table2">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>{% trans %}Titre{% endtrans %}</th>
                     <th>{% trans %}Description{% endtrans %}</th>
-                    <th>Société</th>
-                    <th>Contact</th>
-                    <th>Adresse</th>
-                    <th>Status</th>
-                    <th>Date suppression</th>
+                    <th>{% trans %}Société{% endtrans %}</th>
+                    <th>{% trans %}Contact{% endtrans %}</th>
+                    <th>{% trans %}Adresse{% endtrans %}</th>
+                    <th>{% trans %}Status{% endtrans %}</th>
+                    <th>{% trans %}Date suppression{% endtrans %}</th>
                 </tr>
                 </thead>
 
@@ -83,7 +83,7 @@
                     <td>{{ operation.client.prenom }} {{ operation.client.nom }}</td>
                     <td>{{ operation.client.adresse }} </td>
                     <td>{% if operation.abort == true %}
-                    SUPPRIMER
+                    {% trans %}SUPPRIMER{% endtrans %}
                     </td>
                     <td>{{ operation.abort | date('d-m-y') }} </td>
                         </tr>
@@ -95,20 +95,39 @@
         </div>
     </div>
 
-    {#         Création de la datatable #}
-    <script type="text/javascript">
-        $("#table").dataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-            }
-        })
-    </script>
-    <script type="text/javascript">
-        $("#table2").dataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-            }
-        })
-    </script>
+    {# Code de la datatable en JS pour la première table #}
+	<script type="text/javascript">
+		$("#table").dataTable({
+"language": { 
+// Si la langue locale est 'fr' alors j'applique l'URL française
+{% if  app.request.locale == 'fr' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+{% endif %}
+
+// Si la langue locale est 'en' alors j'applique l'URL anglaise
+{% if  app.request.locale == 'en' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+{% endif %}
+}
+});
+	</script>
+
+
+    {# Code de la datatable en JS pour la deuxieme table #}
+	<script type="text/javascript">
+		$("#table2").dataTable({
+"language": { 
+// Si la langue locale est 'fr' alors j'applique l'URL française
+{% if  app.request.locale == 'fr' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+{% endif %}
+
+// Si la langue locale est 'en' alors j'applique l'URL anglaise
+{% if  app.request.locale == 'en' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+{% endif %}
+}
+});
+	</script>
 
 {% endblock %}

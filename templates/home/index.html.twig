@@ -49,10 +49,20 @@
     </table>
     </div>
 
-    <script type="text/javascript">
-        $("#table").dataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
-        });
-    </script>
+    {# Code de la datatable en JS #}
+	<script type="text/javascript">
+		$("#table").dataTable({
+"language": { 
+// Si la langue locale est 'fr' alors j'applique l'URL française
+{% if  app.request.locale == 'fr' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+{% endif %}
+
+// Si la langue locale est 'en' alors j'applique l'URL anglaise
+{% if  app.request.locale == 'en' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+{% endif %}
+}
+});
+	</script>
 {% endblock %}
