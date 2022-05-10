@@ -44,6 +44,17 @@ class OperationsController extends AbstractController
     }
 
     /**
+     * @Route("/operationsdétails", name="app_operations_détails")
+     */
+    public function operationDetail (OperationsRepository $operationsRepository)
+    {
+        return $this->render('operations/operationsDetails.html.twig', [
+            'operations' => $operationsRepository->findAll(),
+        ]);
+    }
+
+
+    /**
      * @Route("/new", name="app_operations_new", methods={"GET", "POST"})
      */
     public function new(Request $request, OperationsRepository $operationsRepository, ClientsRepository $clientsRepository, EntityManagerInterface $em): Response
@@ -56,6 +67,7 @@ class OperationsController extends AbstractController
 
         // modification du status de l'operation en non disponible et ajout de la date de création à la date du jour
         $operation->setStatus(false)
+            ->setAbort(false)
         ->setCreatedAt(new \DateTime('now'));
 
         // pour récupérer le nombre total d'opération pr l'utilisateur connecté
@@ -152,6 +164,22 @@ class OperationsController extends AbstractController
             'operation' => $operation,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/supprimer", name="app_operations_supprimer", methods={"GET", "POST"})
+     */
+    public function supprimer(Request $request, Operations $operation, EntityManagerInterface $em): Response
+    {
+        $operation->setStatus(true)
+            ->setAbort(true)
+            ->setAbortedAt(new \DateTime('now'));
+
+        $em->persist($operation);
+        $em->flush();
+
+        $this->addFlash('error', "Opération supprimée");
+        return $this->redirectToRoute('app_operations_index');
     }
 
     /**

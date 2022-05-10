@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Liste des opérations{% endtrans %}{% endblock %}
+
+{% block body %}
+
+    <div style="margin-left: 30px; margin-right: 30px;margin-bottom: 30px;">
+        <h1 id="colla">{% trans %}Opérations en détails{% endtrans %}</h1>
+
+        <div class="example-wrapper" style="text-align: center; margin-top:30px">
+
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+            <h2>Liste des opérations</h2>
+            <table id="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>{% trans %}Titre{% endtrans %}</th>
+                    <th>{% trans %}Description{% endtrans %}</th>
+                    <th>Société</th>
+                    <th>Contact</th>
+                    <th>Adresse</th>
+                    <th>Status</th>
+                    <th>Date création</th>
+                    <th>Date terminé</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for operation in operations | filter( operation => operation.abort == false)%}
+                    <tr>
+                        <td>{{ operation.id }}</td>
+                        <td>{{ operation.titre }}</td>
+                        <td>{{ operation.description }}</td>
+                        <td>{{ operation.client.nomSociete }}</td>
+                        <td>{{ operation.client.prenom }} {{ operation.client.nom }}</td>
+                        <td>{{ operation.client.adresse }} </td>
+                        <td>{% if operation.status == true %}
+                            TERMINER
+                            {% elseif operation.status == false %}
+                                EN COURS
+                        </td>
+                        {% endif %}
+                                <td>{{ operation.createdAt | date('d-m-y') }} </td>
+                                <td>{{ operation.finishAt | date('d-m-y') }} </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="example-wrapper" style="text-align: center; margin-top:30px">
+
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+            <h2>Opérations supprimées</h2>
+            <table id="table2">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>{% trans %}Titre{% endtrans %}</th>
+                    <th>{% trans %}Description{% endtrans %}</th>
+                    <th>Société</th>
+                    <th>Contact</th>
+                    <th>Adresse</th>
+                    <th>Status</th>
+                    <th>Date suppression</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for operation in operations | filter( operation => operation.abort == true) %}
+                    <tr>
+                    <td>{{ operation.id }}</td>
+                    <td>{{ operation.titre }}</td>
+                    <td>{{ operation.description }}</td>
+                    <td>{{ operation.client.nomSociete }}</td>
+                    <td>{{ operation.client.prenom }} {{ operation.client.nom }}</td>
+                    <td>{{ operation.client.adresse }} </td>
+                    <td>{% if operation.abort == true %}
+                    SUPPRIMER
+                    </td>
+                    <td>{{ operation.abort | date('d-m-y') }} </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    {#         Création de la datatable #}
+    <script type="text/javascript">
+        $("#table").dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $("#table2").dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            }
+        })
+    </script>
+
+{% endblock %}

@@ -65,6 +65,16 @@ class Operations
      */
     private $finishAt;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $abort;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $abortedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -162,6 +172,30 @@ class Operations
     public function setFinishAt(?\DateTimeInterface $finishAt): self
     {
         $this->finishAt = $finishAt;
+
+        return $this;
+    }
+
+    public function getAbort(): ?bool
+    {
+        return $this->abort;
+    }
+
+    public function setAbort(bool $abort): self
+    {
+        $this->abort = $abort;
+
+        return $this;
+    }
+
+    public function getAbortedAt(): ?\DateTimeInterface
+    {
+        return $this->abortedAt;
+    }
+
+    public function setAbortedAt(?\DateTimeInterface $abortedAt): self
+    {
+        $this->abortedAt = $abortedAt;
 
         return $this;
     }

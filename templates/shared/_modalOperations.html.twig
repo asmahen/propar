@@ -28,6 +28,10 @@
                           onsubmit="return confirm('Etes-vous sûre de vouloir terminer l\'opération?')">
                         <button type="submit" class="btn btn-info">{% trans %}Terminer opération{% endtrans %}</button>
                     </form>
+                    <form method="post" action="{{ path('app_operations_supprimer', {'id': operation.id}) }}"
+                          onsubmit="return confirm('Etes-vous sûre de vouloir supprimer l\'opération?')">
+                        <button type="submit" class="btn btn-secondary">{% trans %}Supprimer opération{% endtrans %}</button>
+                    </form>
 
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans %}Fermer{% endtrans %}</button>

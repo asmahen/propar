@@ -25,7 +25,7 @@
 
     <div class="d-flex flex-wrap space-between justify-content-center">
 
-        {% for operation in operations %}
+        {% for operation in operations |filter( operation => operation.abort == false) %}
 
             {% if operation.status == false %}
 
@@ -42,7 +42,7 @@
     <h1 class="text-center"> {% trans %}Opérations terminées{% endtrans %}</h1>
     <div class="terminer d-flex flex-wrap space-between justify-content-center">
 
-        {% for operation in operations %}
+        {% for operation in operations|filter( operation => operation.abort == false) %}
             {% if operation.status == true and operation.finishAt | date('Y') == date() | date('Y')%}
 
                 {% include "shared/_cardOperations.html.twig" %}
