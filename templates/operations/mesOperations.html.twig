@@ -23,7 +23,7 @@
 
     <div class="d-flex flex-wrap space-between justify-content-center">
 
-        {% for operation in operations|filter( operation => operation.users == app.user)  %}
+        {% for operation in operations|filter( operation => operation.users == app.user and operation.abort == false)  %}
 
             {% if  operation.status == false  %}
                 {% include "shared/_cardOperations.html.twig" %}
@@ -36,7 +36,7 @@
     <h1 class="text-center">{% trans %} Opérations terminées {% endtrans %}</h1>
     <div class="terminer d-flex flex-wrap space-between justify-content-center">
 
-        {% for operation in operations |filter( operation => operation.users == app.user) %}
+        {% for operation in operations |filter( operation => operation.users == app.user and operation.abort == false) %}
             {% if operation.status == true and operation.finishAt | date('Y') == date() | date('Y')%}
 
                 {% include "shared/_cardOperations.html.twig" %}

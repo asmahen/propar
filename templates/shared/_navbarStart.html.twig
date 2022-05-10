@@ -31,6 +31,7 @@
                     <li><a class="link_name" href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a></li>
                     <li><a href="{{ path('app_operations_index') }}">{% trans %}Liste opérations{% endtrans %}</a></li>
                     <li><a href="{{ path('app_operations_new') }}">{% trans %}Créer opération{% endtrans %}</a></li>
+                    <li><a href="{{ path('app_operations_détails') }}">{% trans %}Détails opérations{% endtrans %}</a></li>
                 </ul>
             </li>
             <li>
@@ -40,6 +41,7 @@
                 </a>
                 <ul class="sub-menu blank">
                     <li><a class="link_name" href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a></li>
+
                 </ul>
             </li>
             {% if is_granted('ROLE_EXPERT') %}

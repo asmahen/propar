@@ -140,6 +140,7 @@ class AppFixtures extends Fixture
         for ($i=1; $i <= 3; $i++) {
         $operation = new Operations();
         $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
+            ->setAbort(false)
             ->setCategories($petiteCategorie)
             ->setClient($client1)
             ->setUsers($admin)
@@ -155,6 +156,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($moyenneCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($apprenti)
                 ->setTitre($faker->words(2, true))
@@ -166,6 +168,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($grandeCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($apprenti)
                 ->setTitre($faker->words(2, true))
@@ -188,6 +191,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($grandeCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
@@ -201,6 +205,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($moyenneCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
@@ -214,6 +219,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($petiteCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
@@ -228,6 +234,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($grandeCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
@@ -242,6 +249,7 @@ class AppFixtures extends Fixture
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($moyenneCategorie)
                 ->setClient($client2)
+                ->setAbort(false)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
                 ->setStatus(false)
@@ -254,6 +262,7 @@ class AppFixtures extends Fixture
             $operation = new Operations();
             $operation->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true))
                 ->setCategories($petiteCategorie)
+                ->setAbort(false)
                 ->setClient($client2)
                 ->setUsers($superAdmin)
                 ->setTitre($faker->words(2, true))
