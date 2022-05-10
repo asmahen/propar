@@ -34,17 +34,25 @@ class ChiffreAffairesController extends AbstractController
         $tabAnnee = $operationsRepository->findAnneeMin();
         $anneeMin = $tabAnnee[0]['year'];
 
+        // J'instancie ces variables pour pouvoir proposer une traduction anglaise (pour 'Petites Opérations', 'Moyennes Opérations', 'Grandes Opérations')
+        $info1 = $translator->trans('apparait par défaut');
+        $info2 = $translator->trans('Données disponibles à partir de l\'année');
+        $error = $translator->trans(': no futur - Ou est Sarah Connor');
+        $warning = $translator->trans('Aucunes données de disponible pour l\'année saisie ou format année invalide, l\'année');
+        $warning2 = $translator->trans('apparait par défaut');
+        $success = $translator->trans('Chiffres disponibles pour l\'année');
+
         //condition si année non soumis et pas de valeur par défaut se met à l'année actuelle
         if ($annee == "") {
             $startAnnee = date('Y');
-            $this->addFlash('info', "Année $startAnnee apparait par défaut");
-            $this->addFlash('info', "Données disponibles à partir de l'année $anneeMin");
+            $this->addFlash('info', "$startAnnee $info1");
+            $this->addFlash('info', "$info2 $anneeMin");
             $annee = date('Y');
         }
 
         //condition si année selectionnée est supérieures à l'année actuelle
         if ($annee > date('Y')) {
-            $this->addFlash('error', "Année $annee : no futur - Ou est Sarah Connor");
+            $this->addFlash('error', "$annee $error");
             $annee = date('Y');
 
         }
@@ -64,10 +72,10 @@ class ChiffreAffairesController extends AbstractController
         //condition si pas de donnèes dans l'année saisie ou si format incorrect
        if ( $totalOpEC == null) {
            $startAnnee = date('Y');
-           $this->addFlash('warning', "Aucunes données de disponible pour l'année saisie ou format année invalide, l'année $startAnnee apparait par défaut");
+           $this->addFlash('warning', "$warning $startAnnee $warning2");
            $annee = '2022';
        } else {
-           $this->addFlash('success', "Chiffres disponibles pour l'année $annee");
+           $this->addFlash('success', "$success $annee");
        }
 
 

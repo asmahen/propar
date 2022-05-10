@@ -12,11 +12,11 @@
 
     <div>
         <form action="{{ path('app_chiffre_affaires')}}" method='post' >
-        <label for="name">Taper l'année pour voir les chiffres</label>
+        <label for="name">{% trans %}Taper l'année pour voir les chiffres{% endtrans %}</label>
 
         <input type="text" id="name" name="annee"  required
                maxlength="4">
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" value="{% trans %}Envoyer{% endtrans %}" class="btn btn-primary">
         </form>
     </div>
 

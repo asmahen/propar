@@ -471,6 +471,34 @@
         <source>Décembre</source>
         <target>December</target>
       </trans-unit>
+      <trans-unit id="rv9RH0g" resname="Taper l'année pour voir les chiffres">
+        <source>Taper l'année pour voir les chiffres</source>
+        <target>Enter the year to see the turn over</target>
+      </trans-unit>
+      <trans-unit id="26KUMyP" resname="apparait par défaut">
+        <source>apparait par défaut</source>
+        <target>appears by default</target>
+      </trans-unit>
+      <trans-unit id="GQdyVyP" resname="Données disponibles à partir de l'année">
+        <source>Données disponibles à partir de l'année</source>
+        <target>Data available from year</target>
+      </trans-unit>
+      <trans-unit id="34tKe7m" resname=": no futur - Ou est Sarah Connor">
+        <source>: no futur - Ou est Sarah Connor</source>
+        <target>__: no futur - Where is Sarah Connor</target>
+      </trans-unit>
+      <trans-unit id="i8MxD_K" resname="Aucunes données de disponible pour l'année saisie ou format année invalide, l'année">
+        <source>Aucunes données de disponible pour l'année saisie ou format année invalide, l'année</source>
+        <target>No data available for the year entered or invalid year format, the year</target>
+      </trans-unit>
+      <trans-unit id="e5XRIY." resname="Chiffres disponibles pour l'année">
+        <source>Chiffres disponibles pour l'année</source>
+        <target>Turn over for the year</target>
+      </trans-unit>
+      <trans-unit id="eQdSCfK" resname="Envoyer">
+        <source>Envoyer</source>
+        <target>Send</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
