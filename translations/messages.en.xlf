@@ -499,6 +499,66 @@
         <source>Envoyer</source>
         <target>Send</target>
       </trans-unit>
+      <trans-unit id="p7NPAwg" resname="Liste des opérations">
+        <source>Liste des opérations</source>
+        <target>List of operations</target>
+      </trans-unit>
+      <trans-unit id="fSqHVo4" resname="Opérations en détails">
+        <source>Opérations en détails</source>
+        <target>Details of operations</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="5AjAjGu" resname="Société">
+        <source>Société</source>
+        <target>Society</target>
+      </trans-unit>
+      <trans-unit id="K1w9JnI" resname="Contact">
+        <source>Contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="feU2oLq" resname="Date création">
+        <source>Date création</source>
+        <target>Date of creation</target>
+      </trans-unit>
+      <trans-unit id="DqZkwVV" resname="Date terminé">
+        <source>Date terminé</source>
+        <target>Date completed</target>
+      </trans-unit>
+      <trans-unit id="hDvEN9j" resname="TERMINER">
+        <source>TERMINÉS</source>
+        <target>Completed</target>
+      </trans-unit>
+      <trans-unit id="TFKbUYl" resname="EN COURS">
+        <source>EN COURS</source>
+        <target>IN PROGRESS</target>
+      </trans-unit>
+      <trans-unit id="SlcBNtE" resname="Opérations supprimées">
+        <source>Opérations supprimées</source>
+        <target>Deleted operations</target>
+      </trans-unit>
+      <trans-unit id="WrtkRdc" resname="Date suppression">
+        <source>Date suppression</source>
+        <target>Deletion date</target>
+      </trans-unit>
+      <trans-unit id="gLKza9r" resname="SUPPRIMER">
+        <source>SUPPRIMER</source>
+        <target>DELETE</target>
+      </trans-unit>
+      <trans-unit id="BHRuEah" resname="Supprimer opération">
+        <source>Supprimer opération</source>
+        <target>Delete operation</target>
+      </trans-unit>
+      <trans-unit id="7mYpY2X" resname="Détails opérations">
+        <source>Détails opérations</source>
+        <target>Details of operations</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

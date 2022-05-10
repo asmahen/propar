@@ -65,20 +65,28 @@
 				</tbody>
 			</table>
 		</div>
-    </div>
+	</div>
 
-		<a href="{{ path('app_clients_new') }}" class="btn btn-danger">{% trans %}Créer un client
-			{% endtrans %}</a>
-		<a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">{% trans %}Retour à la liste
-			{% endtrans %}</a>
+	<a href="{{ path('app_clients_new') }}" class="btn btn-danger">{% trans %}Créer un client
+		{% endtrans %}</a>
+	<a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">{% trans %}Retour à la liste
+		{% endtrans %}</a>
 
-		<script type="text/javascript">
-			$("#table").dataTable({
-"language": {
-"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+	{# Code de la datatable en JS #}
+	<script type="text/javascript">
+		$("#table").dataTable({
+"language": { 
+// Si la langue locale est 'fr' alors j'applique l'URL française
+{% if  app.request.locale == 'fr' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+{% endif %}
+
+// Si la langue locale est 'en' alors j'applique l'URL anglaise
+{% if  app.request.locale == 'en' %}
+"url" : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+{% endif %}
 }
 });
-		</script>
+	</script>
 
-
-	{% endblock %}
+{% endblock %}
