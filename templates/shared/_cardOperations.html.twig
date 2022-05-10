@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-image"
+         style="background-image: url({{ image(operation) }})"></div>
+    <div class="card-text">
+        <h5>{{ operation.titre }}</h5>
+        <button type="button" class="btn btn-outline-{{ color(operation) }}" data-bs-toggle="modal"
+                data-bs-target="#exampleModal{{ loop.index }}">
+            {% trans %}Plus d'informations{% endtrans %}
+        </button>
+    </div>
+    <div class="class-stats text-white bg-{{ color(operation) }} "
+         style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; padding: 10px; font-weight: bold">
+        {{ operation.categories.prix }} €
+    </div>
+</div>
+<br><br>

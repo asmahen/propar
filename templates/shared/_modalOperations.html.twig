@@ -10,6 +10,14 @@
                 </div>
                 <div class="modal-body">
                     <p>{{ operation.description }}</p>
+                    <br>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Collaborateur : {{ operation.users.prenom }} {{ operation.users.nom }} </li>
+                        <li class="list-group-item">Société : {{  operation.client.nomSociete }}</li>
+                        <li class="list-group-item">Contact : {{  operation.client.prenom }} {{  operation.client.nom }}</li>
+                        <li class="list-group-item">Adresse : {{  operation.client.adresse }} </li>
+                        <li class="list-group-item">Catégorie : {{ operation.categories }}</li>
+                    </ul>
                 </div>
                 <div class="modal-footer">
 
