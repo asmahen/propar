@@ -1,70 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% trans %} Clients index {% endtrans %}{% endblock %}
+{% block title %}
+	{% trans %}
+	Clients index
+	{% endtrans %}
+{% endblock %}
 
 {% block body %}
 
-<div style="margin-left: 30px; margin-right: 30px;">
+	<div style="margin-left: 30px; margin-right: 30px;">
 
-    <div class="example-wrapper" style="text-align: center; margin-top:30px">
-        <h1 id="colla">{% trans %} Liste des clients {% endtrans %}</h1>
+		<div class="example-wrapper" style="text-align: center; margin-top:30px">
+			<h1 id="colla">{% trans %}
+				Liste des clients{% endtrans %}</h1>
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+			<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+			<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+			<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+			<table id="table">
+				<thead>
+					<tr>
+						<th>{% trans %}
+							Id
+							{% endtrans %}</th>
+						<th>{% trans %}
+							Nom Société
+							{% endtrans %}</th>
+						<th>{% trans %}
+							Prénom
+							{% endtrans %}</th>
+						<th>{% trans %}
+							Nom
+							{% endtrans %}</th>
+						<th>{% trans %}
+							Adresse
+							{% endtrans %}</th>
+						<th>{% trans %}
+							Actions
+							{% endtrans %}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for client in clients %}
+						<tr>
+							<td>{{ client.id }}</td>
+							<td>{{ client.nomSociete }}</td>
+							<td>{{ client.prenom }}</td>
+							<td>{{ client.nom }}</td>
+							<td>{{ client.adresse }}</td>
+							<td>
+								<a href="{{ path('app_clients_show', {'id': client.id}) }}" class="btn btn-success">{% trans %}Voir
+									{% endtrans %}</a>
+								<a href="{{ path('app_clients_edit', {'id': client.id}) }}" class="btn btn-info">{% trans %}Modifier
+									{% endtrans %}</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">{% trans %}Aucune info trouvé
+								{% endtrans %}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+    </div>
+
+		<a href="{{ path('app_clients_new') }}" class="btn btn-danger">{% trans %}Créer un client
+			{% endtrans %}</a>
+		<a href="{{ path('app_clients_index') }}" class="btn btn-warning mt-3">{% trans %}Retour à la liste
+			{% endtrans %}</a>
+
+		<script type="text/javascript">
+			$("#table").dataTable({
+"language": {
+"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+}
+});
+		</script>
 
 
-
-        <table id="table">
-            <thead>
-            <tr>
-                <th> Id </th>
-                <th> Nom Société </th>
-                <th> Prénom </th>
-                <th> Nom </th>
-                <th> Adresse </th>
-                <th> Actions </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for client in clients %}
-                <tr>
-                    <td>{{ client.id }}</td>
-                    <td>{{ client.nomSociete }}</td>
-                    <td>{{ client.prenom }}</td>
-                    <td>{{ client.nom }}</td>
-                    <td>{{ client.adresse }}</td>
-                    <td>
-                        <a href="{{ path('app_clients_show', {'id': client.id}) }}"
-                           class="btn btn-success">Voir</a>
-                        <a href="{{ path('app_clients_edit', {'id': client.id}) }}"
-                           class="btn btn-info">Modifier </a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">{% trans %}Aucune info trouvé {% endtrans %}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <a href="{{ path('app_clients_new') }}" class="btn btn-danger">{% trans %}Créer un client {% endtrans %}</a>
-        <a href="{{ path('app_clients_index') }}"class="btn btn-warning mt-3">{% trans %}Retour à la liste {% endtrans %}</a>
-
-
-        {% block javascripts %}
-            <script type="text/javascript">
-                $("#table").dataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-                    }
-                });
-            </script>
-
-        {% endblock %}
-
-
-
-        {% endblock %}
-
+	{% endblock %}
