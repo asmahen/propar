@@ -204,7 +204,7 @@
 }
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile_name,
-.sidebar.close .profile-details .job{
+.sidebar.close .profile-details .job, .sidebar.close #app h2 #conditions{
     display: none;
 }
 .sidebar .profile-details .job{
@@ -249,6 +249,74 @@
     font-size: 26px;
     font-weight: 600;
 }
+
+.langue {
+    position: absolute;
+    bottom: 280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+ .clear {
+    background-image: url("https://cdn-s-www.lejsl.com/images/13B7FF07-E668-4D74-A36B-AFA32F6EB53D/NW_raw/image-d-illustration-pixabay-1559304589.jpg");
+     background-size: contain;
+}
+
+.clouds {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/83/Sky_cloudy.JPG");
+    background-size: contain;
+}
+
+.rain {
+    background-image: url("https://static.actu.fr/uploads/2022/03/adobestock-366903907.jpeg");
+    background-size: contain;
+}
+
+.snow {
+    background-image: url("https://www.tunisienumerique.com/wp-content/uploads/2019/01/c5d390f48e_116523_neige-montagne.jpg");
+    background-size: contain;
+}
+
+#app {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow:  1px 1px 1px rgba(135, 132, 132, 0.5);
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-position: center;
+    background-size: cover;
+    border-top: #FFFFFF 2px solid;
+}
+
+#app h1 {
+    font-size: 1.5em;
+    position: relative;
+    color: #FFFFFF;
+
+}
+
+i.wi {
+    font-size: 3em;
+    margin: 10px 0 10px 0;
+}
+
+#app h2 {
+    font-size: 1.2em;
+    color: #FFFFFF;
+}
+
 @media (max-width: 400px) {
     .sidebar.close .nav-links li .sub-menu{
         display: none;
@@ -269,4 +337,6 @@
         width: 100%;
         left: 0;
     }
+
+
 }

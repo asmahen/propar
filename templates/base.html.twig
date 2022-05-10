@@ -30,13 +30,6 @@
 {% include "shared/_navbarStart.html.twig" %}
 {% include "shared/_notyf.html.twig" %}
 
-{# Je crée une boucle qui récupere la langue locale #}
-{% for locale in locales %} 
-    {% if locale != app.request.locale %}
-        {# Je place ici une photo.  "~~" permet d'instancier dans les fichiers twig. J'instancie donc la langue locale grâce à '~locale~' pour l'image #}
-        <a class="drapeau" href="{{ path('change_locale', {'locale': locale})}}"><img src="{{ asset('img/'~locale~'.png')}}" style ="margin-left: 1170px" alt= "{{locale}}"></a>
-    {% endif %}
-{% endfor %}
 
 {% block body %}
 
