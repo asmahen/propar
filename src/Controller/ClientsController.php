@@ -11,6 +11,7 @@ use App\Repository\OperationsRepository;
 use Doctrine\ORM\EntityManagerInterface as em;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -81,7 +82,8 @@ class ClientsController extends AbstractController
      */
     public function edit(Request $request, Clients $client, ClientsRepository $clientsRepository): Response
     {
-        $form = $this->createForm(ClientsType::class, $client);
+        $form = $this->createForm(ClientsType::class, $client)
+        ->add("adresse", TextType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
