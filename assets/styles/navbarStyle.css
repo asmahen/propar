@@ -204,7 +204,7 @@
 }
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile_name,
-.sidebar.close .profile-details .job, .sidebar.close #app h2 #conditions{
+.sidebar.close .profile-details .job, .sidebar.close #app h1 #ville, .sidebar.close #app h2 #conditions{
     display: none;
 }
 .sidebar .profile-details .job{
