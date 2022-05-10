@@ -85,7 +85,7 @@
                     <td>{% if operation.abort == true %}
                     SUPPRIMER
                     </td>
-                    <td>{{ operation.abort | date('d-m-y') }} </td>
+                    <td>{{ operation.abortedAt | date('d-m-y') }} </td>
                         </tr>
                     {% endif %}
                 {% endfor %}
