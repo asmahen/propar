@@ -123,6 +123,8 @@
 						{% endfor %}
 					</div>
 
+					{# Je souhaite que l'api météo s'adapte à la langue locale #}
+					{# Si la langue locale est française...  #}
 					{% if app.request.locale is same as('fr') %}
 						<div class="api">
 							<section id="app">
@@ -136,11 +138,13 @@
 									<span id="conditions"></span>
 								</h2>
 							</section>
+							{# ... alors je fais appelle au fichier JS qui s'appelle meteo, qui contient l'api météo française #}
 							{{ encore_entry_script_tags('Meteo') }}
 						</div>
 
 					{% endif %}
 
+					{# Si la langue locale est anglaise...  #}
 					{% if  app.request.locale is same as('en') %}
 						<div class="api">
 							<section id="app">
@@ -154,6 +158,7 @@
 									<span id="conditions"></span>
 								</h2>
 							</section>
+							{# ... alors je fais appelle au fichier JS qui s'appelle meteoEn, qui contient l'api météo anglaise #}
 							{{ encore_entry_script_tags('MeteoEn') }}
 						</div>
 					{% endif %}
