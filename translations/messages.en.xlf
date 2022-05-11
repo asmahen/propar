@@ -532,7 +532,7 @@
         <target>Date completed</target>
       </trans-unit>
       <trans-unit id="hDvEN9j" resname="TERMINER">
-        <source>TERMINÉS</source>
+        <source>TERMINER</source>
         <target>Completed</target>
       </trans-unit>
       <trans-unit id="TFKbUYl" resname="EN COURS">
@@ -558,6 +558,10 @@
       <trans-unit id="7mYpY2X" resname="Détails opérations">
         <source>Détails opérations</source>
         <target>Details of operations</target>
+      </trans-unit>
+      <trans-unit id="ExMQWBP" resname="TERMINÉS">
+        <source>TERMINÉS</source>
+        <target>DONE</target>
       </trans-unit>
     </body>
   </file>

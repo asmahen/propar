@@ -1,161 +1,196 @@
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
-    {{ encore_entry_link_tags('navBar') }}
-    <!-- Boxiocns CDN Link -->
+	<head>
+		<meta
+		charset="UTF-8">
+		<!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+		{{ encore_entry_link_tags('navBar') }}
+		<!-- Boxiocns CDN Link -->
 
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+		<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<div class="sidebar ">
-    <div class="logo-details">
-        <a href="{{ path('app_home') }}">
-            <i class='bx bx-droplet'></i>
-        </a>
-        <span class="logo_name">Propar</span>
-    </div>
-    <ul class="nav-links">
-        {% if app.user %}
-            <li>
-                <div class="iocn-link">
-                    <a href="{{ path('app_operations_index') }}">
-                        <i class='bx bx-customize'></i>
-                        <span class="link_name">{% trans %}Gestion opérations{% endtrans %}</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name"
-                           href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a>
-                    </li>
-                    <li><a href="{{ path('app_operations_index') }}">{% trans %}Liste opérations{% endtrans %}</a></li>
-                    <li><a href="{{ path('app_operations_new') }}">{% trans %}Créer opération{% endtrans %}</a></li>
-                    <li><a href="{{ path('app_operations_détails') }}">{% trans %}Détails opérations{% endtrans %}</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{ path('app_operations_mesOperations') }}">
-                    <i class='bx bxs-widget'></i>
-                    <span class="link_name">{% trans %}Mes opérations{% endtrans %}</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name"
-                           href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a>
-                    </li>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="sidebar ">
+			<div class="logo-details">
+				<a href="{{ path('app_home') }}">
+					<i class='bx bx-droplet'></i>
+				</a>
+				<span class="logo_name">Propar</span>
+			</div>
+			<ul class="nav-links">
+				{% if app.user %}
+					<li>
+						<div class="iocn-link">
+							<a href="{{ path('app_operations_index') }}">
+								<i class='bx bx-customize'></i>
+								<span class="link_name">{% trans %}Gestion opérations{% endtrans %}</span>
+							</a>
+							<i class='bx bxs-chevron-down arrow'></i>
+						</div>
+						<ul class="sub-menu">
+							<li>
+								<a class="link_name" href="{{ path('app_operations_index') }}">{% trans %}Gestion opérations{% endtrans %}</a>
+							</li>
+							<li>
+								<a href="{{ path('app_operations_index') }}">{% trans %}Liste opérations{% endtrans %}</a>
+							</li>
+							<li>
+								<a href="{{ path('app_operations_new') }}">{% trans %}Créer opération{% endtrans %}</a>
+							</li>
+							<li>
+								<a href="{{ path('app_operations_détails') }}">{% trans %}Détails opérations{% endtrans %}</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="{{ path('app_operations_mesOperations') }}">
+							<i class='bx bxs-widget'></i>
+							<span class="link_name">{% trans %}Mes opérations{% endtrans %}</span>
+						</a>
+						<ul class="sub-menu blank">
+							<li>
+								<a class="link_name" href="{{ path('app_operations_mesOperations') }}">{% trans %}Mes opérations{% endtrans %}</a>
+							</li>
 
-                </ul>
-            </li>
-            {% if is_granted('ROLE_EXPERT') %}
-                <li>
-                    <div class="iocn-link">
-                        <a href="{{ path('app_users_index') }}">
-                            <i class='bx bx-user-circle'></i>
-                            <span class="link_name">{% trans %} Gestion collaborateur{% endtrans %}</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">{% trans %}Gestion collaborateur{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_users_index') }}">{% trans %}Liste collaborateurs{% endtrans %}</a>
-                        </li>
-                        <li><a href="{{ path('app_register') }}">{% trans %}Créer collaborateur{% endtrans %}</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="{{ path('app_clients_index') }}">
-                            <i class='bx bxs-group '></i>
-                            <span class="link_name">{% trans %}Gestion clients{% endtrans %}</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">{% trans %}Gestion clients{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_clients_index') }}">{% trans %}Liste clients{% endtrans %}</a></li>
-                        <li><a href="{{ path('app_clients_new') }}">{% trans %}Créer client{% endtrans %}</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ path('app_chiffre_affaires') }}">
-                        <i class='bx bx-line-chart'></i>
-                        <span class="link_name">{% trans %}Chiffre d'affaires{% endtrans %}</span>
-                    </a>
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name"
-                               href="{{ path('app_chiffre_affaires') }}">{% trans %}Chiffre d'affaires{% endtrans %}</a>
-                        </li>
-                    </ul>
-                </li>
-            {% endif %}
+						</ul>
+					</li>
+					{% if is_granted('ROLE_EXPERT') %}
+						<li>
+							<div class="iocn-link">
+								<a href="{{ path('app_users_index') }}">
+									<i class='bx bx-user-circle'></i>
+									<span class="link_name">{% trans %}
+										Gestion collaborateur{% endtrans %}</span>
+								</a>
+								<i class='bx bxs-chevron-down arrow'></i>
+							</div>
+							<ul class="sub-menu">
+								<li>
+									<a class="link_name" href="#">{% trans %}Gestion collaborateur{% endtrans %}</a>
+								</li>
+								<li>
+									<a href="{{ path('app_users_index') }}">{% trans %}Liste collaborateurs{% endtrans %}</a>
+								</li>
+								<li>
+									<a href="{{ path('app_register') }}">{% trans %}Créer collaborateur{% endtrans %}</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="iocn-link">
+								<a href="{{ path('app_clients_index') }}">
+									<i class='bx bxs-group '></i>
+									<span class="link_name">{% trans %}Gestion clients{% endtrans %}</span>
+								</a>
+								<i class='bx bxs-chevron-down arrow'></i>
+							</div>
+							<ul class="sub-menu">
+								<li>
+									<a class="link_name" href="#">{% trans %}Gestion clients{% endtrans %}</a>
+								</li>
+								<li>
+									<a href="{{ path('app_clients_index') }}">{% trans %}Liste clients{% endtrans %}</a>
+								</li>
+								<li>
+									<a href="{{ path('app_clients_new') }}">{% trans %}Créer client{% endtrans %}</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="{{ path('app_chiffre_affaires') }}">
+								<i class='bx bx-line-chart'></i>
+								<span class="link_name">{% trans %}Chiffre d'affaires{% endtrans %}</span>
+							</a>
+							<ul class="sub-menu blank">
+								<li>
+									<a class="link_name" href="{{ path('app_chiffre_affaires') }}">{% trans %}Chiffre d'affaires{% endtrans %}</a>
+								</li>
+							</ul>
+						</li>
+					{% endif %}
 
-            {# Je crée une boucle qui récupere la langue locale #}
-            <div class="langue">
-                {% for locale in locales %}
-                    {% if locale != app.request.locale %}
-                        {# Je place ici une photo.  "~~" permet d'instancier dans les fichiers twig. J'instancie donc la langue locale grâce à '~locale~' pour l'image #}
-                        <a class="drapeau" href="{{ path('change_locale', {'locale': locale}) }}"><img
-                                    src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}"></a>
-                    {% endif %}
-                {% endfor %}
-            </div>
+					{# Je crée une boucle qui récupere la langue locale #}
+					<div class="langue">
+						{% for locale in locales %}
+							{% if locale != app.request.locale %}
+								{# Je place ici une photo.  "~~" permet d'instancier dans les fichiers twig. J'instancie donc la langue locale grâce à '~locale~' pour l'image #}
+								<a class="drapeau" href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}"></a>
+							{% endif %}
+						{% endfor %}
+					</div>
 
-<div class="api">
-                <section id="app">
-                    <h1>
-                        <span id="ville"></span>
-                    </h1>
-                    <i class="wi"></i>
-                    <h2>
-                        <span id="temperature"></span> °C <span id="conditions"></span>
-                    </h2>
-                </section>
-    {{ encore_entry_script_tags('Meteo') }}
-            </div>
+					{% if app.request.locale is same as('fr') %}
+						<div class="api">
+							<section id="app">
+								<h1>
+									<span id="ville"></span>
+								</h1>
+								<i class="wi"></i>
+								<h2>
+									<span id="temperature"></span>
+									°C
+									<span id="conditions"></span>
+								</h2>
+							</section>
+							{{ encore_entry_script_tags('Meteo') }}
+						</div>
 
-            <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <!--<img src="image/profile.jpg" alt="profileImg">-->
-                    </div>
-                    <div class="name-job">
-                        <div class="profile_name">{{ app.user.prenom }} {{ app.user.nom }}</div>
-                        <div class="job">{% trans %}Connecté{% endtrans %}</div>
-                    </div>
-                    <a href="{{ path('app_logout') }}">
-                        <i class='bx bx-log-out'></i>
-                        <span class="link_name"></span>
-                    </a>
-                </div>
-            </li>
-        {% else %}
-            <li>
-                <a href="{{ path('app_login') }}">
-                    <i class='bx bx-log-in'></i>
-                    <span class="link_name">Connexion</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="{{ path('app_login') }}">Connexion</a></li>
-                </ul>
-            </li>
-        {% endif %}
-    </ul>
-</div>
-<section class="home-section">
-    <div class="home-content">
-        <i class='bx bx-menu'></i>
-    </div>
+					{% endif %}
 
-
+					{% if  app.request.locale is same as('en') %}
+						<div class="api">
+							<section id="app">
+								<h1>
+									<span id="ville"></span>
+								</h1>
+								<i class="wi"></i>
+								<h2>
+									<span id="temperature"></span>
+									°F
+									<span id="conditions"></span>
+								</h2>
+							</section>
+							{{ encore_entry_script_tags('MeteoEn') }}
+						</div>
+					{% endif %}
 
 
-
-
-
-
+					<li>
+						<div class="profile-details">
+							<div
+								class="profile-content"><!--<img src="image/profile.jpg" alt="profileImg">-->
+							</div>
+							<div class="name-job">
+								<div class="profile_name">{{ app.user.prenom }}
+									{{ app.user.nom }}</div>
+								<div class="job">{% trans %}Connecté{% endtrans %}</div>
+							</div>
+							<a href="{{ path('app_logout') }}">
+								<i class='bx bx-log-out'></i>
+								<span class="link_name"></span>
+							</a>
+						</div>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path('app_login') }}">
+							<i class='bx bx-log-in'></i>
+							<span class="link_name">{% trans %}Connexion{% endtrans %}</span>
+						</a>
+						<ul class="sub-menu blank">
+							<li>
+								<a class="link_name" href="{{ path('app_login') }}">Connexion</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+		<section class="home-section">
+			<div class="home-content">
+				<i class='bx bx-menu'></i>
+			</div>

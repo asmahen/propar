@@ -30,8 +30,10 @@ Encore
     .addEntry('card', './assets/cards.js')
     //entrée pour le style chiffre d'affaires
     .addEntry('CA', './assets/ca.js')
-    //entrée pour le script meteo
+    //entrée pour le script meteo en francais
     .addEntry('Meteo', './assets/meteo.js')
+    //entrée pour le script météo en anglais
+    .addEntry('MeteoEn', './assets/meteoEn.js')
 
 
 
