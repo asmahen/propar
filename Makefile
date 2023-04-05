@@ -10,10 +10,10 @@ db:
 	php bin/console doctrine:database:create
 	php bin/console doctrine:migration:migrate
 	php bin/console doctrine:fixtures:load
+	npm run dev
 
 start:
 	symfony server:start
-	npm run dev
 
 stop:
 	symfony server:stop
